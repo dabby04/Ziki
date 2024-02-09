@@ -1,0 +1,47 @@
+
+body , html {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color:  #D27FE0;
+    background-size: cover;
+    background: linear-gradient(to bottom, white, #D27FE0);
+    width : 100%;
+  
+}
+
+#main{
+position: absolute;
+width: 806px;
+height: 907px;
+left: 353px;
+top: 75px;
+background: linear-gradient(to bottom, #D27FE0, white);
+margin-top: 0.55em
+}
+
+#main-logo {
+    margin: 0.5em 0.5em 0.5em 0.5em;
+    display: inline-flex;
+    font-family: serif;
+}
+
+#profile-container {
+    margin: 2em 0 2em 0em;
+    text-align: center;
+}
+
+#pfp { 
+    display: inline;
+    width: 200px;
+    }
+
+ #change-info {
+    display: block;
+    margin-left: 353px ;
+    
+ }
+
+ 
