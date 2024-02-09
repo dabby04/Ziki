@@ -81,3 +81,12 @@ body {
     float: right;
     margin-right: 10em;
 }
+
+#registration{
+    background-color: rgb(232, 230, 230);
+}
+
+#registration.input-container{
+    margin-top: 0.5px;
+    margin-bottom: 0.5px;
+}
