@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
+
 #user_button {
     display: inline-flex;
     align-items: center;
@@ -24,4 +27,91 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#centre_top2 figcaption{
+    background-color: white;
+    border-radius: 30px;
+    font-family: 'League Spartan', sans-serif;
+    position: absolute;
+    bottom: 4.5px;
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    height: 30px;
+    padding: 10px; 
+    box-sizing: border-box; 
+    overflow: hidden;
+    white-space: nowrap; 
+}
+#centre_top2 figure{
+    float: left;
+    position:relative;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+#centre_top2{
+    display: inline-block;
+    position: relative;
+}
+
+#top2{
+    float: left;
+}
+
+#trending{
+    height:100%;
+}
+#trending .box{
+    border: rgba(201, 201, 201, 0.1) 1px solid;
+    border-radius: 10px;
+    box-shadow: 2px 4px rgba(201, 201, 201, 0.1);
+    float: right;
+    margin-right: 2em;
+    margin-top: 2em;
+    overflow: hidden;
+    word-wrap: break-word;
+    width:30%
+}
+
+h3{
+    font-family: 'League Gothic', sans-serif;
+    font-size: 2em;
+    font-weight: none;
+}
+
+#trending img{
+    float: left;
+    width: 74px;
+    height: 74px;
+}
+.discuss{
+    clear: left;
+    border-top: #D9D9D9 1.5px solid;
+    height: 74px;
+}
+
+.discuss figure{
+    height: 74px;
+    align-items: center;
+    justify-content: center;
+}
+
+#trending figcaption{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'League Spartan', sans-serif;
+    text-align: center;
+    height: 74px;
+}
+
+.discuss a{
+    color: black;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 74px;
 }
