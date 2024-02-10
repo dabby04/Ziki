@@ -1,0 +1,27 @@
+#user_button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: right;
+    float: right;
+    margin-top: 1em;
+    margin-right: 1em;
+}
+
+#user_button button {
+    background: none;
+    border: none;
+    align-items: center;
+    justify-content: right;
+}
+
+#user_button button img {
+    height: 60px;
+    width: 60px;
+}
+
+#header-info {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

@@ -29,13 +29,24 @@
 .home {
     float: left;
     text-align: left;
+    height: 100px;
+    margin-left: 2em;
 }
 
 .login {
     text-align: right;
     font-size: 2em;
+    height: 100px;
+    justify-content: right;
+    align-items: center;
+    display: flex;
+    margin-right: 2em;
+}
+
+.login a{
+    color: #EEF5FC;
 }
 
 header{
-    overflow: hidden;
+    height: fit-content;
 }
