@@ -38,19 +38,41 @@ margin-top: 0.55em
 #pfp { 
     display: inline;
     width: 200px;
+    border-radius: 50%;
     }
 
  #change-info {
     display: block;
-    margin-left: 353px ;
+    align-items:center;
+    text-align: center;
+    padding: 0em 6.75em 0em 0em;
+ }
+
+ input {
+    border-radius: 12pt;
+    width: 25em;
+    height: 3em;
+    text-align: center;
+    font-size: 13pt;
+    padding: 0 2em 0 2em;
+ }
+
+
+ #done {
+    width: 12.5em;
+    margin: 2em 0em 0em 6em;
+    height: 2.3em;
+    align-items: center;
+    font-size: 13pt;
+    font-weight: bold;
     
  }
 
  .icon {
-
-    width: 2em;
-    padding: 4em 1em 0em 0em;
-    
+    display: flexbox;
+    width: 1.75em;
+    padding: 0em 0em 0em 0em;
+    margin: 1em 1em 0em 5em;
  }
 
  
