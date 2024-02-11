@@ -67,7 +67,7 @@ header {
 .text-option {
     display: inline-block;
     font-size: 20pt;
-    margin-left: 4em;
+    margin-left: 3em;
     text-align: center;
     padding: 0em 5em 0em 5em;
     cursor: pointer;
@@ -79,14 +79,75 @@ header {
 }
 
 
+/*post containers*/
   .rectangle {
-
     background-color: #d9d9d9;
     display: inline-block;
     width: 576px;
     height: 393px;
-    margin: 5em 5em 5em 5em;
+    margin: 3em 3em 3em 3em;
 
   }
+
+
+  /*post box*/
+  #post-box {
+    background-color: #d9d9d9;
+    border-radius: 25px;
+    width: 800px;
+    height: 600px;
+
+   display: inline-block;
+   position: absolute;
+   top: 100%;
+   left: 50%;
+   right: 50%;
+   transform: translate(-50%, -50%);
+  }
+
+
+  /*cancel button*/
+  #cancel-post , #add-img{
+    display: flex;
+    width: 1.5em;
+    margin-left: 740px;
+    padding-top: 1.50em;
+  }
+
+
+  /*X button to close pop-up*/
+  #cancel-post {
+    align-items: right;
+    display: flex;
+    width: 1.5em;
+    margin-left: 740px;
+    padding-top: 1.50em;
+  }
+
+
+  /*clickable add image option*/
+
+  #add-img {
+    width: 2em;
+    margin-top: 400px;
+    display: flex;
+    width: 1.5em;
+    margin-left: 740px;
+    padding-top: 1.50em;
+ 
+  }
+
+  #textbox {
+    border: none;
+    background-color: inherit;
+
+  }
+
+  #textbox-container {
+    padding-left: 3em;
+  }
+
+
+
   
 
