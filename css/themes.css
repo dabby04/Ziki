@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Train+One&display=swap');
+.hold{
+
+    display:flex;
+    flex-wrap: wrap;
+    margin-top: 3em;
+    margin-left: 2em;
+    margin-right: 2em;
+    justify-content: center;
+    column-gap: 7em;
+    row-gap: 2em;
+  }
+.card-body{
+
+    background-size: cover;
+    width:100%;
+    height: 20rem;
+    border-radius: 30px;
+}
+
+.tabs{
+    background-color: #E85959;
+    color: black;
+    border-radius: 50px;
+    transform: translateY(16rem);
+    font-family: "Train One", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: large;
+}
+.btn:hover{
+    background-color: whitesmoke;
+    color: red;
+}
