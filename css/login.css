@@ -2,91 +2,80 @@
 @import url('https://fonts.googleapis.com/css2?family=Inspiration&display=swap');
 
 body {
-    margin: 0;
-    padding: 0;
-  }
-  .title{
-    font-size: 5em;
-    font-family: 'Spirax', cursive;
-  }
-  .subtitle{
-    font-size: 1.5em;
-    font-family: 'Inspiration', cursive;
-  }
-
-  .header {
-    position: sticky;
-    width: 100%;
-    margin-top: auto;
-    background-image: linear-gradient(rgb(217, 5, 221), rgb(254, 207, 255));
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-
-  .content {
-    margin-top: 200px;
-    padding: 0 16px;
-  }
-
-  .input-field {
-    margin: 20px 0;
-    padding: 12px;
-    border: 1px solid #000000;
-    border-radius: 4px;
-    font-size: 16px;
-  }
-
-  .registration-link {
-    text-align: center;
-    margin-top: 40px;
-    font-size: 24px;
-    color: #0000ff;
-    text-decoration: underline;
-  }
-
-  .button {
-    display: block;
-    margin: 40px auto;
-    padding: 16px 24px;
-    background-color: #a804c9;
-    color: #ffffff;
-    font-size: 32px;
-    border: none;
-    border-radius: 4px;
-  }
-
-  .input-container{
-    align-items: center;
-    text-align: center;
-  }
-  .input-field{
-            justify-content: center;
-            align-items: start;
-            padding: 12px;
-            padding-top: 7px;
-            padding-bottom: 7px;
-            margin-top: 40px;
-            margin-left: 14px;
-            width: 15em;
-            background-color: white;
-            border: 1px solid black;
-            color: black;
-            opacity: 0.5;
-        }
-.registration-link{
-    float: left;
-    margin-left: 10em;
-}
-.button{
-    float: right;
-    margin-right: 10em;
+  margin: 0;
+  padding: 0;
 }
 
-#registration{
-    background-color: rgb(232, 230, 230);
+.title {
+  font-size: 5em;
+  font-family: 'Spirax', cursive;
 }
 
-#registration.input-container{
-    margin-top: 0.5px;
-    margin-bottom: 0.5px;
+.subtitle {
+  font-size: 1.5em;
+  font-family: 'Inspiration', cursive;
+}
+
+.header {
+  position: sticky;
+  width: 100%;
+  margin-top: auto;
+  background-image: linear-gradient(rgb(217, 5, 221), rgb(254, 207, 255));
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.content {
+  margin-top: 200px;
+  padding: 0 16px;
+}
+
+.input-field {
+  margin: 20px 0;
+  padding: 12px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  font-size: 16px;
+  justify-content: center;
+  align-items: start;
+  padding: 12px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  margin-top: 40px;
+  margin-left: 14px;
+  width: 15em;
+  background-color: white;
+  border: 1px solid black;
+  color: black;
+  opacity: 0.5;
+}
+
+
+
+.button {
+  display: block;
+  margin: 40px auto;
+  padding: 16px 24px;
+  background-color: #a804c9;
+  color: #ffffff;
+  font-size: 32px;
+  border: none;
+  border-radius: 4px;
+  float: right;
+  margin-right: 10em;
+}
+
+.input-container {
+  align-items: center;
+  text-align: center;
+}
+
+.registration-link {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 24px;
+  color: #0000ff;
+  text-decoration: underline;
+  float: left;
+  margin-left: 10em;
 }
