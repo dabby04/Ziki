@@ -1,3 +1,30 @@
 .card{
     margin: 2em 2em 2em 2em;
 }
+.pfp{
+    float: left;
+    width:2%;
+}
+.fav{
+    float:right;
+    width:2%;
+    padding-right: 2px;
+}
+.dropdown{
+    float:right;
+    width:2%;
+}
+.comments{
+    float:left;
+    width:2.5%;
+}
+.like{
+    float:right;
+    width:2.5%;
+
+}
+.dislike{
+    float:right;
+    width:2.5%;
+    transform: rotate(180deg);
+}
