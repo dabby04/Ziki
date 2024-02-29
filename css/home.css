@@ -115,3 +115,40 @@ h3{
     justify-content: center;
     height: 74px;
 }
+#posts{
+    float:left;
+    width:62%;
+    margin-left: 2em;
+}
+
+nav{
+    background-color: rgb(246, 245, 245);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.picks{
+    display: inline-block;
+    margin: 0.5em 2em;
+    font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+#comment_box{
+    float: left;
+}
+#comment{
+    border-top: 5px solid rgba(201, 201, 201, 0.1);
+}
+#comment img{
+    width: 50px;
+    width: 50px;
+    display: inline-block;
+}
+#comment p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
