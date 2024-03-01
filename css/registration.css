@@ -13,7 +13,7 @@
 
 #registration .input-field{
     width: 50%;
-    margin: 0.75em;
+    /* margin: 0.75em; */
 }
 
 #button-container{
@@ -24,6 +24,7 @@
 
 #button-container .button{
   margin:0;
+  margin-top: 1em;
   float:none;
 }
 .home {
@@ -49,4 +50,10 @@
 
 header{
     height: fit-content;
+}
+
+#wrong_pass_alert{
+  display: flex;
+  justify-content: center;
+    align-items: center;
 }
