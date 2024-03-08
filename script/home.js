@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('top_comments').addEventListener('click', function (event) {
         event.preventDefault();
-        switchToPage('topComments');
+        switchToPage('top_comments');
     });
     switchToPage('home');
 });
@@ -45,13 +45,13 @@ function switchToPage(pageId){
     switch (pageId) {
         case 'home':
             //iframe is good for showing html pages with an html page
-            contentContainer.innerHTML='<iframe src="hot_tea.html" style="width:100%;" scrolling="no"></iframe>';
+            contentContainer.innerHTML='<iframe src="hot_tea.html" style="width:100%; height:50vh" scrolling="no"></iframe>';
             break;
         case 'favourites':
-            contentContainer.innerHTML='<iframe src="favourites.html" style="width:100%;"></iframe>';
+            contentContainer.innerHTML='<iframe src="favourites.html" style="width:100%; height:50vh" scrolling="no"></iframe>';
             break;
         case 'top_comments':
-            contentContainer.innerHTML='<iframe src="top_comments.html" style="width:100%;"></iframe>';
+            contentContainer.innerHTML='<iframe src="top-comments.html" style="width:100%; height:50vh" scrolling="no"></iframe>';
             break;
         default:
             break;
