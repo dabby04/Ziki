@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/highlight.css" />
+    <script src="script/home.js"></script>
 </head>
 
 <body>
@@ -18,68 +20,65 @@
         </div>
     </header>
     <div id="top2">
-    <div id="centre_top2">
-        <figure>
-            <img src="images/hamilton.png">
-            <figcaption>Lewis Hamilton signs with Ferrari</figcaption>
-        </figure>
+        <div id="centre_top2">
+            <figure>
+                <img src="images/hamilton.png">
+                <figcaption>Lewis Hamilton signs with Ferrari</figcaption>
+            </figure>
+        </div>
+        <div id="centre_top2">
+            <figure>
+                <img src="images/smith.png">
+                <figcaption>What do you think?</figcaption>
+            </figure>
+        </div>
     </div>
-    <div id="centre_top2">
-        <figure>
-            <img src="images/smith.png">
-            <figcaption>What do you think?</figcaption>
-        </figure>
-    </div>
-</div>
     <div id="trending">
         <div class="box">
-        <h3>Trending Discussions</h3>
-        <div class="discuss">
-            <figure>
-                <img src="images/question.png">
-                <figcaption>It's so easy to find a job, don't you think?</figcaption>
-            </figure>
+            <h3>Trending Discussions</h3>
+            <div class="discuss">
+                <figure>
+                    <img src="images/question.png">
+                    <figcaption>It's so easy to find a job, don't you think?</figcaption>
+                </figure>
+            </div>
+            <div class="discuss">
+                <figure>
+                    <img src="images/bellingham.png">
+                    <figcaption>Jude Bellingham might be the next best player...</figcaption>
+                </figure>
+            </div>
+            <div class="discuss">
+                <figure>
+                    <img src="images/laptop.png">
+                    <figcaption>What are your favourite reboots?</figcaption>
+                </figure>
+            </div>
+            <div class="discuss">
+                <figure>
+                    <img src="images/tech.png">
+                    <figcaption>How do I break into tech?</figcaption>
+                </figure>
+            </div>
+            <div class="discuss">
+                <a href="#">
+                    <h3>Show more discussions</h3>
+                </a>
+            </div>
         </div>
-        <div class="discuss">
-            <figure>
-                <img src="images/bellingham.png">
-                <figcaption>Jude Bellingham might be the next best player...</figcaption>
-            </figure>
-        </div>
-        <div class="discuss">
-            <figure>
-                <img src="images/laptop.png">
-                <figcaption>What are your favourite reboots?</figcaption>
-            </figure>
-        </div>
-        <div class="discuss">
-            <figure>
-                <img src="images/tech.png">
-                <figcaption>How do I break into tech?</figcaption>
-            </figure>
-        </div>
-        <div class="discuss">
-        <a href="#"><h3>Show more discussions</h3></a>
-        </div>
-    </div>
     </div>
     <div id="posts">
-    <nav>
-        <ul>
-            <li class="picks"><a href="#">Hot tea</a></li> |
-            <li class="picks"><a href="#">Favourites</a></li> |
-            <li class="picks"><a href="#">Top comments</a></li>
-        </ul>
-    </nav>
-</div>
-<div id="comment_box">
-    <div id="comment">
-        <img src="images/user.png">
-        <p>user</p>
-        <p><time datetime="PT2H">2 hours ago</time></p>
-        <h4>Comment heading</h4>
+        <nav>
+            <ul>
+                <li id="home" class="picks"><a href="#">Hot tea</a></li> |
+                <li id="favourites" class="picks"><a href="#">Favourites</a></li> |
+                <li id="top_comments" class="picks"><a href="#">Top comments</a></li>
+            </ul>
+        </nav>
+        <div id="contentBox">
+        </div>
     </div>
-</div>
+
 </body>
 
 </html>
