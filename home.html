@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/highlight.css" />
+    <script src="script/home.js"></script>
 </head>
 
 <body>
@@ -68,34 +70,13 @@
     <div id="posts">
         <nav>
             <ul>
-                <li class="picks"><a href="#">Hot tea</a></li> |
-                <li class="picks"><a href="#">Favourites</a></li> |
-                <li class="picks"><a href="#">Top comments</a></li>
+                <li id="home" class="picks"><a href="#">Hot tea</a></li> |
+                <li id="favourites" class="picks"><a href="#">Favourites</a></li> |
+                <li id="top_comments" class="picks"><a href="#">Top comments</a></li>
             </ul>
         </nav>
-    <div class="container">
-        <section class="feedback-item">
-          <img loading="lazy" src="images/+.png" alt="" class="icon">
-          <div class="count">12</div>
-          <img loading="lazy" src="images/-.png" alt="" class="icon">
-        </section>
-        <section class="content">
-          <header>
-            <div class="user-info">
-              <img loading="lazy" src="images/img_avatar.png" alt="" class="user-avatar">
-              <h2>amyrobson</h2>
-            </div>
-            <button class="reply-button">
-              <img loading="lazy" src="images/img_reply_icon.png" alt="Reply icon" class="reply-icon">
-              
-            </button>
-          </header>
-          <article>
-            <h3>Ways to give positive feedback</h3>
-            <p>Impressive! Though it seems the drag feature could be improved. But overall it looks incredible. You’ve nailed the design and the responsiveness at various breakpoints works really well.</p>
-          </article>
-        </section>
-      </div>
+        <div id="contentBox">
+        </div>
     </div>
 
 </body>

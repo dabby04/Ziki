@@ -62,6 +62,13 @@
 
 #trending{
     height:100%;
+    position: relative;
+}
+#trending .fixed {
+    position: fixed;
+    top: 0;
+    right: 2em; 
+    width: 30%;
 }
 #trending .box{
     border: rgba(201, 201, 201, 0.1) 1px solid;
@@ -122,10 +129,11 @@ h3{
 }
 
 nav{
-    background-color: rgb(246, 245, 245);
+    background-color: rgba(183,44,205,0.52);
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 1em;
 }
 
 .picks{
@@ -134,6 +142,10 @@ nav{
     font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
     font-weight: bold;
     font-size: x-large;
+}
+
+.picks a{
+    text-decoration: none;
 }
 
 #comment_box{
@@ -203,21 +215,22 @@ nav{
   .user-avatar {
     border-radius: 50%;
     width: 43px;
+    vertical-align: middle;
   }
   
   h2 {
     margin: auto 0;
+    display: inline;
   }
   
   .reply-button {
-    display: inline-block;
     gap: 10px;
     margin-left: auto;
     color: #4F46E5;
     align-items: center;
     background-color: rgba(1, 1, 1, 0);
     border: 0;
-    margin-left: 40em;
+    float: right;
   }
   
   
