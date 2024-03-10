@@ -33,7 +33,10 @@
     height: 100px;
     margin-left: 2em;
 }
-
+.title a{
+  text-decoration: none;
+  color: inherit;
+}
 .login {
     text-align: right;
     font-size: 2em;
