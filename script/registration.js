@@ -111,3 +111,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }
     }
 });
+
+function displayErrorMessage(element, message) {
+
+    var errorElement = document.createElement('div');
+    errorElement.className = 'error-message';
+    errorElement.textContent = message;
+    
+    // Insert the error message after the corresponding input field
+    element.parentNode.insertBefore(errorElement, element.nextSibling);
+}
+
+// Function to clear previous error messages

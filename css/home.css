@@ -146,6 +146,7 @@ nav{
 
 .picks a{
     text-decoration: none;
+    color: inherit;
 }
 
 #comment_box{

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/editprofile.css" />
+    <script src="editprofile.js"></script>
     <title>Edit Profile</title>
 </head>
 
@@ -25,12 +26,13 @@
     </div>
 
 
-       <form id="change-info" action="profile.html"> 
+       <form id="change-info" onsubmit="return check()"> 
        <p id="email-entry"> <label> <img class="icon" src="images/mail-icon.png" alt="email icon"/> </label> <input type="email"/></p>
        <p id="date-entry"> <label> <img class="icon" src="images/calendar-icon.png"  alt="calendar icon"/> </label> <input type="date"/></p>
        <p id="phone-number-entry"> <label> <img class="icon" src="images/phone-icon.png" alt="phone icon"/> </label> <input type="number"/></p>
         <input type="submit" value="Done" id="done"/>
         </form>
+
 
     </div>
 

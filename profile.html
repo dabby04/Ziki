@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/pageheader.css" />
     <link rel="stylesheet" href="css/profile.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="script/profile.js"></script>
 </head>
 <header class="header">
     <h1 class="title">Ziki</h1>
@@ -40,45 +41,18 @@
 
             
             <section id="tab-tool">
-                <p class="text-option" id="underlined">Your Posts </p> 
-                <p class="text-option">Discussions</p>
-                <p class="text-option">Favourites</p>
+                <p class="text-option"id="underlined" onclick="toggle()">Your Posts </p> 
+                <p class="text-option" onclick="toggle()">Discussions</p>
+                <p class="text-option" onclick="toggle()">Favourites</p>
             </section>
 
 
-
             <div class="post">
-
                 <div class="rectangle"></div>
-                <div class="rectangle"></div>
-                <div class="rectangle"></div>
-                <div class="rectangle"></div>
-                
-                </div>
-
-<script>
-
-function makeAPost (){
-
-   postPopup = document.getElementById('postPopup')
-    postPopup.style.display = "flex";
-
-}
-
-function closePostPopup () {
-
-   postPopup = document.getElementById('postPopup')
-    postPopup.style.display = "none";
-    
-}
-
-function submitPost () {
-    location.reload();
-
-}
-
-
-</script>
+                <div class="rectangle"><img src=""></div>
+                <div class="rectangle"><img src=""></div>
+                <div class="rectangle"><img src=""></div>
+            </div>
 
   
 </body>

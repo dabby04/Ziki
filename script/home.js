@@ -10,6 +10,7 @@ window.addEventListener('scroll', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
+    $('.picks.active').addClass('select');
     // Add click event listeners to the navigation links
     document.getElementById('home').addEventListener('click', function (event) {
         event.preventDefault();
@@ -56,4 +57,10 @@ function switchToPage(pageId){
         default:
             break;
     }
+
+
+
 }
+
+
+
