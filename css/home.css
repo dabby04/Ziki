@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
 
+body a:hover {
+    color: white;
+}
+
+button:hover {
+    background-color: #4F46E5;
+
+}
+
 #user_button {
     display: inline-flex;
     align-items: center;
@@ -8,6 +17,7 @@
     float: right;
     margin-top: 1em;
     margin-right: 1em;
+   
 }
 
 #user_button button {
@@ -142,6 +152,7 @@ nav{
     font-family: "Favorit", "Helvetica Neue", "HelveticaNeue", Helvetica, Arial, sans-serif;
     font-weight: bold;
     font-size: x-large;
+
 }
 
 .picks a{
@@ -245,4 +256,33 @@ nav{
     margin-top: 8px;
     color: #6B7280;
   }
+
+  .profile-popup {
+        display: none;
+        position: fixed;
+        top: 50px; /* Adjust the top position as needed */
+        right: 20px; /* Adjust the right position as needed */
+        width: 120px;
+        height: 175px;
+        background-color: grey;
+        padding: 10px;
+      
+  }
+
+
+.toggle-box {
+    display: inline-block;
+    width: max-content;
+    border-radius: 5pt;
+}
+
+.selected {
+    display: inline-block;
+    width: fit-content;
+    background-color: #F1F5F9;
+    
+}
+
+
  
+

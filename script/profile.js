@@ -18,7 +18,20 @@ function makeAPost (){
  }
  
  function toggle(){
-    console.log("hello");
-
-    $('.rectangle').css('background-image', 'url(images/Tech.jpg)');
+   
  }
+
+ $(document).ready( function(){ 
+
+ $('.text-option').on({
+    mouseenter: function(){
+        $(this).css('background-color', 'white');
+        
+    },
+    mouseleave: function(){
+        $(this).css('background-color', 'transparent');
+    }
+ });
+
+
+});

@@ -9,11 +9,52 @@ window.addEventListener('scroll', function () {
     }
 });
 
+$(document).ready( function(){ 
+
+
+$("#user_button").on({
+    mouseenter: function () {
+        console.log("responsive");
+      $(".profile-popup").css("display", "block");
+    }, mouseleave: function () {
+        console.log("responsive2");
+        $(".profile-popup").css("display", "none");
+       
+      }
+});
+
+$('.toggle-box').on({
+    mouseenter: function () {
+        $(this).css('background-color', 'rgba(183, 44, 205, 0.52)');
+        $('nav').css('background-color', 'white');
+    },
+    mouseleave: function () {
+        $('nav').css('background-color', 'rgba(183, 44, 205, 0.52)');
+        $(this).css('background-color', 'transparent');
+    }
+});
+
+
+$('.discuss').on({
+    mouseenter: function(){
+        $(this).css('background-color', 'rgba(183, 44, 205, 0.52)');
+    },
+    mouseleave: function(){
+        $(this).css('background-color', 'transparent');
+    }
+})
+
+});
+
+
+
 document.addEventListener('DOMContentLoaded', function () {
+    // $('.picks.active').addClass('select');
     // Add click event listeners to the navigation links
     document.getElementById('home').addEventListener('click', function (event) {
         event.preventDefault();
         switchToPage('home');
+      
     });
 
     document.getElementById('favourites').addEventListener('click', function (event) {
@@ -64,3 +105,8 @@ function switchToPage(pageId) {
             break;
     }
 }
+
+
+
+
+
