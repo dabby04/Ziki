@@ -5,13 +5,25 @@ body , html {
     width: 100%;
 }
 
+a {
+  color: black;
+  text-decoration: none;  
+}
+
+body a:hover {
+  color: white;
+}
+
+button:hover {
+  background-color: #4F46E5;
+
+}
+
 header {
     margin: 0;
 }
 
-a {
-  text-decoration: none;
-}
+
 
 #header-img {   /*header img*/
     width: 100%;
@@ -77,19 +89,25 @@ a {
     
 }
 
-#underlined {
-    text-decoration: underline;  
+.text-option a {
+  text-decoration: none;
+  cursor: pointer;
+  color: black; 
+  
 }
+
+
+
 
 
 /*post containers*/
   .rectangle {
     background-color: #d9d9d9;
-    display: inline-block;
-    width: 576px;
+    display: block;
+    width: 100vw;
     height: 393px;
-    margin: 3em 3em 3em 3em;
-
+    margin: 3em 5em 3em 0em;
+    border-radius: 10pt;
   }
 
 
