@@ -23,7 +23,19 @@ $("#user_button").on({
       }
 });
 
+$('.toggle-box').on({
+    mouseenter: function () {
+        $(this).css('background-color', 'rgba(183, 44, 205, 0.52)');
+        $('nav').css('background-color', 'white');
+    },
+    mouseleave: function () {
+        $('nav').css('background-color', 'rgba(183, 44, 205, 0.52)');
+        $(this).css('background-color', 'transparent');
+    }
 });
+
+});
+
 
 
 document.addEventListener('DOMContentLoaded', function () {
