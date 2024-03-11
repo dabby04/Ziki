@@ -17,6 +17,7 @@ button:hover {
     float: right;
     margin-top: 1em;
     margin-right: 1em;
+   
 }
 
 #user_button button {
@@ -254,4 +255,20 @@ nav{
     margin-top: 8px;
     color: #6B7280;
   }
+
+  .profile-popup {
+        display: none;
+        position: fixed;
+        top: 50px; /* Adjust the top position as needed */
+        right: 20px; /* Adjust the right position as needed */
+        width: 120px;
+        height: 175px;
+        background-color: grey;
+        padding: 10px;
+      
+  }
+
+
+
  
+

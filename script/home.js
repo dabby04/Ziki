@@ -9,12 +9,30 @@ window.addEventListener('scroll', function () {
     }
 });
 
+$(document).ready( function(){ 
+
+
+$("#user_button").on({
+    mouseenter: function () {
+        console.log("responsive");
+      $(".profile-popup").css("display", "block");
+    }, mouseleave: function () {
+        console.log("responsive2");
+        $(".profile-popup").css("display", "none");
+       
+      }
+});
+
+});
+
+
 document.addEventListener('DOMContentLoaded', function () {
-    $('.picks.active').addClass('select');
+    // $('.picks.active').addClass('select');
     // Add click event listeners to the navigation links
     document.getElementById('home').addEventListener('click', function (event) {
         event.preventDefault();
         switchToPage('home');
+      
     });
 
     document.getElementById('favourites').addEventListener('click', function (event) {
@@ -61,6 +79,8 @@ function switchToPage(pageId){
 
 
 }
+
+
 
 
 
