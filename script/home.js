@@ -10,7 +10,6 @@ window.addEventListener('scroll', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    $('.picks.active').addClass('select');
     // Add click event listeners to the navigation links
     document.getElementById('home').addEventListener('click', function (event) {
         event.preventDefault();
@@ -26,10 +25,14 @@ document.addEventListener('DOMContentLoaded', function () {
         event.preventDefault();
         switchToPage('top_comments');
     });
+    document.getElementById('explore').addEventListener('click', function (event) {
+        event.preventDefault();
+        switchToPage('explore');
+    });
     switchToPage('home');
 });
 
-function switchToPage(pageId){
+function switchToPage(pageId) {
     // colour link white using a PHP script
 
     // Remove the 'active' class from all navigation items
@@ -42,25 +45,22 @@ function switchToPage(pageId){
 
     // Update content based on the selected page
     var contentContainer = document.getElementById('contentBox');
-    contentContainer.style.overflow="hidden";
+    contentContainer.style.overflow = "hidden";
     switch (pageId) {
         case 'home':
             //iframe is good for showing html pages with an html page
-            contentContainer.innerHTML='<iframe src="hot_tea.html" style="width:100%; height:50vh" scrolling="no"></iframe>';
+            contentContainer.innerHTML = '<iframe src="hot_tea.html" style="width:100%; height:100vh" scrolling="no"></iframe>';
             break;
         case 'favourites':
-            contentContainer.innerHTML='<iframe src="favourites.html" style="width:100%; height:50vh" scrolling="no"></iframe>';
+            contentContainer.innerHTML = '<iframe src="favourites.html" style="width:100%; height:100vh" scrolling="no"></iframe>';
             break;
         case 'top_comments':
-            contentContainer.innerHTML='<iframe src="top-comments.html" style="width:100%; height:50vh" scrolling="no"></iframe>';
+            contentContainer.innerHTML = '<iframe src="top-comments.html" style="width:100%; height:100vh" scrolling="no"></iframe>';
+            break;
+        case 'explore':
+            contentContainer.innerHTML = '<iframe src="theme.html" style="width:100%; height:100vh" scrolling="no"></iframe>';
             break;
         default:
             break;
     }
-
-
-
 }
-
-
-

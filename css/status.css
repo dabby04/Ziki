@@ -1,0 +1,86 @@
+.user_status {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inactive {
+    box-shadow: 1px 1px 10px 1px #a1a1a1;
+    padding: 20px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.login_box:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+.login_box {
+    background: #585EE9;
+    margin-bottom: 1.5em;
+    text-align: center;
+}
+
+.signup_box {
+    background: black;
+    cursor: pointer;
+    margin-top: 1.5em;
+    text-align: center;
+}
+
+.card {
+    display: none;
+    position: fixed;
+    margin-top: 10em;
+}
+
+#user_button {
+    position: relative;
+}
+
+#user_button:hover .card {
+    display: block;
+}
+
+#user_button button {
+    color: white;
+}
+
+.active {
+    box-shadow: 1px 1px 10px 1px #a1a1a1;
+    padding: 20px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.profile_info {
+    margin-bottom: 2em;
+}
+
+.profile_info img {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+}
+
+.profile_info p {
+    display: inline-block;
+}
+
+.view {
+    background-color: #B72CCD;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.edit {
+    background-color: #B72CCD;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    margin-top: 1em;
+}

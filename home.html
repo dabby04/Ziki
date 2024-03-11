@@ -6,17 +6,40 @@
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/highlight.css" />
+    <link rel="stylesheet" href="css/status.css" />
     <script src="script/home.js"></script>
 </head>
 
 <body>
+    <?php
+      include "css/status.php";
+   ?>
     <header class="header">
         <div id="header-info">
             <h1 class="title">Ziki</h1>
             <h6 class="subtitle">A place where gen Z can connect</h6>
         </div>
         <div id="user_button">
-            <button ><a href="login.html"><img src="images/user.png"></a></button>
+            <button><a href="login.html"><img src="images/user.png"></a></button>
+            <div class="card">
+                <section class="user_status">
+                    <?php if ($status == "inactive"): ?>
+                    <div class="inactive">
+                        <div class="login_box"><button>LOGIN</button></div>
+                        <div class="signup_box"><button>SIGN UP</button></div>
+                    </div>
+                    <?php elseif ($status == "active"): ?>
+                    <!-- <div class="active">
+                        <div class="profile_info">
+                            <img src="images/user.png">
+                            <p>Username</p>
+                        </div>
+                        <div class="view"><button>View profile</button></div>
+                        <div class="edit"><button>Edit profile</button></div>
+                    </div> -->
+                    <?php endif; ?>
+                </section>
+            </div>
         </div>
     </header>
     <div id="top2">
@@ -72,7 +95,8 @@
             <ul>
                 <li id="home" class="picks"><a href="#">Hot tea</a></li> |
                 <li id="favourites" class="picks"><a href="#">Favourites</a></li> |
-                <li id="top_comments" class="picks"><a href="#">Top comments</a></li>
+                <li id="top_comments" class="picks"><a href="#">Top comments</a></li>|
+                <li id="explore" class="picks"><a href="#">Explore</a></li>
             </ul>
         </nav>
         <div id="contentBox">
