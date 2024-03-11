@@ -64,11 +64,52 @@ body, html {
  
  }
  .title-box{
-     border-radius: 10px;
+    border-radius: 10px;
     border : groove 2pt white;
     width: inherit;
 
 
  }
 
+ #search-box {
+   
+    position: absolute;
+    top: 120px;
+    left:50vw ;
+    margin: 0.50em;
+
+    
+ }
+
+
+
+#search-box input {
+  
+ width:20em;
+ border-radius: 10px;
+ padding: 0.2em;
+ display: none;
+   
+}
+
+ table {
+    border: 0.25pt black solid;
+    border-radius: 10px;
+    width: 73vw;
+    padding: 0.5em;
+    margin-top: 2em;
+    
+ }
+
+ table td {
+    border: 0.25pt black solid;
+    height:  12em;
+    text-align: center;
+    
+ }
+ table thead {
+
+    text-align: center;
+    
+ }
 
