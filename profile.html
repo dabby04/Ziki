@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/pageheader.css" />
     <link rel="stylesheet" href="css/profile.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
     <script src="script/profile.js"></script>
 </head>
 <header class="header">
@@ -40,11 +42,11 @@
             </section>
 
             
-            <section id="tab-tool">
-                <p class="text-option"id="underlined" onclick="toggle()"><a href=""> Your Posts</a> </p> 
-                <p class="text-option" onclick="toggle()"><a href=""> Discussions</a></p>
-                <p class="text-option" onclick="toggle()"><a href=""> Favourites </a></p>
-            </section>
+            <nav id="tab-tool">
+                <div class="text-option" onclick="toggle()"><a href=""> Your Posts</a></div> 
+                <div class="text-option" onclick="toggle()"><a href=""> Discussions</a></div>
+                <div class="text-option" id="last" onclick="toggle()"><a href=""> Favourites </a></div>
+            </nav>
 
 
             <div class="post">

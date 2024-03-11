@@ -11,7 +11,7 @@ a {
 }
 
 body a:hover {
-  color: white;
+  color:#4F46E5;
 }
 
 button:hover {
@@ -74,26 +74,34 @@ header {
     width: 100%;
     background: linear-gradient(to bottom,  blue, white);
     height: 100px;
-    padding: 1em 0em 0.5em 0em;
 
 }
 
 .text-option {
     display: inline-block;
     font-size: 20pt;
-    margin-left: 3em;
+    height: inherit;
     text-align: center;
-    padding: 0em 5em 0em 5em;
+    padding: 1em 6.5em 1em 6.5em;
+    margin-right: 1em;
+    width: max-content;
     cursor: pointer;
     color: black; 
+
     
 }
+
+
 
 .text-option a {
   text-decoration: none;
   cursor: pointer;
   color: black; 
   
+}
+
+#last{
+  margin-right: 0%;
 }
 
 
