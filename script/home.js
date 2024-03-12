@@ -35,6 +35,10 @@ $('.toggle-box').on({
 });
 
 
+
+
+
+
 $('.discuss').on({
     mouseenter: function(){
         $(this).css('background-color', 'rgba(183, 44, 205, 0.52)');
@@ -45,8 +49,6 @@ $('.discuss').on({
 })
 
 });
-
-
 
 document.addEventListener('DOMContentLoaded', function () {
     // $('.picks.active').addClass('select');
