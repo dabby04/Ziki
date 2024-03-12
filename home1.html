@@ -235,7 +235,7 @@
         }
 
         
-          .container {
+        .container {
             display: block;
             max-width: 900px;
             margin: auto;
@@ -245,12 +245,15 @@
           }
           
           .search-container {
-            overflow: hidden;
             float: right;
             height: 4em;
             width: 4em;
             border-radius: 2em;
             box-shadow: 0 0 5px #B72CCD;
+            transition: width 0.3s ease, border-radius 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
           
           .search-container:hover,
@@ -258,49 +261,28 @@
           .search-container:focus-within {
             width: 25em;
             border-radius: 5px 2em 2em 5px;
-            outline: none;
           }
           
-          .search-container .button,
-          .search-container input {
-            display: inline-block;
-            width: 19em;
-            padding: 10px;
-          }
-          
-          input {
-            float: left;
-            width: 0em;
-            height: 2em;
-            margin: 1em;
-            background: #fff;
-            color: black;
-            font-size: 1em;
-            border: 0;
-            border-radius: 5px;
-            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2) inset;
-            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
-          }
-          
-          input:focus {
-            outline: none;
-            box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.25), 0 1px 5px rgba(0, 0, 0, 0.15);
-          }
-          
-          .button {
+          .search-container .button {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            float: right;
-            width: 1.75em;
-            height: 1.75em;
-            margin: 0.125em;
-            background: #6A5D4F;
-            text-align: center;
-            font-size: 2em;
-            color: #FDF6E3;
-            border-radius: 50%;
-            box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.25), 0 1px 1px rgba(0, 0, 0, 0.25);
+  align-items: center;
+  justify-content: center;
+  float: right;
+  width: 1.75em;
+  height: 1.75em;
+  margin: 0.125em;
+  background: #B72CCD;
+  text-align: center;
+  font-size: 2em;
+  color: #FDF6E3;
+  border-radius: 50%;
+  box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.25), 0 1px 1px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 -2px 1px rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease, text-shadow 0.3s ease, width 0.3s ease;
+          }
+          
+          .search-container:hover .button {
+            background: #4B433D;
             text-shadow: 0 -2px 1px rgba(0, 0, 0, 0.3);
           }
           
@@ -309,9 +291,38 @@
             text-shadow: 0 0 0;
           }
           
-          .button i {
-            font-size: 85%;
+          .button img {
+            width: 30px;
+            height: 30px;
+            transition: opacity 0.3s ease; 
           }
+          
+          input {
+            float: left;
+            width: 0;
+            height: 2em;
+            background: #fff;
+            color: black;
+            font-size: 1em;
+            border: 0;
+            border-radius: 5px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2) inset;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+            transition: width 0.3s ease;
+          }
+          
+          .search-container:hover input,
+          .search-container:focus-within input {
+            width: 19em;
+          }
+          
+          input:focus {
+            width: 19em;
+            outline: none;
+            box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.25), 0 1px 5px rgba(0, 0, 0, 0.15);
+          }
+          
+          
           
     </style>
 </head>
@@ -341,11 +352,8 @@
     </div>
 
     <div class="container" tabindex="1">
-        <!-- Search container with tabindex -->
         <div class="search-container" tabindex="1">
-          <!-- Input for search -->
-          <input type="text" placeholder="search">
-          <!-- Button with Font Awesome icon for search -->
+          <input type="text" placeholder="Search">
           <a class="button">
             <img src="images/search.png" alt="Search">
           </a>
