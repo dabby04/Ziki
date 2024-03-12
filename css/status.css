@@ -48,13 +48,6 @@
     color: white;
 }
 
-.active {
-    box-shadow: 1px 1px 10px 1px #a1a1a1;
-    padding: 20px;
-    border: 1px solid black;
-    background-color: white;
-}
-
 .profile_info {
     margin-bottom: 2em;
 }
