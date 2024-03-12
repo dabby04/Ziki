@@ -25,17 +25,17 @@
             <h6 class="subtitle">A place where gen Z can connect</h6>
         </div>
         <div id="user_button">
-            <div class="profile-popup"> <button> <a href="login.html">Login </a></button> <button><a href="registration.html">Registration</a></button> </div>
+            <!-- <div class="profile-popup"> <button> <a href="login.html">Login </a></button> <button><a href="registration.html">Registration</a></button> </div> -->
             <button><a href="login.html" id="profile-icon"><img src="images/user.png"></a></button>
-            <button><a href="login.html"><img src="images/user.png"></a></button>
+            <!-- <button><a href="login.html"><img src="images/user.png"></a></button> -->
             <div class="card">
                 <section class="user_status">
-                    <?php if ($status == "inactive"): ?>
+                    <?php if ($status === "inactive"): ?>
                     <div class="inactive">
-                        <div class="login_box"><button>LOGIN</button></div>
-                        <div class="signup_box"><button>SIGN UP</button></div>
+                        <div class="login_box"><a href="login.html"><button>LOGIN</button></a></div>
+                        <div class="signup_box"><a href="registration.html"><button>SIGN UP</button></a></div>
                     </div>
-                    <?php elseif ($status == "active"): ?>
+                    <?php elseif ($status === "active"): ?>
                     <!-- <div class="active">
                         <div class="profile_info">
                             <img src="images/user.png">
@@ -105,10 +105,12 @@
                 <div class="toggle-box"> <li id="home" class="picks"><a href="#">Hot tea</a></li> </div>
                 <div class="toggle-box"> <li id="favourites" class="picks"><a href="#">Favourites</a></li> </div>
                  <div class="toggle-box"> <li id="top_comments" class="picks"><a href="#">Top comments</a></li></div>
-                <li id="home" class="picks"><a href="#">Hot tea</a></li> |
+                 <div class="toggle-box"> <li id="explore" class="picks"><a href="#">Explore</a></li></div>
+                 
+                <!-- <li id="home" class="picks"><a href="#">Hot tea</a></li> |
                 <li id="favourites" class="picks"><a href="#">Favourites</a></li> |
                 <li id="top_comments" class="picks"><a href="#">Top comments</a></li>|
-                <li id="explore" class="picks"><a href="#">Explore</a></li>
+                <li id="explore" class="picks"><a href="#">Explore</a></li> -->
             </ul>
             </div>
             
