@@ -1,7 +1,4 @@
-.container2 {
-    display: inline-flex !important;
-   margin-left:5em;
-}
+
 
 .search-container {
     float: right;
@@ -13,6 +10,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1em;
+    margin-right: 2em;
 }
 
 .search-container:hover,

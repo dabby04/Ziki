@@ -88,20 +88,20 @@ function switchToPage(pageId) {
 
     // Update content based on the selected page
     var contentContainer = document.getElementById('contentBox');
-    contentContainer.style.overflow = "hidden";
+    // contentContainer.style.overflow = "hidden";
     switch (pageId) {
         case 'home':
             //iframe is good for showing html pages with an html page
-            contentContainer.innerHTML = '<iframe src="hot_tea.html" style="width:100%; height:100vh" scrolling="no"></iframe>';
+            contentContainer.innerHTML = '<iframe src="hot_tea.html" style="width:100%; height:60vh" scrolling="no"></iframe>';
             break;
         case 'favourites':
-            contentContainer.innerHTML = '<iframe src="favourites.html" style="width:100%; height:100vh" scrolling="no"></iframe>';
+            contentContainer.innerHTML = '<iframe src="favourites.html" style="width:100%; height:60vh" scrolling="no"></iframe>';
             break;
         case 'top_comments':
-            contentContainer.innerHTML = '<iframe src="top-comments.html" style="width:100%; height:100vh" scrolling="no"></iframe>';
+            contentContainer.innerHTML = '<iframe src="top-comments.html" style="width:100%; height:60vh" scrolling="no"></iframe>';
             break;
         case 'explore':
-            contentContainer.innerHTML = '<iframe src="theme.html" style="width:100%; height:100vh" scrolling="no"></iframe>';
+            contentContainer.innerHTML = '<iframe src="theme.html" id="explore" style="width:100%; height:180vh" scrolling="no"></iframe>';
             break;
         default:
             break;
