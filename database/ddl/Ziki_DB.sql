@@ -17,7 +17,7 @@ CREATE TABLE USER (
 
 CREATE TABLE ADMIN (
   'password' int,
-  username varchar(10)
+  'username' varchar(10)
 )
 
 CREATE TABLE REPORTED (
@@ -73,4 +73,10 @@ CREATE TABLE COMMENTS (
 
 
 
+
+  INSERT INTO ADMIN ('password', 'username') VALUES('admin','test')
+    
   
+
+
+
