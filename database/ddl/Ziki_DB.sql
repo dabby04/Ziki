@@ -12,7 +12,8 @@ CREATE TABLE `USER` (
   `email` VARCHAR(25) NOT NULL,
   `password` VARCHAR(512) NOT NULL,
   `DOB` DATETIME,
-  `dateJoined` DATE
+  `dateJoined` DATE,
+  `profilePhoto` BLOB
 );
 
 -- Create ADMIN table

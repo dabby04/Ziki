@@ -1,5 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    // Get today's date
+    var today = new Date();
+
+    // Calculate the date 18 years ago
+    var maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+
+    // Format the maxDate as yyyy-mm-dd for input element
+    var formattedDate = maxDate.toISOString().split('T')[0];
+
+    // Set the max attribute of the input element
+    document.getElementById('dob').setAttribute('max', formattedDate);
+
     const form = document.getElementById("registration");
     if (form) {
         form.addEventListener("submit", function (e) {
@@ -40,12 +52,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             validatePassword()
         });
-        var name=document.getElementsByName("name")[0];
-        var email=document.getElementsByName("email")[0];
-        var dob=document.getElementsByName("dob")[0];
+        var name = document.getElementsByName("name")[0];
+        var email = document.getElementsByName("email")[0];
+        var dob = document.getElementsByName("dob")[0];
         var user = document.getElementsByName("username")[0];
         var pass = document.getElementsByName("password")[0];
-        var repeat_pass=document.getElementsByName("repeat_pass")[0];
+        var repeat_pass = document.getElementsByName("repeat_pass")[0];
         name.addEventListener('input', function () {
             removeHighlight("name");
             removeErrorMessage("name");
@@ -101,14 +113,14 @@ document.addEventListener("DOMContentLoaded", () => {
     function validatePassword() {
         let pass = document.getElementsByName("password")[0].value;
         let confirm_pass = document.getElementsByName("repeat_pass")[0].value;
-    
-            if (pass !== confirm_pass &&pass !== "" && confirm_pass !== "" ) {
-                document.getElementById('wrong_pass_alert').style.color = 'red';
-                document.getElementById('wrong_pass_alert').innerHTML = 'Passwords do not match';
-            } else {
-                // Clear the message when passwords match
-                document.getElementById('wrong_pass_alert').innerHTML = '';
-            }
+
+        if (pass !== confirm_pass && pass !== "" && confirm_pass !== "") {
+            document.getElementById('wrong_pass_alert').style.color = 'red';
+            document.getElementById('wrong_pass_alert').innerHTML = 'Passwords do not match';
+        } else {
+            // Clear the message when passwords match
+            document.getElementById('wrong_pass_alert').innerHTML = '';
+        }
     }
 });
 
@@ -117,7 +129,7 @@ function displayErrorMessage(element, message) {
     var errorElement = document.createElement('div');
     errorElement.className = 'error-message';
     errorElement.textContent = message;
-    
+
     // Insert the error message after the corresponding input field
     element.parentNode.insertBefore(errorElement, element.nextSibling);
 }

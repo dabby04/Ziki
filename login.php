@@ -11,7 +11,7 @@
 <body>
   <?php
   include "php/status.php";
-  include "server/conn_info.php";
+  // include "server/conn_info.php";
 
   if ($_SERVER['REQUEST_METHOD'] == "POST") {
     try {

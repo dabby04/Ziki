@@ -2,10 +2,12 @@
 <html>
 
 <head>
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/login.css">
-  <link rel="stylesheet" href="css/registration.css">
-  <link rel="stylesheet" href="css/highlight.css" />
+  <style>
+    <?php include "css/reset.css" ?>
+    <?php include "css/login.css" ?>
+    <?php include "css/registration.css" ?>
+    <?php include "css/highlight.css" ?>
+  </style>
   <script type="text/javascript" src="script/registration.js"></script>
 </head>
 
@@ -27,8 +29,11 @@
       <input type="email" id="email" class="input-field" aria-label="Email" name=email placeholder="Email" />
     </div>
     <div class="input-container">
-      <input type="date" id="dob" class="input-field" aria-label="Date of Birth" name="dob"
-        placeholder="Date of Birth" />
+      <div class="dob_div">
+        <label for="dob" id="dob_label">Date of Birth</label>
+        <input type="date" id="dob" class="input-field" aria-label="Date of Birth" name="dob"
+          placeholder="Date of Birth" />
+      </div>
     </div>
     <div class="input-container">
       <input type="text" id="username" class="input-field" aria-label="Username" name="username"
@@ -41,6 +46,12 @@
     <div class="input-container">
       <input type="password" id="repeat" class="input-field" aria-label="Password" name="repeat_pass"
         placeholder="Repeat Password" />
+    </div>
+    <div class="input-container">
+      <div id=profile_image style="margin-top: 2em; margin-left: 2em;">
+        <label for="img">Upload Profile Photo</label>
+        <input type="file" id="img" name="img" accept="image/*">
+      </div>
     </div>
     <span id="wrong_pass_alert"></span>
     <div id="button-container">
