@@ -1,5 +1,5 @@
 <?php
-define('DBHOST', 'cosc360.ok.ubc.ca');
-define('DBNAME', 'Ziki_DB');
-define('DBUSER', 'root');
-define('DBPASS', '');
+define('DBHOST', 'localhost');
+define('DBNAME', 'ziki');
+define('DBUSER', 'webuser');
+define('DBPASS', 'Password$$');

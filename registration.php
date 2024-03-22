@@ -12,31 +12,35 @@
 <body>
   <header class="header">
     <div class="home">
-    <h1 class="title"><a href="home.html">Ziki</a></h1>
-  </div>
-  <div class="login">
-    <a href="login.html">Login</a>
-  </div>
+      <h1 class="title"><a href="home.php">Ziki</a></h1>
+    </div>
+    <div class="login">
+      <a href="login.html">Login</a>
+    </div>
   </header>
-  
-  <form id="registration">
+
+  <form id="registration" action="storeRegistration.php" method="post">
     <div class="input-container">
       <input type="text" id="name" class="input-field" aria-label="Full Name" name="name" placeholder="Full Name" />
     </div>
     <div class="input-container">
-      <input type="email" id="email" class="input-field" aria-label="Email"  name=email placeholder="Email" />
+      <input type="email" id="email" class="input-field" aria-label="Email" name=email placeholder="Email" />
     </div>
     <div class="input-container">
-      <input type="date" id="dob" class="input-field" aria-label="Date of Birth" name="dob" placeholder="Date of Birth" />
+      <input type="date" id="dob" class="input-field" aria-label="Date of Birth" name="dob"
+        placeholder="Date of Birth" />
     </div>
     <div class="input-container">
-      <input type="text" id="username" class="input-field" aria-label="Username" name="username" placeholder="Username" />
+      <input type="text" id="username" class="input-field" aria-label="Username" name="username"
+        placeholder="Username" />
     </div>
     <div class="input-container">
-      <input type="password" id="password" class="input-field" aria-label="Password" name="password" placeholder="Password" />
+      <input type="password" id="password" class="input-field" aria-label="Password" name="password"
+        placeholder="Password" />
     </div>
     <div class="input-container">
-      <input type="password" id="repeat" class="input-field" aria-label="Password" name="repeat_pass" placeholder="Repeat Password" />
+      <input type="password" id="repeat" class="input-field" aria-label="Password" name="repeat_pass"
+        placeholder="Repeat Password" />
     </div>
     <span id="wrong_pass_alert"></span>
     <div id="button-container">
