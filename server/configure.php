@@ -1,16 +1,16 @@
-// initial connection to server and database will be in here
 
 
 <?php
-include('conn_info.php');
+require "conn_info.php";
+try {
+    $connString = "mysql:host=localhost;dbname=ziki";
+    $user = DBUSER;
+    $pass = DBPASS;
+    $pdo = new PDO($connString, $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // print_r("connected");
 
-
-$conn = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME);
-
-
-if(!$conn){
-    die("Connection failed : " . mysqli_connect_error());
+} catch (PDOException $e) {
+    die ($e->getMessage());
 }
-
 ?>
-
