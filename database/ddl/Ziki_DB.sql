@@ -20,9 +20,14 @@ CREATE TABLE ADMIN (
   username varchar(10)
 )
 
-CREATE TABLE SPAM (
+CREATE TABLE REPORTED (
+  reportId INT
   postId INT
-  userId INT 
+  userId INT
+  count INT  
+    FOREIGN KEY (userId) REFERENCES User(id) ON DELETE NO ACTION ON UPDATE CASCADE 
+    FOREIGN KEY (postId) REFERENCES User(id) ON DELETE NO ACTION ON UPDATE CASCADE 
+   
 )
 
 CREATE TABLE POSTS (
@@ -65,3 +70,7 @@ CREATE TABLE COMMENTS (
     PRIMARY KEY (categoryId)
 
   );
+
+
+
+  
