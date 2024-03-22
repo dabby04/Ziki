@@ -6,24 +6,62 @@ USE Ziki;
 
 CREATE TABLE USER (
 
-   `id` int PRIMARY KEY,
-   `name` varchar(30) NOT NULL,
+  `id` int PRIMARY KEY,
+  `name` varchar(30) NOT NULL,
   `username` varchar(10) NOT NULL,
   `email` varchar(25) NOT NULL,
   `password` varchar(512) NOT NULL,
-    `DOB` DATETIME 
+  `DOB` DATETIME ,
+  `dateJoined` DATE        
 )
 
 CREATE TABLE ADMIN (
-  `password` int,
-  `username` varchar(10)
+  'password' int,
+  username varchar(10)
+)
+
+CREATE TABLE SPAM (
+  postId INT
+  userId INT 
 )
 
 CREATE TABLE POSTS (
-  id int PRIMARY KEY,
-  content varchar(250),
+  id INT IDENTITY PRIMARY KEY,
+  title varchar,
+  content varchar(1000),
   creator varchar(10) NOT NULL,
   likes int,
+  dislikes int,
   views int,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
+
+CREATE TABLE COMMENTS (
+    commentId           INT IDENTITY,
+    userId              INT,
+    postId              INT,
+    likes               INT,
+    dislikes            INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP       
+    PRIMARY KEY (commentId),
+    FOREIGN KEY (postId) REFERENCES POSTS(id)
+    ON UPDATE CASCADE ON DELETE CASCADE
+    FOREIGN KEY (userId) REFERENCES USER(id)
+    ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+  CREATE TABLE FAVOURITES (
+        userId INT, 
+        postId INT,
+    FOREIGN KEY (userId) REFERENCES User(id) ON DELETE NO ACTION ON UPDATE CASCADE 
+    FOREIGN KEY (postId) REFERENCES User(id) ON DELETE NO ACTION ON UPDATE CASCADE 
+
+
+  );
+
+  CREATE TABLE CATEGORY (
+    categoryId  INT IDENTITY,
+    categoryName VARCHAR(50),
+    PRIMARY KEY (categoryId)
+
+  );
