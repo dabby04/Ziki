@@ -13,23 +13,11 @@
 </head>
 
 <body>
-
-
-    <header class="header">
-        <?php include "pageheader.php" ?>
-
-    </header>
-
-    <nav id="nav-bar">
-
-        <p class="current-selection"> <a href=""> Dashboard</a></p>
-        <p> <a href=""> Users </a> </p>
-        <p><a href="">Post Management </a> </p>
-
-    </nav>
-
+<script src="script/admin.js"></script>
+    <div class="wrapper">
+        <?php include "sidebarAdmin.php" ?>
+    </div>
     <div class="main">
-        <h2> Overview</h2>
         <div class="overview-box">
             <div class="title-box">
                 <h3>User Registration Stats</h3>
