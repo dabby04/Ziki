@@ -2,11 +2,15 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/pageheader.css" />
-    <link rel="stylesheet" href="css/search.css" />
-    <link rel="stylesheet" href="css/status.css" />
-  
+    <style>
+        <?php include "css/reset.css";?>
+    </style>
+    <style>
+        <?php include "css/pageheader.css";?>
+        <?php include "css/search.css";?>
+        <?php include "css/status.css";?>
+    </style>
+
 </head>
 
 <body>
@@ -51,7 +55,7 @@
             </a>
         </div>
     </header>
-   
+
 </body>
 
 </html>
