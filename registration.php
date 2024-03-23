@@ -3,10 +3,12 @@
 
 <head>
   <style>
-    <?php include "css/reset.css" ?>
-    <?php include "css/login.css" ?>
-    <?php include "css/registration.css" ?>
-    <?php include "css/highlight.css" ?>
+    <?php include_once "css/reset.css"; ?>
+  </style>
+  <style>
+    <?php include_once "css/login.css"; ?>
+    <?php include_once "css/registration.css"; ?>
+    <?php include_once "css/highlight.css"; ?>
   </style>
   <script type="text/javascript" src="script/registration.js"></script>
 </head>
@@ -17,7 +19,7 @@
       <h1 class="title"><a href="home.php">Ziki</a></h1>
     </div>
     <div class="login">
-      <a href="login.html">Login</a>
+      <a href="login.php">Login</a>
     </div>
   </header>
 
