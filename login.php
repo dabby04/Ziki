@@ -13,8 +13,8 @@
 
 <body>
   <?php
-  include "php/status.php";
-  include "server/conn_info.php";
+  //include "php/status.php";
+  //include "server/conn_info.php";
 
   if ($_SERVER['REQUEST_METHOD'] == "POST") {
     try {
@@ -32,8 +32,8 @@
         // Fetch the first row
         $row = $statement->fetch(PDO::FETCH_ASSOC);
         // Process the data from $row as needed
-        $status = "active";
-        $username = $row["username"];
+        $_SESSION['status'] = "active";
+        $_SESSION['username'] = $row["username"];
 
         // Redirect to the home page
         header("Location: home.php");

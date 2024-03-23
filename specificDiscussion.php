@@ -13,6 +13,11 @@
     }
     else
         $status="inactive";
+
+        
+        $phpArray = array("Mon", "Tue", "Wed", "Thu", "Fri", "Sat");
+        $jsArray = json_encode($phpArray);
+        
     
 ?>
 <!DOCTYPE html>
@@ -31,13 +36,11 @@
 
     <script src="script/home.js"></script>
     <link rel="stylesheet" href="css/status.css" />
+    <link rel="stylesheet" href="css/discussion.css">
     <script src="script/home.js"></script>
 </head>
 
 <body>
-    <?php
-    //include "php/status.php";
-    ?>
     <header class="header">
         <div id="header-info">
             <h1 class="title">Ziki</h1>
@@ -76,84 +79,25 @@
             </a>
         </div>
     </header>
-    <div id="top2">
-        <div id="centre_top2">
-            <figure>
-                <img src="images/hamilton.png">
-                <figcaption>Lewis Hamilton signs with Ferrari</figcaption>
-            </figure>
-        </div>
-        <div id="centre_top2">
-            <figure>
-                <img src="images/smith.png">
-                <figcaption>What do you think?</figcaption>
-            </figure>
-        </div>
+    <div id="discomments">
+        <!-- <Button onclick=openDiscussion(discomments)> -->
     </div>
-    <div id="trending">
-        <div class="box">
-            <h3>Trending Discussions</h3>
-            <div class="discuss">
-                <figure>
-                    <img src="images/question.png">
-                    <figcaption>It's so easy to find a job, don't you think?</figcaption>
-                </figure>
-            </div>
-            <div class="discuss">
-                <figure>
-                    <img src="images/bellingham.png">
-                    <figcaption>Jude Bellingham might be the next best player...</figcaption>
-                </figure>
-            </div>
-            <div class="discuss">
-                <figure>
-                    <img src="images/laptop.png">
-                    <figcaption>What are your favourite reboots?</figcaption>
-                </figure>
-            </div>
-            <div class="discuss">
-                <figure>
-                    <img src="images/tech.png">
-                    <figcaption>How do I break into tech?</figcaption>
-                </figure>
-            </div>
-            <div class="discuss">
-                <a href="#">
-                    <h3>Show more discussions</h3>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div id="posts">
-        <nav>
-            <div class="toggle-container">
-                <ul>
-                    <div class="toggle-box">
-                        <li id="home" class="picks"><a href="#">Hot tea</a></li>
-                    </div>
-                    <div class="toggle-box">
-                        <li id="favourites" class="picks"><a href="#">Favourites</a></li>
-                    </div>
-                    <div class="toggle-box">
-                        <li id="top_comments" class="picks"><a href="#">Top comments</a></li>
-                    </div>
-                    <div class="toggle-box">
-                        <li id="explore" class="picks"><a href="#">Explore</a></li>
-                    </div>
-
-                    <!-- <li id="home" class="picks"><a href="#">Hot tea</a></li> |
-                <li id="favourites" class="picks"><a href="#">Favourites</a></li> |
-                <li id="top_comments" class="picks"><a href="#">Top comments</a></li>|
-                <li id="explore" class="picks"><a href="#">Explore</a></li> -->
-                </ul>
-            </div>
-
-        </nav>
-        <div id="contentBox">
-        </div>
-    </div>
-
+    <script>
+        var comments = <?php echo $jsArray; ?>;
+        function openDiscussion(e)
+            {
+                //let discTitle = e;
+                //using the name of the discussion, generate related content
+                const displayComments = document.getElementById("discomments");
+                //const comments = ["Comment 1", "Comment 2", "Comment 3", "Comment 4"];
+                displayComments.innerHTML= comments.map((e)=>{
+                    return `<div id="individualComment">
+                      <img src="images/blank-profile-picture.png" alt="blank pfp" id="commentPFP">
+                      ${e}
+                      </div><br/>`;
+                }).join("");
+            }
+    </script>
 </body>
 
 </html>
