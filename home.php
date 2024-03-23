@@ -1,3 +1,13 @@
+<?php
+    include_once 'php/status.php';
+    session_start();
+
+    if(isset($_SESSION['login']))
+        $status="active";
+    else
+        $status="inactive";
+    
+?>
 <!DOCTYPE html>
 <html>
 
