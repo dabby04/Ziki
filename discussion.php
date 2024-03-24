@@ -22,7 +22,6 @@
         <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
-        <script src="script/home.js"></script>
         <link rel="stylesheet" href="css/status.css" />
         <script src="script/home.js"></script>
         <title>Ziki</title>
@@ -74,6 +73,32 @@
             </div>
           </nav> -->
           <header class="header">
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+          <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <div>
+                    Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+                  </div>
+                  <div class="dropdown mt-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                      Dropdown button
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">Action</a></li>
+                      <li><a class="dropdown-item" href="#">Another action</a></li>
+                      <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div id="header-info">
                 <h1 class="title">Ziki</h1>
                 <h6 class="subtitle">A place where gen Z can connect</h6>
@@ -112,7 +137,7 @@
         <div id="cards">
             
         </div>
-        <script>
+        <!-- <script>
             const showCards = document.getElementById("cards");
             const discussions = ["Discussion 1", "Discussion 2", "Discussion 3", "Discussion 4"];
             showCards.innerHTML = discussions.map((e) => {
@@ -134,7 +159,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">${e}</h5>
                                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" onclick="openDiscussion('${e}')">Comments</button>
+                                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom" onclick="openDiscussion('${e})">Comments</button>
                                 <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
                                     <div class="offcanvas-header">
                                         <h5 class="offcanvas-title" id="offcanvasBottomLabel">${e}</h5>
@@ -151,26 +176,14 @@
                         </div>`;
             }).join("");
 
-            function openDiscussion(e)
-            {
-                //let discTitle = e;
-                //using the name of the discussion, generate related content
-                const displayComments = document.getElementById("discomments");
-                const comments = ["Comment 1", "Comment 2", "Comment 3", "Comment 4"];
-                displayComments.innerHTML= comments.map((e)=>{
-                    return `<div id="individualComment">
-                      <img src="images/blank-profile-picture.png" alt="blank pfp" id="commentPFP">
-                      ${e}
-                      </div><br/>`;
-                }).join("");
-            }
+            
 
             function handleLiked(e)
             {
               
             }
 
-        </script>
+        </script> -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
 </html>
