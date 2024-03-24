@@ -14,6 +14,7 @@
     }
     else
         $status="inactive";
+    
 
 ?>
 <!DOCTYPE html>
@@ -40,7 +41,7 @@
 
     <script src="script/home.js"></script>
     <link rel="stylesheet" href="css/status.css" />
-    <script src="script/home.js"></script>
+    <!-- <script src="script/home.js"></script> -->
 </head>
 
 <body>
