@@ -1,26 +1,25 @@
 <?php
-    include_once 'php/status.php';
-    session_start();
+include_once 'php/status.php';
+session_start();
 
-    if(isset($_SESSION['login']))
-        $status="active";
-    else
-        $status="inactive";
-    
+if (isset ($_SESSION['login']))
+    $status = "active";
+else
+    $status = "inactive";
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <style>
-        <?php include "css/reset.css";?>
+        <?php include "css/reset.css"; ?>
     </style>
     <style>
-        <?php include "css/pageheader.css";?>
-        <?php include "css/search.css";?>
-        <?php include "css/status.css";?>
+        <?php include "css/pageheader.css"; ?>
+        <?php include "css/search.css"; ?>
+        <?php include "css/status.css"; ?>
     </style>
-
+    <script src="script/pageheader.js"></script>
 </head>
 
 <body>
@@ -59,10 +58,12 @@
             </div>
         </div>
         <div class="search-container" tabindex="1">
-            <input type="text" placeholder="Search">
-            <a class="button">
-                <img src="images/search.png" alt="Search">
-            </a>
+            <form action="php/search.php" method="get">
+                <input type="text" placeholder="Search" name="query">
+                <a class="button">
+                    <img src="images/search.png" alt="Search">
+                </a>
+            </form>
         </div>
     </header>
 
