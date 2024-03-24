@@ -16,6 +16,7 @@
 
 .search-container form{
     display: flex;
+    margin:auto;
 }
 
 .search-container input{

@@ -1,15 +1,8 @@
-<div class="wrapper">
-  <?php include "pageheader.php" ?>
-</div>
-
-<div id="cards">
-  <!-- <Button onclick=openDiscussion(discomments)>  -->
-</div>
 <?php
 $list = array();
 $jsArray = json_encode($list); // Initialize as an empty JSON array
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
+// if ($_SERVER['REQUEST_METHOD'] == "POST") {
   try {
     require_once "server/configure.php";
     $sql = "SELECT * FROM POSTS";
@@ -26,20 +19,29 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
   } catch (PDOException $e) {
     die ($e->getMessage());
   }
-}
+// }
 ?>
-<script>
-  //var comments = ["Discussion 1", "Discussion 2", "Discussion 3", "Discussion 4"];
-  //let discTitle;
-  var topics = <?php echo $jsArray; ?>;
-  window.onload = function () {
-    console.log(topics);
-    //using the name of the discussion, generate related content
-    const displayComments = document.getElementById("cards");
-    //const comments = ["Discussion 1", "Discussion 2", "Discussion 3", "Discussion 4"];
-    //displayComments.innerHTML= comments.map((e)=>{
-    displayComments.innerHTML = topics.map((e) => {
-      return `<div class="card text-center">
+<!DOCTYPE html>
+<html>
+
+<head>
+  <div class="wrapper">
+    <?php include "pageheader.php" ?>
+  </div>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script>
+    //var comments = ["Discussion 1", "Discussion 2", "Discussion 3", "Discussion 4"];
+    //let discTitle;
+    var topics = <?php echo $jsArray; ?>;
+    window.onload = function () {
+      console.log(topics);
+      //using the name of the discussion, generate related content
+      const displayComments = document.getElementById("cards");
+      //const comments = ["Discussion 1", "Discussion 2", "Discussion 3", "Discussion 4"];
+      //displayComments.innerHTML= comments.map((e)=>{
+      displayComments.innerHTML = topics.map((e) => {
+        return `<div class="card text-center">
                           <div class="card-header">
                             <img id="discussionPFP" class="icons" src="images/blank-profile-picture.png" alt ="disussion pfp">
                             Username 
@@ -55,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                            
                           </div>
                             <div class="card-body">
-                                <h5 class="card-title">${e}</h5>
+                                <h5 class="card-title">${e.title}</h5>
                                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                                 <form action="specificDiscussion.php" method="POST">
                                           <button type="submit" class="btn btn-primary" name="discTopic" value=${e}>View Discussion</button>
@@ -74,6 +76,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                                 2 days ago
                             </div>
                         </div>`;
-    }).join("");
-  }
-</script>
+      }).join("");
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id="cards">
+  </div>
+
+</body>
+
+</html>
