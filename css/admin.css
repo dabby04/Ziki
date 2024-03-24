@@ -1,115 +1,99 @@
-body, html {
+body,
+html {
     margin: 0;
     padding: 0;
     height: 100%;
 }
 
-
-#nav-bar {
-    float: left;
-    height:118vh;
-    width: 20vw;
-    align-items: center;
-    margin: 0 4vw 5vw 0 ;
-    border: outset 2pt white;
-    padding: 0em 0em 0.25em 0;
-}
-
-#nav-bar p {
-    text-align: center;
-    font-size: 16pt;
-    padding: 0.5em 0 0.5em 0;
- 
-
-}
-
-.current-selection {
-    background-color: #D27FE0;
-    
-}
-
-#nav-bar a {
-   
-   text-decoration: none;
-   color: black;
+.wrapper {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 }
 
 .main {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     height: max-content;
-    border: groove 2pt white;
     padding: 0.1em 0 0.1em 0;
-    
-
+    margin-left: 100px;
+    top: 150px;
+    position: relative;
 }
 
-.main h2 {
+/* .main h2 {
     padding-bottom: 0.50em;
-}
+    font-size: x-large;
+    margin-left: 2em;
+} */
 
 .overview-box {
     display: flex;
     width: 70vw;
     height: 40vh;
-    border:  groove 2pt white;
-    margin-bottom: 2em;
+    border: groove 2pt white;
     border-radius: 10px;
-
-
+    margin: auto auto 2em auto;
 }
+
 .overview-box h3 {
     border-bottom: 0.5px solid black;
     font-size: 16pt;
     padding: 0.5em 0 0.5em 1em;
- 
- }
- .title-box{
-    border-radius: 10px;
-    border : groove 2pt white;
-    width: inherit;
 
-
- }
-
- #search-box {
-   
-    position: absolute;
-    top: 120px;
-    left:50vw ;
-    margin: 0.50em;
-
-    
- }
-
-
-
-#search-box input {
-  
- width:20em;
- border-radius: 10px;
- padding: 0.2em;
- display: none;
-   
 }
 
- table {
+.title-box {
+    border-radius: 10px;
+    border: groove 2pt white;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#search-box {
+
+    position: absolute;
+    top: 120px;
+    left: 50vw;
+    margin: 0.50em;
+
+
+}
+
+#search-box input {
+
+    width: 20em;
+    border-radius: 10px;
+    padding: 0.2em;
+    display: none;
+
+}
+
+table {
     border: 0.25pt black solid;
     border-radius: 10px;
     width: 73vw;
     padding: 0.5em;
-    margin-top: 2em;
-    
- }
+    margin: 2em auto auto auto;
 
- table td {
+}
+
+table td {
     border: 0.25pt black solid;
-    height:  12em;
+    height: 12em;
     text-align: center;
-    
- }
- table thead {
+
+}
+
+table thead {
 
     text-align: center;
-    
- }
 
+}
+#results{
+    text-align: center;
+    border: none;
+    margin:auto;
+    font-size: 5em;
+}

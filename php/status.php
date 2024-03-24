@@ -1,4 +1,4 @@
 <!DOCTYPE html>
 <?php
-    $status="active";
+    $status="inactive";
 ?>

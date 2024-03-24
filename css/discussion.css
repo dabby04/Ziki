@@ -28,3 +28,40 @@
     width:2.5%;
     transform: rotate(180deg);
 }
+#cards{
+    margin-top: 6em;
+}
+#commentPFP{
+    height:3em;
+    float:inline-start;
+    border-radius: 3em;
+    margin-right: 1em;
+}
+#discussionPFP{
+    height:2em;
+    float:inline-start;
+    border-radius: 2em;
+
+}
+#discFav{
+    height:2em;
+    float:inline-end;
+    margin-right: 0.5em;
+}
+#discDropdown{
+    height:2em;
+    float:inline-end;
+}
+
+#discomments{
+    
+    height: 50em;
+}
+#individualComment{
+    height: 4em;
+    text-align: left;
+    border-bottom: groove;
+}
+#offcanvasBottom{
+    height: 100%;
+}

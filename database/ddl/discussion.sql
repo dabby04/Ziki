@@ -7,6 +7,8 @@ CREATE TABLE users{
     username        VARCHAR(50),
     password        VARCHAR(30),
     profile_photo    VARBINARY(MAX)
+   
+
 }
 
 CREATE TABLE 
