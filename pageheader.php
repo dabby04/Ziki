@@ -13,7 +13,6 @@
     }
     else
         $status="inactive";
-    
 ?>
 <!DOCTYPE html>
 <html>
@@ -21,7 +20,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        <?php include "css/reset.css";?>
+        <?php include "css/reset.css"; ?>
     </style>
     <style>
         <?php include "css/pageheader.css";?>
@@ -71,10 +70,12 @@
             </div>
         </div>
         <div class="search-container" tabindex="1">
-            <input type="text" placeholder="Search">
-            <a class="button">
-                <img src="images/search.png" alt="Search">
-            </a>
+            <form action="php/search.php" method="get">
+                <input type="text" placeholder="Search" name="query">
+                <a class="button">
+                    <img src="images/search.png" alt="Search">
+                </a>
+            </form>
         </div>
     </header>
 
