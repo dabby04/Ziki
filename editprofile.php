@@ -59,7 +59,7 @@ $userData = mysqli_fetch_assoc($result);
         <h3 id="user-tag">@<?php echo $userData['username']; ?></h3>
         
         <!-- Populate form fields with user's information -->
-        <form id="change-info" onsubmit="return check()">
+        <form id="change-info" onsubmit="return check()" action="profile.php" method="post">
             <p id="email-entry"> <label> <img class="icon" src="images/mail-icon.png" alt="email icon"/> </label> <input type="email" value="<?php echo $userData['email']; ?>" placeholder="<?php echo $userData['email']; ?>"/></p>
             <p id="date-entry"> <label> <img class="icon" src="images/calendar-icon.png"  alt="calendar icon"/> </label> <input type="date" value="<?php echo $userData['DOB']; ?>" placeholder="<?php echo $userData['DOB']; ?>"/></p>
             <p id="bio"> <label> <img class="icon" src="images/user.png" alt="person icon"/> </label> <input type="text" value="<?php echo $userData['bio']; ?>" placeholder="<?php echo $userData['bio']; ?>"/></p>

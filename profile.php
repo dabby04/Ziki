@@ -82,11 +82,11 @@
         </div>
 
         <?php
-if(isset($_GET['id'])) {
+if(!isset($_GET['id'])) {
     // Display the section only if user ID is not retrieved from the URL
     ?>
     <section class="button-container">
-        <a href="editprofile.html"> <button class="rounded-button"> Edit Profile</button></a>
+        <a href="editprofile.php"> <button class="rounded-button"> Edit Profile</button></a>
         <button class="rounded-button" onclick="makeAPost()">Make a Post</button>
     </section>
     <?php
