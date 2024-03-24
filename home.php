@@ -1,22 +1,30 @@
 <?php
-    include_once 'php/status.php';
-    session_start();
+include_once 'php/status.php';
+session_start();
 
-    if(isset($_SESSION['login']))
-        $status="active";
-    else
-        $status="inactive";
-    
+if (isset ($_SESSION['login']))
+    $status = "active";
+else
+    $status = "inactive";
+
 ?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/highlight.css" />
-    <link rel="stylesheet" href="css/search.css" />
+    <style>
+        <?php include "css/reset.css"?>
+    </style>
+    <style>
+        <?php include "css/home.css";
+        include "css/highlight.css";
+        include "css/search.css"?>
+        </style>
+    <!-- <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/home.css"> -->
+    <!-- <link rel="stylesheet" href="css/login.css"> -->
+    <!-- <link rel="stylesheet" href="css/highlight.css" />
+    <link rel="stylesheet" href="css/search.css" /> -->
 
     <!-- Load jQuery from CDN or local file -->
     <script src="https://code.jquery.com/jquery-3.7.1.js"
@@ -28,86 +36,89 @@
 </head>
 
 <body>
-    <?php
-    // include "php/status.php";
-    include "pageheader.php";
-    ?>
-    
-    <div id="top2">
-        <div id="centre_top2">
-            <figure>
-                <img src="images/hamilton.png">
-                <figcaption>Lewis Hamilton signs with Ferrari</figcaption>
-            </figure>
-        </div>
-        <div id="centre_top2">
-            <figure>
-                <img src="images/smith.png">
-                <figcaption>What do you think?</figcaption>
-            </figure>
-        </div>
+    <div class="wrapper">
+        <?php
+        // include "php/status.php";
+        include "pageheader.php";
+        ?>
     </div>
-    <div id="trending">
-        <div class="box">
-            <h3>Trending Discussions</h3>
-            <div class="discuss">
+    <div class="main">
+        <div id="top2">
+            <div id="centre_top2">
                 <figure>
-                    <img src="images/question.png">
-                    <figcaption>It's so easy to find a job, don't you think?</figcaption>
+                    <img src="images/hamilton.png">
+                    <figcaption>Lewis Hamilton signs with Ferrari</figcaption>
                 </figure>
             </div>
-            <div class="discuss">
+            <div id="centre_top2">
                 <figure>
-                    <img src="images/bellingham.png">
-                    <figcaption>Jude Bellingham might be the next best player...</figcaption>
+                    <img src="images/smith.png">
+                    <figcaption>What do you think?</figcaption>
                 </figure>
-            </div>
-            <div class="discuss">
-                <figure>
-                    <img src="images/laptop.png">
-                    <figcaption>What are your favourite reboots?</figcaption>
-                </figure>
-            </div>
-            <div class="discuss">
-                <figure>
-                    <img src="images/tech.png">
-                    <figcaption>How do I break into tech?</figcaption>
-                </figure>
-            </div>
-            <div class="discuss">
-                <a href="#">
-                    <h3>Show more discussions</h3>
-                </a>
             </div>
         </div>
-    </div>
+        <div id="trending">
+            <div class="box">
+                <h3>Trending Discussions</h3>
+                <div class="discuss">
+                    <figure>
+                        <img src="images/question.png">
+                        <figcaption>It's so easy to find a job, don't you think?</figcaption>
+                    </figure>
+                </div>
+                <div class="discuss">
+                    <figure>
+                        <img src="images/bellingham.png">
+                        <figcaption>Jude Bellingham might be the next best player...</figcaption>
+                    </figure>
+                </div>
+                <div class="discuss">
+                    <figure>
+                        <img src="images/laptop.png">
+                        <figcaption>What are your favourite reboots?</figcaption>
+                    </figure>
+                </div>
+                <div class="discuss">
+                    <figure>
+                        <img src="images/tech.png">
+                        <figcaption>How do I break into tech?</figcaption>
+                    </figure>
+                </div>
+                <div class="discuss">
+                    <a href="#">
+                        <h3>Show more discussions</h3>
+                    </a>
+                </div>
+            </div>
+        </div>
 
-    <div id="posts">
-        <nav>
-            <div class="toggle-container">
-                <ul>
-                    <div class="toggle-box">
-                        <li id="home" class="picks"><a href="#">Hot tea</a></li>
-                    </div>
-                    <div class="toggle-box">
-                        <li id="favourites" class="picks"><a href="#">Favourites</a></li>
-                    </div>
-                    <div class="toggle-box">
-                        <li id="top_comments" class="picks"><a href="#">Top comments</a></li>
-                    </div>
-                    <div class="toggle-box">
-                        <li id="explore" class="picks"><a href="#">Explore</a></li>
-                    </div>
+        <div id="posts">
+            <nav>
+                <div class="toggle-container">
+                    <ul>
+                        <div class="toggle-box">
+                            <li id="home" class="picks"><a href="#">Hot tea</a></li>
+                        </div>
+                        <div class="toggle-box">
+                            <li id="favourites" class="picks"><a href="#">Favourites</a></li>
+                        </div>
+                        <div class="toggle-box">
+                            <li id="top_comments" class="picks"><a href="#">Top comments</a></li>
+                        </div>
+                        <div class="toggle-box">
+                            <li id="explore" class="picks"><a href="#">Explore</a></li>
+                        </div>
 
-                    <!-- <li id="home" class="picks"><a href="#">Hot tea</a></li> |
+                        <!-- <li id="home" class="picks"><a href="#">Hot tea</a></li> |
                 <li id="favourites" class="picks"><a href="#">Favourites</a></li> |
                 <li id="top_comments" class="picks"><a href="#">Top comments</a></li>|
                 <li id="explore" class="picks"><a href="#">Explore</a></li> -->
-                </ul>
-            </div>
+                    </ul>
+                </div>
 
-        </nav>
-        <div id="contentBox">
+            </nav>
+            <div id="contentBox">
+            </div>
         </div>
     </div>
 

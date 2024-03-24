@@ -46,7 +46,8 @@ html {
     border-radius: 10px;
     border: groove 2pt white;
     width: inherit;
-
+    display: flex;
+    flex-direction: column;
 
 }
 
@@ -89,4 +90,10 @@ table thead {
 
     text-align: center;
 
+}
+#results{
+    text-align: center;
+    border: none;
+    margin:auto;
+    font-size: 5em;
 }

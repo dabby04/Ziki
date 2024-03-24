@@ -6,15 +6,11 @@ body {
   padding: 0;
 }
 
-body a:hover {
-  color: white;
-}
-
-
 .title {
   font-size: 5em;
   font-family: 'Spirax', cursive;
 }
+
 .title a{
   text-decoration: none;
   color: inherit;

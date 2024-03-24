@@ -50,7 +50,7 @@
   ?>
 
   <header class="header">
-    <h1 class="title"><a href="home.html">Ziki</a></h1>
+    <h1 class="title"><a href="home.php">Ziki</a></h1>
     <h6 class="subtitle">A place where gen Z can connect</h6>
   </header>
   <form id="form" action="login.php" method="post">
