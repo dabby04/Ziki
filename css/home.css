@@ -1,13 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
 
-body a:hover {
-    color: white;
+.wrapper {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
 }
-
 button:hover {
     background-color: #4F46E5;
 
+}
+.main{
+    top:150px;
+    position: relative;
 }
 
 #user_button {
@@ -94,7 +99,7 @@ button:hover {
 
 h3{
     font-family: 'League Gothic', sans-serif;
-    font-size: 2em;
+    font-size: 2em !important;
     font-weight: none;
 }
 

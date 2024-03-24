@@ -5,7 +5,7 @@
     align-items: center;
 }
 
-.inactive {
+.inactive,.active {
     box-shadow: 1px 1px 10px 1px #a1a1a1;
     padding: 20px;
     border: 1px solid black;
@@ -34,6 +34,10 @@
     display: none;
     position: fixed;
     margin-top: 10em;
+}
+
+.card .user_status .active{
+    margin-top:5em;
 }
 
 #user_button {

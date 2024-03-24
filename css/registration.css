@@ -1,62 +1,89 @@
-
-
-  #registration{
-    background-color: rgb(232, 230, 230);
-    width: 50%; 
-    margin: auto; 
-    padding: 20px; 
-    margin-top: 5em;
-    margin-bottom: 5em;
-    align-items: center;
-    justify-content: center;
+body {
+  background: radial-gradient(circle at left bottom, transparent 14%, #c06de8 15%, #c06de8 25%, transparent 26%, transparent 34%, #c06de880 35%, #c06de880 45%, transparent 46%, transparent 54%, #c06de8 55%, #c06de8 65%, transparent 66%, transparent 74%, #c06de880 75%, #c06de880 85%, transparent 86%);
+  background-size: 3em 3em;
+  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.55); /* Adjust the opacity value (0.55) as needed */
 }
 
-#registration .input-field{
-    width: 50%;
-    /* margin: 0.75em; */
+#registration {
+  background-color: white;
+
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+  margin-top: 5em;
+  margin-bottom: 5em;
+  align-items: center;
+  justify-content: center;
 }
 
-#button-container{
+#registration .input-field {
+  width: 50%;
+  opacity: 1;
+  /* margin: 0.75em; */
+}
+
+#button-container {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#button-container .button{
-  margin:0;
+#button-container .button {
+  margin: 0;
   margin-top: 1em;
-  float:none;
+  float: none;
 }
+
 .home {
-    float: left;
-    text-align: left;
-    height: 100px;
-    margin-left: 2em;
+  float: left;
+  text-align: left;
+  height: 100px;
+  margin-left: 2em;
 }
-.title a{
+
+.title a {
   text-decoration: none;
   color: inherit;
 }
+
 .login {
-    text-align: right;
-    font-size: 2em;
-    height: 100px;
-    justify-content: right;
-    align-items: center;
-    display: flex;
-    margin-right: 2em;
+  text-align: right;
+  font-size: 2em;
+  height: 100px;
+  justify-content: right;
+  align-items: center;
+  display: flex;
+  margin-right: 2em;
 }
 
-.login a{
-    color: #EEF5FC;
+.dob_div {
+  margin-top: 40px;
 }
 
-header{
-    height: fit-content;
+#dob_label {
+  display: block;
 }
 
-#wrong_pass_alert{
+#dob {
+  margin-top: 0em;
+}
+
+.login a {
+  color: #EEF5FC;
+}
+
+header {
+  height: fit-content;
+}
+
+#profile_image {
+  margin-top: 2em;
+  margin-left: 1em;
+}
+
+#wrong_pass_alert {
   display: flex;
   justify-content: center;
-    align-items: center;
+  align-items: center;
 }

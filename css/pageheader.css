@@ -2,34 +2,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Inspiration&display=swap');
 
 body {
-    margin: 0;
-    padding: 0;
-  }
-  .title{
-    font-size: 3em;
-    font-family: 'Spirax', cursive;
-  }
-  .subtitle{
-    font-size: 1.5em;
-    font-family: 'Inspiration', cursive;
-  }
+  margin: 0;
+  padding: 0;
+}
 
-  header {
-    position: sticky;
-    width: 100%;
-    margin-top: auto;
-    background-image: linear-gradient(rgb(217, 5, 221), rgb(254, 207, 255));
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: left;
-  }
-  
-  .hold{
-    box-sizing: content-box;
-    display:flex;
-    flex-wrap: wrap;
-    margin-left: 2em;
-    margin-right: 2em;
-    justify-content: center;
-    column-gap: 3em;
-    row-gap: 2em;
-  }
+.title {
+  font-size: 5em;
+  font-family: 'Spirax', cursive;
+}
+
+.title a{
+  text-decoration: none;
+  color: inherit;
+}
+.subtitle {
+  font-size: 1.5em;
+  font-family: 'Inspiration', cursive;
+}
+
+header {
+  position: fixed;
+  width: 100%;
+  margin-top: auto;
+  background-image: linear-gradient(rgb(217, 5, 221), rgb(254, 207, 255));
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+#header-info {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#user_button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: right;
+  float: right;
+  margin-top: 1em;
+  margin-right: 1em;
+  position:relative;
+}
+
+#user_button button {
+  background: none;
+  border: none;
+  align-items: center;
+  justify-content: right;
+}
+
+#user_button button img {
+  height: 60px;
+  width: 60px;
+}
+
+button:hover {
+  background-color: #4F46E5;
+
+}
+/* .hold {
+  box-sizing: content-box;
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 2em;
+  margin-right: 2em;
+  justify-content: center;
+  column-gap: 3em;
+  row-gap: 2em;
+} */

@@ -11,10 +11,10 @@ CREATE TABLE USERS (
   `username` varchar(10) NOT NULL,
   `email` varchar(25) NOT NULL,
   `password` varchar(512) NOT NULL,
-  `DOB` DATETIME ,
-  `dateJoined` DATE,
+  `DOB` DATE ,
+  `dateJoined` DATETIME,
   `bio` varchar(100),
-         
+  `profilePhoto` BLOB
 )
 
 CREATE TABLE ADMIN (
@@ -57,37 +57,17 @@ CREATE TABLE COMMENTS (
     ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-  CREATE TABLE FAVOURITES (
-        userId INT, 
-        postId INT,
-    FOREIGN KEY (userId) REFERENCES User(id) ON DELETE NO ACTION ON UPDATE CASCADE 
-    FOREIGN KEY (postId) REFERENCES User(id) ON DELETE NO ACTION ON UPDATE CASCADE 
-
-
-  );
-
-  CREATE TABLE LIKES (
-  id INT PRIMARY KEY AUTO_INCREMENT,
-  user_id INT NOT NULL,
-  post_id INT NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES USERS(id),
-  FOREIGN KEY (post_id) REFERENCES POSTS(id)
+-- Create FAVOURITES table
+CREATE TABLE `FAVOURITES` (
+  `userId` INT,
+  `postId` INT,
+  PRIMARY KEY(`userId`, `postId`),
+  FOREIGN KEY (`userId`) REFERENCES `USER`(`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  FOREIGN KEY (`postId`) REFERENCES `POSTS`(`id`) ON DELETE NO ACTION ON UPDATE CASCADE
 );
 
-
-  CREATE TABLE CATEGORY (
-    categoryId  INT IDENTITY,
-    categoryName VARCHAR(50),
-    PRIMARY KEY (categoryId)
-
-  );
-
-
-
-
-  INSERT INTO ADMIN ('password', 'username') VALUES('admin','test')
-    
-  
-
-
-
+-- Create CATEGORY table
+CREATE TABLE `CATEGORY` (
+  `categoryId` INT AUTO_INCREMENT PRIMARY KEY,
+  `categoryName` VARCHAR(50)
+);
