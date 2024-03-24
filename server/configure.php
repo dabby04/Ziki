@@ -1,14 +1,19 @@
-
 <?php
-    $DBHOST= '127.0.0.1:3307';
-    $DBNAME = 'Ziki_DB';
-    $DBUSER= 'root';
-    $DBPASS= "";
+$DBHOST = '127.0.0.1';
+$DBPORT = '3307'; // Change this to your MySQL port if it's different
+$DBNAME = 'Ziki_DB';
+$DBUSER = 'root';
+$DBPASS = '';
 
-$conn = mysqli_connect($DBHOST, $DBUSER , $DBPASS, $DBNAME);
-
-
-if(!$conn){
-    die("Connection failed : " . mysqli_connect_error());
+try {
+    $dsn = "mysql:host=$DBHOST;port=$DBPORT;dbname=$DBNAME;charset=utf8mb4";
+    $options = [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_EMULATE_PREPARES => false,
+    ];
+    $pdo = new PDO($dsn, $DBUSER, $DBPASS, $options);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
 }
 ?>
+

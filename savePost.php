@@ -1,11 +1,7 @@
 <?php
 
-// Check if the user is logged in
-// if (!isset($_SESSION['username'])) {
-//     // Redirect the user to the login page if not logged in
-//     header("Location: login.php");
-//     exit;
-// }
+error_reporting(E_ALL); 
+ini_set('display_errors', 1);
 
 // Include your database connection file
 require_once 'server/configure.php';
@@ -15,17 +11,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Check if the content field is set and not empty
     if (isset($_POST['content']) && !empty($_POST['content'])) {
         // Sanitize the input data to prevent SQL injection
-        $content = mysqli_real_escape_string($conn, $_POST['content']);
-        
+        $content = $_POST['content'];
+        $title = $_POST['title'];
+        $user_id = 1; // Set user ID here
+        // $user_id = $[Session]; // Set user ID here
+        $img = null;
+        if(isset($_POST['postImage'])){
+            $img = file_get_contents($_FILES['postImage']['tmp_name']);
+        }
         // Get the username of the logged-in user
-        $sql = "SELECT username, FROM users WHERE id = $user_id";
-        $result = mysqli_query($conn, $sql);
-
-
+        $stmt = $pdo->prepare("SELECT username FROM users WHERE id = :user_id");
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $creator = $row['username'];
+        $created_at = date('Y-m-d H:i:s');
 
         // Prepare and execute the SQL statement to insert the post into the database
-        $sql = "INSERT INTO posts (content, creator) VALUES ('$content', '$creator')";
-        $result = mysqli_query($conn, $sql);
+        $stmt = $pdo->prepare("INSERT INTO posts (content, creator, created_at, title, img) VALUES (:content, :user_id, :created_at, :title, :img)");
+        $stmt->bindParam(':content', $content, PDO::PARAM_STR);
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->bindParam(':created_at', $created_at, PDO::PARAM_STR);
+        $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+        $stmt->bindParam(':img', $title, PDO::PARAM_LOB);
+        $result = $stmt->execute();
 
         if ($result) {
             // Post saved successfully
@@ -70,4 +79,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 </body>
 </html>
-
