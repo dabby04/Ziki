@@ -23,26 +23,44 @@
       $form_password = $_POST["password"];
 
       $sql = "SELECT * FROM USER WHERE username=? AND password=?";
+      $sql2 = "SELECT * FROM ADMIN WHERE username=? AND password=?";
       $statement = $pdo->prepare($sql);
       $statement->bindValue(1, $form_username);
       $statement->bindValue(2, md5($form_password));
       $statement->execute();
 
+      $statement2 = $pdo->prepare($sql2);
+      $statement2->bindValue(1, $form_username);
+      $statement2->bindValue(2, md5($form_password));
+      $statement2->execute();
       if ($statement->rowCount() > 0) {
+        // User exists in the USER table
         // Fetch the first row
         $row = $statement->fetch(PDO::FETCH_ASSOC);
         // Process the data from $row as needed
         $_SESSION['status'] = "active";
         $_SESSION['username'] = $row["username"];
-
+        
         // Redirect to the home page
         header("Location: home.php");
         exit;
-
-      } else {
+    } else if($statement2->rowCount() > 0){
+        // User exists in the ADMIN table
+        // Fetch the first row
+        $row = $statement2->fetch(PDO::FETCH_ASSOC);
+        // Process the data from $row as needed for admin login
+        $_SESSION['status'] = "admin";
+        $_SESSION['username'] = $row["username"];
+        
+        // Redirect to the admin page or perform admin-specific actions
+        header("Location: admin.php");
+        exit;
+    } else {
+        // Neither user nor admin found
         $message = "Invalid username and/or password";
         echo "<script type='text/javascript'>alert('$message');</script>";
-      }
+    }
+    
     } catch (PDOException $e) {
       die ($e->getMessage());
     }
