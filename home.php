@@ -1,22 +1,4 @@
-<?php
 
-    //include_once 'php/status.php';
-    session_start();
-    
-    $status="";
-    $username=null;
-    if(isset($_SESSION['status']))
-    {
-        $status=$_SESSION['status'];
-        $username=$_SESSION['username'];
-        //$username="something";
-
-    }
-    else
-        $status="inactive";
-    
-
-?>
 <!DOCTYPE html>
 <html>
 
