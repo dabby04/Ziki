@@ -21,7 +21,7 @@ function makeAPost (){
    
  }
 
- $(document).ready( function(){ 
+ $(document).ready(function(){ 
 
  $('.text-option').on({
     mouseenter: function(){
@@ -32,6 +32,7 @@ function makeAPost (){
         $(this).css('background-color', 'transparent');
     }
  });
+
 
 
 });
