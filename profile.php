@@ -36,14 +36,60 @@
             </div>
           
 
-            <section class="button-container">
-                <a href="editprofile.html"> <button class="rounded-button"> Edit Profile</button></a>
-                <button class="rounded-button" onclick="makeAPost()">Make a Post</button>
-            </section>
+            <?php
+// Start the session
+session_start();
+
+// Check if the user is logged in
+if(isset($_SESSION['id'])) {
+    // Include your database connection file
+    include 'configure.php'; // Change 'db_connection.php' to the actual filename of your database connection script
+    
+    // Get the logged-in user's ID from the session
+    $userId = $_SESSION['id'];
+    
+    // Query to fetch user information from the database
+    $sql = "SELECT username, DOB, bio FROM users WHERE id = $userId";
+    $result = mysqli_query($connection, $sql);
+    
+    // Check if the query was successful
+    if($result) {
+        // Fetch the user's data
+        $userData = mysqli_fetch_assoc($result);
+        
+        // Output the user's information in HTML
+        echo '<div class="profile-info">';
+        echo '<p id="username">' . $userData['username'] . '</p>';
+        // Calculate and display age based on date of birth (DOB)
+        if($userData['DOB']) {
+            $dob = new DateTime($userData['DOB']);
+            $today = new DateTime();
+            $age = $dob->diff($today)->y;
+            echo '<p id="age">' . $age . ' years old</p>';
+        }
+        echo '<p id="user-bio">' . $userData['bio'] . '</p>';
+        echo '</div>';
+        
+        // Display additional options if viewing own profile
+        echo '<section class="button-container">';
+        echo '<a href="editprofile.html"> <button class="rounded-button"> Edit Profile</button></a>';
+        echo '<button class="rounded-button" onclick="makeAPost()">Make a Post</button>';
+        echo '</section>';
+    } else {
+        echo 'Error fetching user information';
+    }
+} else {
+    // Redirect the user to the login page if not logged in
+    header('Location: login.php'); // Change 'login.php' to the actual login page URL
+    exit;
+}
+?>
+
+          
 
             
             <nav id="tab-tool">
-                <div class="text-option" onclick="toggle()"><a href=""> Your Posts</a></div> 
+                <div class="text-option" onclick="toggle()"><a href="">Posts</a></div> 
                 <div class="text-option"  id="last" onclick="toggle()"><a href=""> Discussions</a></div>
                 <div class="text-option" onclick="toggle()"><a href=""> Favourites </a></div>
             </nav>
