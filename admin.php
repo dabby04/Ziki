@@ -7,7 +7,8 @@
     <title>Ziki Admin</title>
     <style>
         <?php include "css/reset.css";
-        include "css/admin.css"
+        include "css/admin.css";
+        include "pageheader.php";
             ?>
     </style>
 </head>

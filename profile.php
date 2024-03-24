@@ -11,11 +11,8 @@
     <script src="script/profile.js"></script>
 </head>
 
-
-
-
 <header class="header">
-    <h1 class="title">Ziki</h1>
+    <h1 class="title"><a href="home.php">Ziki</a></h1>
     <?php
     error_reporting(E_ALL); 
     ini_set('display_errors', 1);
@@ -52,13 +49,38 @@
         <?php endif; ?>
 
     <div id="postPopup" class="popup">
-        <textarea placeholder="Speak your mind..."> </textarea>
+    <form id="postForm" action="savePost.php" method="post" enctype="multipart/form-data">
+    <textarea name="content" placeholder="Speak your mind..."></textarea>
         <div class="inputControls">
-            <img id="photo_icon" src="images/photo_icon.png"/>
-            <button class="postButtons" onclick="submitPost()">Submit</button>
-            <button class="postButtons" id="XButton" onclick="closePostPopup()">X</button>
+        <input type="text" name="title" placeholder="Enter title" is="postTitle" style="
+    display: flex;
+    position: absolute;
+    top: -825%;
+    width: 30em;
+    background-color: #d9d9d9;
+    left: -4%;
+    border-radius: 8px;
+">
+            <button type="button" class="postButtons" id="XButton" onclick="closePostPopup()" style="  border: none;
+  background-color:  #d9d9d9;
+  width: 20pt;
+  position: absolute;
+  bottom: 720%;
+  right: -2%;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 20px;"
+            >X</button>
+            <label for="postImage">
+                <img id="photo_icon" src="images/photo_icon.png" alt="Photo Icon"/>
+            </label>
+            <input type="file" id="postImage" name="postImage" accept="image/*">
+            <button type="submit" class="postButtons">Submit</button>
         </div>
-    </div>
+    </form>
+</div>
+
+
 </header>
 <body>
   

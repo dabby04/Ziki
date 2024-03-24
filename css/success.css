@@ -1,0 +1,42 @@
+/* success.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.success-message {
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.success-message h2 {
+    color: #007bff;
+}
+
+.success-message p {
+    color: #333333;
+    margin-top: 10px;
+}
+
+.success-message a {
+    display: inline-block;
+    background-color: #007bff;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.success-message a:hover {
+    background-color: #0056b3;
+}
