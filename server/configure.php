@@ -8,7 +8,7 @@ try {
     $pass = DBPASS;
     $pdo = new PDO($connString, $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // print_r("connected");
+    //print_r("connected");
 
 } catch (PDOException $e) {
     die ($e->getMessage());

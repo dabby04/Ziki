@@ -14,6 +14,7 @@
     else
         $status="inactive";
     
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,7 +32,7 @@
 
     <script src="script/home.js"></script>
     <link rel="stylesheet" href="css/status.css" />
-    <script src="script/home.js"></script>
+    <!-- <script src="script/home.js"></script> -->
 </head>
 
 <body>
@@ -48,6 +49,7 @@
             <button><a href="login.php" id="profile-icon"><img src="images/user.png"></a></button>
             <!-- <button><a href="login.html"><img src="images/user.png"></a></button> -->
             <div class="card">
+                
                 <section class="user_status">
                     <?php if ($status === "inactive"): ?>
                         <div class="inactive">
@@ -55,15 +57,15 @@
                             <div class="signup_box"><a href="registration.php"><button>SIGN UP</button></a></div>
                         </div>
                     <?php elseif ($status === "active"): ?>
-                        <div class="active">
+                        <div class="active drop">
                             <div class="profile_info">
                                 <img src="images/user.png">
                                 <?php
                                     echo "<p>".$username."</p>"
                                     ?>
                             </div>
-                            <div class="view"><button>View profile</button></div>
-                            <div class="edit"><button>Edit profile</button></div>
+                                <div class="view"><button>View profile</button></div>
+                                <div class="edit"><button id="logout">logout</button></div> 
                         </div>
                     <?php endif; ?>
                 </section>
