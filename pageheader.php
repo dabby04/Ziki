@@ -1,3 +1,13 @@
+<?php
+    include_once 'php/status.php';
+    session_start();
+
+    if(isset($_SESSION['login']))
+        $status="active";
+    else
+        $status="inactive";
+    
+?>
 <!DOCTYPE html>
 <html>
 
@@ -14,12 +24,12 @@
 </head>
 
 <body>
-    <?php
+    <!-- <?php
     include "php/status.php";
-    ?>
+    ?> -->
     <header class="header">
         <div id="header-info">
-            <h1 class="title">Ziki</h1>
+            <h1 class="title"><a href="home.php">Ziki</a></h1>
             <h6 class="subtitle">A place where gen Z can connect</h6>
         </div>
         <div id="user_button">

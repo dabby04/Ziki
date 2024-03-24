@@ -5,28 +5,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ziki Admin</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/admin.css" />
+    <style>
+        <?php include "css/reset.css";
+        include "css/admin.css"
+            ?>
+    </style>
 </head>
 
 <body>
+    <?php
+    $users;
+    $posts;
+    try {
+        require_once "server/configure.php";
 
+        $sql = "SELECT COUNT(username) as totalUser FROM USER";
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
 
-    <header class="header">
-        <?php include "pageheader.php" ?>
+        // Fetch the count of users
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        $totalUser = $row["totalUser"];
 
-    </header>
+        // If there are users, redirect to the home page or another appropriate page
+        if ($totalUser > 0) {
+            $users=$totalUser;
+        } else {
+            // No users found
+            $users=0;
+        }
 
-    <nav id="nav-bar">
+        $sql="SELECT COUNT(title) as totalPost FROM POSTS";
+        $statement = $pdo->prepare($sql);
+        $statement->execute();
 
-        <p class="current-selection"> <a href=""> Dashboard</a></p>
-        <p> <a href=""> Users </a> </p>
-        <p><a href="">Post Management </a> </p>
+        $row = $statement->fetch(PDO::FETCH_ASSOC);
+        $totalPosts = $row["totalPost"];
 
-    </nav>
+        if ($totalPosts > 0) {
+            $posts=$totalPosts;
+        } else {
+            $posts= 0;
+        }
+    } catch (PDOException $e) {
+        // Handle database connection errors
+        // Log the error or display a user-friendly message
+        echo "Database Error: " . $e->getMessage();
+    }
+    ?>
 
+    <script src="script/admin.js"></script>
+    <div class="wrapper">
+        <?php include "sidebarAdmin.php" ?>
+    </div>
     <div class="main">
-        <h2> Overview</h2>
         <div class="overview-box">
             <div class="title-box">
                 <h3>User Registration Stats</h3>
@@ -36,6 +68,7 @@
         <div class="overview-box">
             <div class="title-box">
                 <h3> Total Users</h3>
+                <h3 id="results"><?php echo $users?></h3>
             </div>
 
         </div>
@@ -45,6 +78,7 @@
                 <h3>
                     Total Posts
                 </h3>
+                <h3 id="results"><?php echo $posts?></h3>
             </div>
 
 

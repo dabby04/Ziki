@@ -6,15 +6,11 @@ body {
   padding: 0;
 }
 
-body a:hover {
-  color: white;
-}
-
-
 .title {
   font-size: 5em;
   font-family: 'Spirax', cursive;
 }
+
 .title a{
   text-decoration: none;
   color: inherit;
@@ -25,7 +21,7 @@ body a:hover {
 }
 
 header {
-  position: sticky;
+  position: fixed;
   width: 100%;
   margin-top: auto;
   background-image: linear-gradient(rgb(217, 5, 221), rgb(254, 207, 255));
