@@ -1,7 +1,12 @@
 
 <!DOCTYPE html>
 <html>
-
+<div class="wrapper">
+        <?php
+        // include "php/status.php";
+        include "pageheader.php";
+        ?>
+    </div>
 <head>
     <style>
         <?php include "css/reset.css"?>
@@ -28,12 +33,7 @@
 
 <body>
 
-    <div class="wrapper">
-        <?php
-        // include "php/status.php";
-        include "pageheader.php";
-        ?>
-    </div>
+    
     <div class="main">
         <div id="top2">
             <div id="centre_top2">
