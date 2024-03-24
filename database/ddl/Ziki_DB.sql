@@ -71,3 +71,5 @@ CREATE TABLE `CATEGORY` (
   `categoryId` INT AUTO_INCREMENT PRIMARY KEY,
   `categoryName` VARCHAR(50)
 );
+
+INSERT INTO ADMIN  VALUES ("test","whitney");

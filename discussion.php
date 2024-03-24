@@ -1,46 +1,45 @@
+<div class="wrapper">
+  <?php include "pageheader.php" ?>
+</div>
+
+<div id="cards">
+  <!-- <Button onclick=openDiscussion(discomments)>  -->
+</div>
 <?php
-  include 'pageheader.php';
-  ?>
+$list = array();
+$jsArray = json_encode($list); // Initialize as an empty JSON array
 
-    <div id="cards">
-         <!-- <Button onclick=openDiscussion(discomments)>  -->
-    </div>
-<?php
-  $list = array();
-  $jsArray = json_encode($list); // Initialize as an empty JSON array
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+  try {
+    require_once "server/configure.php";
+    $sql = "SELECT * FROM POSTS";
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
 
-  if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    try {
-      require_once "server/configure.php";
-      $sql = "SELECT * FROM POSTS";
-      $statement = $pdo->prepare($sql);
-      $statement->execute();
-
-      if ($statement->rowCount() > 0) {
-        $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
-        $jsArray = json_encode($list);
-      } else {
-        $message = "No posts found";
-        echo "<script type='text/javascript'>alert('$message');</script>";
-      }
-    } catch (PDOException $e) {
-      die ($e->getMessage());
+    if ($statement->rowCount() > 0) {
+      $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
+      $jsArray = json_encode($list);
+    } else {
+      $message = "No posts found";
+      echo "<script type='text/javascript'>alert('$message');</script>";
     }
+  } catch (PDOException $e) {
+    die ($e->getMessage());
   }
+}
 ?>
-    <script>
-        //var comments = ["Discussion 1", "Discussion 2", "Discussion 3", "Discussion 4"];
-        //let discTitle;
-        var topics = <?php echo $jsArray; ?>;
-        window.onload= function()
-            {
-                console.log(topics);
-                //using the name of the discussion, generate related content
-                const displayComments = document.getElementById("cards");
-                //const comments = ["Discussion 1", "Discussion 2", "Discussion 3", "Discussion 4"];
-                //displayComments.innerHTML= comments.map((e)=>{
-                  displayComments.innerHTML= topics.map((e)=>{
-                    return `<div class="card text-center">
+<script>
+  //var comments = ["Discussion 1", "Discussion 2", "Discussion 3", "Discussion 4"];
+  //let discTitle;
+  var topics = <?php echo $jsArray; ?>;
+  window.onload = function () {
+    console.log(topics);
+    //using the name of the discussion, generate related content
+    const displayComments = document.getElementById("cards");
+    //const comments = ["Discussion 1", "Discussion 2", "Discussion 3", "Discussion 4"];
+    //displayComments.innerHTML= comments.map((e)=>{
+    displayComments.innerHTML = topics.map((e) => {
+      return `<div class="card text-center">
                           <div class="card-header">
                             <img id="discussionPFP" class="icons" src="images/blank-profile-picture.png" alt ="disussion pfp">
                             Username 
@@ -75,6 +74,6 @@
                                 2 days ago
                             </div>
                         </div>`;
-            }).join("");
-            }
-    </script>
+    }).join("");
+  }
+</script>

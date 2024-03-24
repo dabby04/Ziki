@@ -1,15 +1,16 @@
 
 
 <?php
-    $DBHOST= '127.0.0.1';
-    $DBNAME = 'Ziki_DB';
-    $DBUSER= 'root';
-    $DBPASS= "";
+require "conn_info.php";
+try {
+    $connString = "mysql:host=localhost;dbname=ziki";
+    $user = DBUSER;
+    $pass = DBPASS;
+    $pdo = new PDO($connString, $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // print_r("connected");
 
-$conn = mysqli_connect($DBHOST, $DBUSER , $DBPASS, $DBNAME);
-
-
-if(!$conn){
-    die("Connection failed : " . mysqli_connect_error());
+} catch (PDOException $e) {
+    die ($e->getMessage());
 }
 ?>

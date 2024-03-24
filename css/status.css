@@ -30,13 +30,13 @@
     text-align: center;
 }
 
-.card {
+.statcard {
     display: none;
     position: fixed;
     margin-top: 10em;
 }
 
-.card .user_status .active{
+.statcard .user_status .active{
     margin-top:5em;
 }
 
@@ -44,7 +44,7 @@
     position: relative;
 }
 
-#user_button:hover .card {
+#user_button:hover .statcard {
     display: block;
 }
 

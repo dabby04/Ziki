@@ -46,7 +46,7 @@
             <!-- <div class="profile-popup"> <button> <a href="login.html">Login </a></button> <button><a href="registration.html">Registration</a></button> </div> -->
             <button><a href="login.php" id="profile-icon"><img src="images/user.png"></a></button>
             <!-- <button><a href="login.html"><img src="images/user.png"></a></button> -->
-            <div class="card">
+            <div class="statcard">
                 <section class="user_status">
                     <?php if ($status === "inactive"): ?>
                         <div class="inactive">
