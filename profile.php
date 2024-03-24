@@ -41,16 +41,16 @@
 session_start();
 
 // Check if the user is logged in
-if(isset($_SESSION['id'])) {
+if(isset($_SESSION['username'])) {
     // Include your database connection file
     include 'configure.php'; // Change 'db_connection.php' to the actual filename of your database connection script
     
     // Get the logged-in user's ID from the session
-    $userId = $_SESSION['id'];
+    $username = $_SESSION['username'];
     
     // Query to fetch user information from the database
-    $sql = "SELECT username, DOB, bio FROM users WHERE id = $userId";
-    $result = mysqli_query($connection, $sql);
+    $sql = "SELECT * FROM users WHERE username = $username";
+    $result = mysqli_query($conn, $sql);
     
     // Check if the query was successful
     if($result) {
@@ -76,14 +76,12 @@ if(isset($_SESSION['id'])) {
         echo '<a href="editprofile.html"> <button class="rounded-button"> Edit Profile</button></a>';
         echo '<button class="rounded-button" onclick="makeAPost()">Make a Post</button>';
         echo '</section>';
-    } else {
-        echo 'Error fetching user information';
-    }
+    } 
 } else {
-    // Redirect the user to the login page if not logged in
-    header('Location: login.html'); // Change 'login.php' to the actual login page URL
-    exit;
+    echo 'Error fetching user information';
 }
+  
+
 ?>
 
 

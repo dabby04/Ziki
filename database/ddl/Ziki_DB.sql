@@ -14,7 +14,7 @@ CREATE TABLE USERS (
   `DOB` DATE ,
   `dateJoined` DATETIME,
   `bio` varchar(100),
-  `profilePhoto` BLOB
+  `pfp` BLOB
 )
 
 CREATE TABLE ADMIN (

@@ -76,4 +76,16 @@ margin-top: 0.55em
     margin: 1em 1em 0em 5em;
  }
 
+ .upload {
+    position: absolute;
+    left: 353px;
+    text-align: center; 
+
+ }
+
+.upload input[type="file"] {
+    display: block; /* Make the file input a block element */
+    margin: 0 auto; /* Center horizontally */
+    opacity: 0%;
+}
  
