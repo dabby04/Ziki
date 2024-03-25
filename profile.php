@@ -81,7 +81,7 @@ if(isset($_SESSION['id'])) {
     }
 } else {
     // Redirect the user to the login page if not logged in
-    header('Location: login.html'); // Change 'login.php' to the actual login page URL
+    header('Location: login.php'); // Change 'login.php' to the actual login page URL
     exit;
 }
 ?>

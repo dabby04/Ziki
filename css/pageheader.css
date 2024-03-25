@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Spirax&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inspiration&display=swap');
 
+.wrapper {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
 body {
   margin: 0;
   padding: 0;
