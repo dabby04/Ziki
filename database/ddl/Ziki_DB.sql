@@ -49,6 +49,7 @@ CREATE TABLE COMMENTS (
     postId              INT,
     likes               INT,
     dislikes            INT,
+    content             varchar,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP       
     PRIMARY KEY (commentId),
     FOREIGN KEY (postId) REFERENCES POSTS(id)
