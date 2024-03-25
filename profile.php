@@ -116,6 +116,6 @@ try {
     <nav id="tab-tool">
         <div class="text-option" onclick="toggle()"><a href="">Posts</a></div> 
         <div class="text-option" id="last" onclick="toggle()"><a href=""> Discussions</a></div>
-        <div class="text-option" onclick="toggle()"><a href
+        <div class="text-option" onclick="toggle()"><a href="">Likes</a></div>
 
 
