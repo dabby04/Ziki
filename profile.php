@@ -120,3 +120,17 @@ try {
     </nav>
 
 
+    <?php if(!isset($_GET['id'])): ?>
+    <section class="button-container">
+        <a href="editprofile.php"> <button class="rounded-button"> Edit Profile</button></a>
+        <button class="rounded-button" onclick="makeAPost()">Make a Post</button>
+    </section>
+    <?php endif; ?>
+
+    <!-- Navigation -->
+    <nav id="tab-tool">
+        <div class="text-option" onclick="toggle()"><a href="">Posts</a></div> 
+        <div class="text-option" id="last" onclick="toggle()"><a href=""> Discussions</a></div>
+        <div class="text-option" onclick="toggle()"><a href="">Likes</a></div>
+
+

@@ -13,6 +13,7 @@ function makeAPost (){
  }
  
  function submitPost () {
+    
      location.reload();
  
  }

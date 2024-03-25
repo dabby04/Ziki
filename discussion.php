@@ -65,7 +65,7 @@ try {
         return `<div class="card text-center">
                           <div class="card-header">
                             <img id="discussionPFP" class="icons" src="images/blank-profile-picture.png" alt ="disussion pfp">
-                            Username 
+                            ${e.userId} 
                             <div class="dropdown">
                             <img id="discDropdown" class="icons" src="images/dropdown.png" alt="dropdown discussion" data-bs-toggle="dropdown" aria-expanded="false">
                             <ul class="dropdown-menu">
@@ -79,22 +79,13 @@ try {
                           </div>
                             <div class="card-body">
                                 <h5 class="card-title">${e.title}</h5>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <p class="card-text">${e.content}</p>
                                 <form action="specificDiscussion.php" method="POST">
-                                          <button type="submit" class="btn btn-primary" name="discTopic" value=${e}>View Discussion</button>
+                                          <button type="submit" class="btn btn-primary" name="discTopic" value=${e.postId}>View Discussion</button>
                                 </form>
-                                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
-                                    <div class="offcanvas-header">
-                                        <h5 class="offcanvas-title" id="offcanvasBottomLabel">${e}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                                    </div>
-                                    <div class="offcanvas-body small" id="discomments">
-                                        ...
-                                    </div>
-                                </div>
                             </div>
                             <div class="card-footer text-body-secondary">
-                                2 days ago
+                                ${e.created_at}
                             </div>
                         </div>`;
       }).join("");
