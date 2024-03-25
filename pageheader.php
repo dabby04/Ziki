@@ -70,7 +70,7 @@
             </div>
         </div>
         <div class="search-container" tabindex="1">
-            <form action="php/search.php" method="get">
+            <form action="discussion.php" method="get">
                 <input type="text" placeholder="Search" name="query">
                 <a class="button">
                     <img src="images/search.png" alt="Search">
