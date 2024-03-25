@@ -18,7 +18,7 @@ CREATE TABLE USERS (
 )
 
 CREATE TABLE ADMIN (
-  'password' int,
+  'password' varchar(20),
   'username' varchar(10)
 )
 
@@ -51,6 +51,7 @@ CREATE TABLE COMMENTS (
     postId              INT,
     likes               INT,
     dislikes            INT,
+    content             varchar,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP       
     PRIMARY KEY (commentId),
     FOREIGN KEY (postId) REFERENCES POSTS(id)
@@ -73,3 +74,5 @@ CREATE TABLE `CATEGORY` (
   `categoryId` INT AUTO_INCREMENT PRIMARY KEY,
   `categoryName` VARCHAR(50)
 );
+
+INSERT INTO ADMIN  VALUES ("test","whitney");

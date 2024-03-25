@@ -101,9 +101,31 @@ try {
             <p id="age"><?php echo $age; ?> years old</p>
             <?php
         }
-        ?>
-        <p id="user-bio"><?php echo $userData['bio']; ?></p>
-    </div>
+        echo '<p id="user-bio">' . $userData['bio'] . '</p>';
+        echo '</div>';
+        
+        // Display additional options if viewing own profile
+        echo '<section class="button-container">';
+        echo '<a href="editprofile.html"> <button class="rounded-button"> Edit Profile</button></a>';
+        echo '<button class="rounded-button" onclick="makeAPost()">Make a Post</button>';
+        echo '</section>';
+    } else {
+        echo 'Error fetching user information';
+    }
+} else {
+    // Redirect the user to the login page if not logged in
+    header('Location: login.php'); // Change 'login.php' to the actual login page URL
+    exit;
+}
+?>
+
+
+            <nav id="tab-tool">
+                <div class="text-option" onclick="toggle()"><a href="">Posts</a></div> 
+                <div class="text-option"  id="last" onclick="toggle()"><a href=""> Discussions</a></div>
+                <div class="text-option" onclick="toggle()"><a href=""> Favourites </a></div>
+            </nav>
+
 
     <?php if(!isset($_GET['id'])): ?>
     <section class="button-container">

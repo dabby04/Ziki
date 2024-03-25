@@ -1,34 +1,20 @@
 <?php
-
-    //include_once 'php/status.php';
-    session_start();
-    
-    $status="";
-    $username=null;
-    if(isset($_SESSION['status']))
-    {
-        $status=$_SESSION['status'];
-        $username=$_SESSION['username'];
-        //$username="something";
-
-    }
-    else
-        $status="inactive";
-    
-
-?>
+    // include "php/status.php";
+    include "pageheader.php";
+    ?>
 <!DOCTYPE html>
 <html>
 
 <head>
+    
     <style>
-        <?php include "css/reset.css"?>
+        <?php include "css/reset.css" ?>
     </style>
     <style>
         <?php include "css/home.css";
         include "css/highlight.css";
-        include "css/search.css"?>
-        </style>
+        include "css/search.css" ?>
+    </style>
     <!-- <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/home.css"> -->
     <!-- <link rel="stylesheet" href="css/login.css"> -->
@@ -42,16 +28,14 @@
     <script src="script/home.js"></script>
     <link rel="stylesheet" href="css/status.css" />
     <!-- <script src="script/home.js"></script> -->
+    
 </head>
 
 <body>
 
-    <div class="wrapper">
-        <?php
-        // include "php/status.php";
-        include "pageheader.php";
-        ?>
-    </div>
+    <!-- <div class="wrapper"> -->
+
+    <!-- </div> -->
     <div class="main">
         <div id="top2">
             <div id="centre_top2">
