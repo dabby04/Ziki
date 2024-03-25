@@ -14,7 +14,7 @@ CREATE TABLE USERS (
   `DOB` DATE ,
   `dateJoined` DATETIME,
   `bio` varchar(100),
-  `profilePhoto` BLOB
+  `pfp` LONGBLOB
 )
 
 CREATE TABLE ADMIN (
@@ -23,11 +23,11 @@ CREATE TABLE ADMIN (
 )
 
 CREATE TABLE REPORTED (
-  reportId INT
-  postId INT
-  userId INT
-  count INT  
-    FOREIGN KEY (userId) REFERENCES User(id) ON DELETE NO ACTION ON UPDATE CASCADE 
+  reportId INT,
+  postId INT,
+  userId INT,
+  count INT  ,
+    FOREIGN KEY (userId) REFERENCES User(id) ON DELETE NO ACTION ON UPDATE CASCADE ,
     FOREIGN KEY (postId) REFERENCES User(id) ON DELETE NO ACTION ON UPDATE CASCADE 
    
 )
@@ -39,8 +39,10 @@ CREATE TABLE POSTS (
   creator varchar(10) NOT NULL,
   dislikes int,
   views int,
+  img BLOB,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-   FOREIGN KEY (creator) REFERENCES USERS(username)
+  FOREIGN KEY (creator) REFERENCES USERS(username)
+
 )
 
 CREATE TABLE COMMENTS (

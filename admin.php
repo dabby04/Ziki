@@ -7,7 +7,8 @@
     <title>Ziki Admin</title>
     <style>
         <?php include "css/reset.css";
-        include "css/admin.css"
+        include "css/admin.css";
+        include "pageheader.php";
             ?>
     </style>
 </head>
@@ -16,6 +17,9 @@
     <?php
     $users;
     $posts;
+
+    if($_SESSION['status'] = "admin"){
+
     try {
         require_once "server/configure.php";
 
@@ -51,6 +55,8 @@
         // Handle database connection errors
         // Log the error or display a user-friendly message
         echo "Database Error: " . $e->getMessage();
+    } }else{
+    header("Location: login.php");
     }
     ?>
 
