@@ -3,22 +3,43 @@ $list = array();
 $jsArray = json_encode($list); // Initialize as an empty JSON array
 
 // if ($_SERVER['REQUEST_METHOD'] == "POST") {
-  try {
-    require_once "server/configure.php";
-    $sql = "SELECT * FROM POSTS";
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
+try {
+  require_once "server/configure.php";
+  $sql = "SELECT * FROM POSTS";
+  $statement = $pdo->prepare($sql);
+  $statement->execute();
 
-    if ($statement->rowCount() > 0) {
-      $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
-      $jsArray = json_encode($list);
-    } else {
-      $message = "No posts found";
-      echo "<script type='text/javascript'>alert('$message');</script>";
-    }
-  } catch (PDOException $e) {
-    die ($e->getMessage());
+  if ($statement->rowCount() > 0) {
+    $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
+    $jsArray = json_encode($list);
+  } else {
+    $message = "No posts found";
+    echo "<script type='text/javascript'>alert('$message');</script>";
   }
+
+  if ($_SERVER['REQUEST_METHOD'] == "GET") {
+
+    try {
+      $search_query = "%" . $_GET["query"] . "%"; // Add wildcards here
+      $sql = "SELECT * FROM POSTS WHERE title LIKE ?";
+      $statement = $pdo->prepare($sql);
+      $statement->execute([$search_query]);
+
+      if ($statement->rowCount() > 0) {
+        $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
+        $jsArray = json_encode($list);
+      } else {
+        $message = "No posts found";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+      }
+    } catch (Exception $e) {
+      // Handle exception
+      die ($e->getMessage());
+    }
+  }
+} catch (PDOException $e) {
+  die ($e->getMessage());
+}
 // }
 ?>
 <!DOCTYPE html>

@@ -18,7 +18,7 @@ CREATE TABLE USERS (
 )
 
 CREATE TABLE ADMIN (
-  'password' int,
+  'password' varchar(20),
   'username' varchar(10)
 )
 
