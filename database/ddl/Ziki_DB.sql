@@ -37,11 +37,12 @@ CREATE TABLE POSTS (
   title varchar,
   content varchar(1000),
   creator varchar(10) NOT NULL,
+  creatorId INT NOT NULL,
   dislikes int,
   views int,
-  img BLOB,
+  img LONGBLOB,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (creator) REFERENCES USERS(username)
+  FOREIGN KEY (creatorId) REFERENCES USER(username)
 
 )
 
