@@ -88,4 +88,11 @@ margin-top: 0.55em
     margin: 0 auto; /* Center horizontally */
     opacity: 0%;
 }
+
+
+#username{
+    background-color: transparent;
+    border: none;
+    display: inline;
+}
  
