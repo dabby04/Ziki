@@ -40,6 +40,7 @@
         // Process the data from $row as needed
         $_SESSION['status'] = "active";
         $_SESSION['username'] = $row["username"];
+        $_SESSION['id'] = $row["id"];
         
         // Redirect to the home page
         header("Location: home.php");

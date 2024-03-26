@@ -2,34 +2,43 @@
 error_reporting(E_ALL); 
 ini_set('display_errors', 1);
 
-session_start();
-require_once 'server/configure.php'; 
+session_start(); // Start the session
 
-if(isset($_GET['id'])) {
-    // Use the user ID from the URL if provided
-    $user_id = $_GET['id'];
-    
-} else {
-    // Use the session user ID if no user ID is specified in the URL
-    $user_id = '1';
+if (!isset($_SESSION['id'])) {
+    // If the user is not logged in, redirect them to the login page
+    header("Location: login.php");
+    exit;
 }
+
+// Check if the user is an admin
+if ($_SESSION['status'] === "admin") {
+    // Handle admin profile differently or redirect to admin page
+    header("Location: admin.php");
+    exit;
+}
+
+// If the user is not an admin, proceed to fetch user data using their ID
+// You should have your database connection code here
+
+// Retrieve the user ID from the session
+$user_id = $_SESSION['id'];
 
 try {
     // Connect to the database using PDO
+    require_once "server/configure.php";
     $pdo = new PDO("mysql:host=$DBHOST;port=$DBPORT;dbname=$DBNAME;charset=utf8mb4", $DBUSER, $DBPASS);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Query to fetch user information from the database
-    $sql = "SELECT * FROM users WHERE id = :user_id";
+    $sql = "SELECT * FROM USER WHERE id = :user_id";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->execute();
     $userData = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
 } catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -47,11 +56,26 @@ try {
 
 <header class="header">
     <h1 class="title"><a href="home.php">Ziki</a></h1>
-    <?php if (!empty($userData['pfp'])): ?>
+    <?php if (!empty($userData['profilePhoto'])): ?>
         <img id="header-img" src="images/headerimg.png" />
-        <img class="pfp" src="data:image/jpeg;base64,<?php echo base64_encode($userData['pfp']); ?>"/>
+        <img class="pfp" src="data:image/jpeg;base64"  style=" border-radius: 50%;
+    width: 200px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    right: 50%;
+    bottom: 0%;
+    transform: translate(-50%, -50%);",<?php echo base64_encode($userData['profilePhoto']); ?>"/>
     <?php else: ?>
-        <img class="pfp" src="images/blank-profile-picture.png"/>
+        <img id="header-img" src="images/headerimg.png" />
+        <img class="pfp" src="images/blank-profile-picture.png"  style="  border-radius: 50%;
+    width: 200px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    right: 50%;
+    bottom: 0%;
+    transform: translate(-50%, -50%);"/>
     <?php endif; ?>
     
     <!-- Post Popup Form -->
@@ -104,20 +128,6 @@ try {
         ?>
         <p id="user-bio"><?php echo $userData['bio']; ?></p>
     </div>
-
-    <?php if(!isset($_GET['id'])): ?>
-    <section class="button-container">
-        <a href="editprofile.php"> <button class="rounded-button"> Edit Profile</button></a>
-        <button class="rounded-button" onclick="makeAPost()">Make a Post</button>
-    </section>
-    <?php endif; ?>
-
-    <!-- Navigation -->
-    <nav id="tab-tool">
-        <div class="text-option" onclick="toggle()"><a href="">Posts</a></div> 
-        <div class="text-option" id="last" onclick="toggle()"><a href=""> Discussions</a></div>
-        <div class="text-option" onclick="toggle()"><a href
-    </nav>
 
 
     <?php if(!isset($_GET['id'])): ?>

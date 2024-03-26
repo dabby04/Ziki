@@ -4,7 +4,7 @@ CREATE DATABASE IF NOT EXISTS Ziki;
 -- Switch to the newly created database
 USE Ziki;
 
-CREATE TABLE USERS (
+CREATE TABLE USER (
 
   `id` int(4) PRIMARY KEY AUTO_INCREMENT NOT NULL,
   `name` varchar(30) NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE USERS (
   `DOB` DATE ,
   `dateJoined` DATETIME,
   `bio` varchar(100),
-  `pfp` LONGBLOB
+  `profilePhoto` LONGBLOB
 )
 
 CREATE TABLE ADMIN (
