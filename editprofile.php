@@ -91,6 +91,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $bio = $_POST['bio'];
     }
 
+    //validate pfp
+    if (isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK ) {
+        // Read the contents of the uploaded file
+        $profilePhoto = file_get_contents($_FILES['img']['tmp_name']);
+    } else {
+        // Set the default profile picture
+        $defaultProfilePicturePath = 'images/blank-profile-picture.png'; // Provide the path to your default profile picture
+        $profilePhoto = file_get_contents($defaultProfilePicturePath);
+    }
+
     // Check if there are any validation errors
     if (empty($errors)) {
         // Proceed with updating user's information in the database
@@ -99,31 +109,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $pdo = new PDO("mysql:host=$DBHOST;port=$DBPORT;dbname=$DBNAME;charset=utf8mb4", $DBUSER, $DBPASS);
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            // Check if a file was uploaded
-
-if (isset($_FILES['img'])) {
-    // Read the contents of the uploaded file
-    $profilePhoto = file_get_contents($_FILES['img']['tmp_name']);
-} elseif (isset($_POST['removePhoto'])) {
-    // If the user selected to remove the profile photo, set it to null
-    $defaultProfilePicturePath = 'images/blank-profile-picture.png'; // Provide the path to your default profile picture
-    $profilePhoto = file_get_contents($defaultProfilePicturePath);
-} else {
-    // Set the default profile picture
-    $defaultProfilePicturePath = 'images/blank-profile-picture.png'; // Provide the path to your default profile picture
-    $profilePhoto = file_get_contents($defaultProfilePicturePath);
-}
 
 
             // Update user's information in the database
             // Update user's information in the database
-$updateSql = "UPDATE USER SET email = ?, DOB = ?, bio = ?, profilePhoto = ? WHERE id = ?";
+$updateSql = "UPDATE USER SET email = ?, DOB = ?, bio = ?, profilePhoto = ?, username = ? WHERE id = ?";
 $updateStmt = $pdo->prepare($updateSql);
 $updateStmt->bindParam(1, $email, PDO::PARAM_STR);
 $updateStmt->bindParam(2, $dob, PDO::PARAM_STR);
 $updateStmt->bindParam(3, $bio, PDO::PARAM_STR);
 $updateStmt->bindParam(4, $profilePhoto, PDO::PARAM_LOB);
-$updateStmt->bindParam(5, $_SESSION['id'], PDO::PARAM_INT);
+$updateStmt->bindParam(5, $username, PDO::PARAM_STR);
+$updateStmt->bindParam(6, $_SESSION['id'], PDO::PARAM_INT);
+
 $updateStmt->execute();
 
 
@@ -133,8 +131,8 @@ $updateStmt->execute();
                 header("Location: profile.php");
                 exit;
             } else {
+                header("Location: profile.php");
                 // Handle case where the update did not affect any rows
-                echo "No rows were updated.";
             }
         } catch (PDOException $e) {
             echo "Error: " . $e->getMessage();
@@ -172,20 +170,17 @@ $updateStmt->execute();
 
 
             <!-- Populate form fields with user's information -->
-            <form id="change-info" method="post"  enctype="multipart/form-data">
+        <form id="change-info" method="post"  enctype="multipart/form-data">
             <div class="upload">
-            <input type="file" id="img" name="img" accept="image/*" style=
-            " background-color: transparent;
-                border: none;
-                position: relative;
-                left: 20%;">
+            <input type="file" id="img" name="img" accept="image/*" />
             </div>
            <input type="text" id="username" name="username" 
                 value="<?php echo isset($userData['username']) ? $userData['username'] : ''; ?>" placeholder="Username"  style=
-            " background-color: transparent;
-                border: none;
-                position: relative;
-                left: 12%;" /> 
+              "  background-color: transparent;
+    border: none;
+    position: relative;
+    left: 12%;
+    margin-top: 5em;" /> 
 
                 <p id="email-entry">
                     <label><img class="icon" src="images/mail-icon.png" alt="email icon" /></label>

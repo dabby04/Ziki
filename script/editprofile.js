@@ -1,66 +1,55 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Add event listener for form submission
-  const form = document.getElementById('change-info');
-  form.addEventListener('submit', function(event) {
-      if (!check(event)) {
-          // Prevent form submission if validation fails
-          event.preventDefault();
-      }
-  });
+// Function to check if each field in the form has been entered
+function check(event) {
+    try {
+        // Get input elements by their respective IDs
+        var usernameInput = document.getElementById('username');
+        var emailInput = document.getElementsByName('email')[0];
+        var dobInput = document.getElementsByName('dob')[0];
+        var bioInput = document.getElementsByName('bio')[0];
 
-  // Function to check form fields before submission
-  function check(event) {
-      try {
-          // Get elements by their respective IDs
-          var email = document.getElementById('email-entry');
-          var date = document.getElementById('date-entry');
-          var username = document.getElementById('username');
+        // Clear previous error messages
+        clearErrorMessages();
 
-          // Clear previous error messages
-          clearErrorMessages();
-
-          // Check conditions for each field
-          if (email.querySelector('input').value.length === 0) {
-              displayErrorMessage(email, 'Email cannot be empty');
-              return false; // Return false to indicate validation failure
-          }
-
-          if (date.querySelector('input').value.length === 0) {
-              displayErrorMessage(date, 'Date cannot be empty');
-              return false; // Return false to indicate validation failure
-          }
-
-          if (username.querySelector('input').value.length === 0) {
-            displayErrorMessage(username, 'Username cannot be empty');
+        // Check if any field is empty
+        if (usernameInput.value.trim() === '') {
+            displayErrorMessage(usernameInput, 'Username cannot be empty');
             return false; // Return false to indicate validation failure
         }
 
-          // If all conditions pass, return true to allow form submission
-          return true;
+        if (emailInput.value.trim() === '') {
+            displayErrorMessage(emailInput, 'Email cannot be empty');
+            return false; // Return false to indicate validation failure
+        }
 
-      } catch (error) {
-          console.error(error); // Log the error to the console
-          return false; // Return false to indicate validation failure
-      }
-  }
+        if (dobInput.value.trim() === '') {
+            displayErrorMessage(dobInput, 'Date of Birth cannot be empty');
+            return false; // Return false to indicate validation failure
+        }
 
-  // Function to display error messages
-  function displayErrorMessage(element, message) {
-      var errorElement = document.createElement('div');
-      errorElement.className = 'error-message';
-      errorElement.textContent = message;
+        if (bioInput.value.trim() === '') {
+            displayErrorMessage(bioInput, 'Bio cannot be empty');
+            return false; // Return false to indicate validation failure
+        }
 
-      // Insert the error message after the corresponding input field
-      element.parentNode.insertBefore(errorElement, element.nextSibling);
-  }
+        // If all conditions pass, return true to allow form submission
+        return true;
 
-  // Function to clear previous error messages
-  function clearErrorMessages() {
-      var errorMessages = document.querySelectorAll('.error-message');
-      errorMessages.forEach(function(errorMessage) {
-          errorMessage.parentNode.removeChild(errorMessage);
-      });
-  }
+    } catch (error) {
+        console.error(error); // Log the error to the console
+        return false; // Return false to indicate validation failure
+    }
+}
+
+
+// Add event listener to the form submission
+document.getElementById("change-info").addEventListener("submit", function(event) {
+    // Check form validity before submission
+    if (!validateForm()) {
+        event.preventDefault(); // Prevent form submission if validation fails
+    }
+});
+
 
   // Get the file input element
   const fileInput = document.getElementById('img');
