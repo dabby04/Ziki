@@ -5,9 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ziki Admin</title>
-    <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/sidebarAdmin.css" />
-    <link rel="stylesheet" href="css/admin.css" />
+    <style><?php include "css/reset.css";?></style>
+    <style>
+        <?php 
+        include "css/admin.css";
+        include "pageheader.php";
+        ?>
+    </style>
     <script src="script/admin.js"></script>
 </head>
 
@@ -17,35 +21,71 @@
     </div>
 
     <div class="main">
-        <div id="search-box"> <input type="search" placeholder="search for a user post or word">
+        <div class="box">
+        <h3>Reported Posts</h3>
+        <div class="reported">
+            <fieldset>
+                <legend>@hdgwuke</legend>
+                <p>No one likes you</p>
+                <button class="remove">Remove</button>
+            </fieldset>
+            <fieldset>
+                <legend>@vxfcd</legend>
+                <p>La la la... la la la</p>
+                <button class="remove">Remove</button>
+            </fieldset>
+            <fieldset>
+                <legend>@adb123</legend>
+                <p>Violence Rules</p>
+                <button class="remove">Remove</button>
+            </fieldset>
+            <fieldset>
+                <legend>@redflag</legend>
+                <p>The earth is flat</p>
+                <button class="remove">Remove</button>
+            </fieldset>
+            <fieldset>
+                <legend>@bean</legend>
+                <p>The earth is void</p>
+                <button class="remove">Remove</button>
+            </fieldset>
+           
+        </div>
+        
+        </div>
+        <div class="box">
+        <h3>Incomplete Posts</h3>
+        <div class="reported">
+            <fieldset>
+                <legend>@hdgwuke</legend>
+                <p>No one likes you</p>
+                <button class="remove">Remove</button>
+            </fieldset>
+            <fieldset>
+                <legend>@vxfcd</legend>
+                <p>La la la... la la la</p>
+                <button class="remove">Remove</button>
+            </fieldset>
+            <fieldset>
+                <legend>@adb123</legend>
+                <p>Violence Rules</p>
+                <button class="remove">Remove</button>
+            </fieldset>
+            <fieldset>
+                <legend>@redflag</legend>
+                <p>The earth is flat</p>
+                <button class="remove">Remove</button>
+            </fieldset>
+            <fieldset>
+                <legend>@bean</legend>
+                <p>The earth is void</p>
+                <button class="remove">Remove</button>
+            </fieldset>
+           
+        </div>
+        
         </div>
 
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>Incomplete Post</th>
-                    <th>Reported Posts</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Post 1</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>Row 2, Col 1</td>
-                    <td>Row 2, Col 2</td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Row 4, Col 1</td>
-                    <td>Row 4, Col 2</td>
-                </tr>
-            </tbody>
-        </table>
 
 
 
