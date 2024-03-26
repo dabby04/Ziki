@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
           // Get elements by their respective IDs
           var email = document.getElementById('email-entry');
           var date = document.getElementById('date-entry');
+          var username = document.getElementById('username');
 
           // Clear previous error messages
           clearErrorMessages();
@@ -28,6 +29,11 @@ document.addEventListener('DOMContentLoaded', function() {
               displayErrorMessage(date, 'Date cannot be empty');
               return false; // Return false to indicate validation failure
           }
+
+          if (username.querySelector('input').value.length === 0) {
+            displayErrorMessage(username, 'Username cannot be empty');
+            return false; // Return false to indicate validation failure
+        }
 
           // If all conditions pass, return true to allow form submission
           return true;
