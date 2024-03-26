@@ -76,7 +76,7 @@ try {
     </div>
 </header>
 
-<body>
+
     <div class="profile-info">
         <p id="username">@<?php echo $userData['username']; ?></p>
         <?php
@@ -100,4 +100,29 @@ try {
     <?php endif; ?>
 
     <!-- Navigation -->
-    <nav id="tab-tool">
+      <!-- Navigation -->
+      <nav id="tab-tool">
+        <div class="text-option" onclick="toggle()"><a href="">Posts</a></div> 
+        <div class="text-option" id="last" onclick="toggle()"><a href=""> Discussions</a></div>
+        <div class="text-option" onclick="toggle()"><a href="">Likes</a></div>
+
+    
+        <div class="post-section">
+    <div class="post-container">
+        <!-- User profile photo in top right -->
+        <img class="profile-photo" src="user_profile_photo.jpg" alt="User Profile Photo">
+        <!-- Post title in center -->
+        <h2 class="post-title">Post Title</h2>
+        <!-- Post content in middle -->
+        <p class="post-content">Post Content Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero in enim gravida vulputate. In hac habitasse platea dictumst.</p>
+        <!-- View comment button -->
+        <button class="view-comment-button">View Comments</button>
+        <!-- Post footer displaying the time the post was made -->
+        <div class="post-footer">2 days ago</div>
+    </div>
+</div>
+
+    </div>
+
+    <body>
+        </html>
