@@ -3,26 +3,6 @@ session_start();
 if (!isset($_SESSION['status']) || $_SESSION['status'] !== "admin") {
     header("Location: login.php");
     exit;
-}?>
-<?php
-$list = array();
-$jsArray = json_encode($list);
-try {
-    require_once "server/configure.php";
-    $sql = "SELECT POSTS.title, USER.username, REPORTED.count FROM REPORTED JOIN POSTS ON REPORTED.postId=POSTS.id JOIN USER ON REPORTED.userId=USER.id ORDER BY REPORTED.count DESC";
-    $statement = $pdo->prepare($sql);
-    $statement->execute();
-
-    if ($statement->rowCount() > 0) {
-        $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
-        $jsArray = json_encode($list);
-    } else {
-        $message = "No posts found";
-        echo "<script type='text/javascript'>alert('$message');</script>";
-    }
-
-} catch (PDOException $e) {
-    die($e->getMessage());
 }
 ?>
 <!DOCTYPE html>
@@ -37,27 +17,10 @@ try {
     </style>
     <style>
         <?php
-        
-        include "pageheader.php";
         include "css/admin.css";
+        include "pageheader.php";
         ?>
     </style>
-    <script src="script/admin.js"></script>
-    <script>
-    var topics = <?php echo $jsArray; ?>;
-    window.onload = function () {
-        const displayReported = document.getElementsByClassName("reported")[0];
-        displayReported.innerHTML = topics.map((e) => {
-            return `
-            <fieldset>
-                <legend>@${e.username}</legend>
-                <p>${e.title}</p>
-                <button class="remove">Remove</button>
-            </fieldset>`;
-        }).join("");
-    }
-</script>
-
 </head>
 
 <body>
@@ -71,12 +34,46 @@ try {
             <div class="reported">
 
             </div>
-
-
-
-
-
         </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function fetchReportedPosts() {
+                $.ajax({
+                    url: 'ajax/postmanAjax.php',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        updateReportedPosts(data);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Failed to fetch reported posts: ' + error);
+                    }
+                });
+            }
+
+            function updateReportedPosts(posts) {
+                const displayReported = $('.reported');
+                displayReported.empty();
+                $.each(posts, function (index, post) {
+                    var fieldset = $('<fieldset></fieldset>');
+                    var legend = $('<legend></legend>').text('@' + post.username);
+                    var paragraph = $('<p></p>').text(post.title);
+                    var button = $('<button class="remove">Remove</button>');
+                    fieldset.append(legend, paragraph, button);
+                    displayReported.append(fieldset);
+                });
+            }
+
+            // Fetch reported posts initially
+            fetchReportedPosts();
+
+            // Fetch reported posts every 60 seconds
+            setInterval(fetchReportedPosts, 60000);
+        });
+    </script>
 </body>
 
 </html>
