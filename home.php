@@ -79,7 +79,7 @@
                     </figure>
                 </div>
                 <div class="discuss">
-                    <a href="#">
+                    <a href="discussion.php">
                         <h3>Show more discussions</h3>
                     </a>
                 </div>
