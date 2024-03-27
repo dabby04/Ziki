@@ -36,7 +36,7 @@
                   <span class="nav-item">Post Management</span>
                 </a>
                 </li>
-                <li><a href="#" class="logout" >
+                <li><a href="php/logout.php" class="logout_sidebar" >
                   <i class="fas fa-sign-out-alt"></i>
                   <span class="nav-item">Logout</span>
                 </a>

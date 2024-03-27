@@ -17,8 +17,8 @@ CREATE TABLE USER (
 );
 
 CREATE TABLE ADMIN (
-  password varchar(20),
-  username varchar(10)
+  username varchar(10),
+  password varchar(512),
 );
 
 CREATE TABLE REPORTED (
@@ -75,16 +75,17 @@ CREATE TABLE `CATEGORY` (
   `categoryName` VARCHAR(50)
 );
 
-INSERT INTO ADMIN  VALUES ("test","whitney");
+INSERT INTO ADMIN (password, username) VALUES (MD5('test'), 'whitney');
 
 
  INSERT INTO USER (`name`, `username`, `email`, `password`, `DOB`, `dateJoined`, `bio`, `profilePhoto`)
  VALUES 
-   ('John Doe', 'johndoe', 'johndoe@example.com', 'password123', '1990-01-01', NOW(), 'Hello, I am John Doe.', NULL),
-   ('Alice Smith', 'alicesmith', 'alice@example.com', 'alicepassword', '1995-05-15', NOW(), 'Nice to meet you!', NULL),
-   ('Bob Johnson', 'bobjohnson', 'bob@example.com', 'bobpassword', '1988-07-20', NOW(), 'I love coding!', NULL),
-   ('Emma Watson', 'emmawatson', 'emma@example.com', 'emmapassword', '1989-11-10', NOW(), 'Actress and activist.', NULL),
-   ('Michael Brown', 'michaelbrown', 'michael@example.com', 'michaelpassword', '1993-03-25', NOW(), 'Tech enthusiast.', NULL);
+   ('John Doe', 'johndoe', 'johndoe@example.com', MD5('password123'), '1990-01-01', NOW(), 'Hello, I am John Doe.', NULL),
+   ('Alice Smith', 'alicesmith', 'alice@example.com', MD5('alicepassword'), '1995-05-15', NOW(), 'Nice to meet you!', NULL),
+   ('Bob Johnson', 'bobjohnson', 'bob@example.com', MD5('bobpassword'), '1988-07-20', NOW(), 'I love coding!', NULL),
+   ('Emma Watson', 'emmawatson', 'emma@example.com', MD5('emmapassword'), '1989-11-10', NOW(), 'Actress and activist.', NULL),
+   ('Michael Brown', 'michaelbrown', 'michael@example.com', MD5('michaelpassword'), '1993-03-25', NOW(), 'Tech enthusiast.', NULL);
+
 
  INSERT INTO POSTS (`title`, `content`, `creator`, `creatorId`, `dislikes`, `views`, `img`, `created_at`)
  VALUES 
