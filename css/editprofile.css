@@ -38,6 +38,7 @@ margin-top: 0.55em
 #pfp { 
     display: inline;
     width: 200px;
+    height: 200px;
     border-radius: 50%;
     }
 
@@ -78,16 +79,11 @@ margin-top: 0.55em
 
  .upload {
     position: absolute;
-    left: 353px;
+    left: 250px;
     text-align: center; 
 
  }
 
-.upload input[type="file"] {
-    display: block; /* Make the file input a block element */
-    margin: 0 auto; /* Center horizontally */
-    opacity: 0%;
-}
 
 
 #username{
