@@ -106,6 +106,13 @@ function switchToPage(pageId) {
         default:
             break;
     }
+
+function submitFrame() {
+    var MyIFrame = document.getElementById("explore");
+    var MyIFrameDoc = MyIFrame.contentWindow || MyIFrame.contentDocument;
+    if (MyIFrameDoc.document) MyIFrameDoc = MyIFrameDoc.document;
+    MyIFrameDoc.getElementById(id).click(); 
+}
 }
 
 
