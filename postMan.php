@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== "admin") {
+    header("Location: login.php");
+    exit;
+}?>
+<?php
 $list = array();
 $jsArray = json_encode($list);
 try {
@@ -31,8 +37,9 @@ try {
     </style>
     <style>
         <?php
-        include "css/admin.css";
+        
         include "pageheader.php";
+        include "css/admin.css";
         ?>
     </style>
     <script src="script/admin.js"></script>

@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== "admin") {
+    header("Location: login.php");
+    exit;
+}?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +15,7 @@
         <?php include "css/reset.css";
         include "css/admin.css";
         include "pageheader.php";
-            ?>
+        ?>
     </style>
 </head>
 
@@ -17,47 +23,43 @@
     <?php
     $users;
     $posts;
+        try {
+            require_once "server/configure.php";
 
-    if($_SESSION['status'] = "admin"){
+            $sql = "SELECT COUNT(username) as totalUser FROM USER";
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
 
-    try {
-        require_once "server/configure.php";
+            // Fetch the count of users
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            $totalUser = $row["totalUser"];
 
-        $sql = "SELECT COUNT(username) as totalUser FROM USER";
-        $statement = $pdo->prepare($sql);
-        $statement->execute();
+            // If there are users, redirect to the home page or another appropriate page
+            if ($totalUser > 0) {
+                $users = $totalUser;
+            } else {
+                // No users found
+                $users = 0;
+            }
 
-        // Fetch the count of users
-        $row = $statement->fetch(PDO::FETCH_ASSOC);
-        $totalUser = $row["totalUser"];
+            $sql = "SELECT COUNT(title) as totalPost FROM POSTS";
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
 
-        // If there are users, redirect to the home page or another appropriate page
-        if ($totalUser > 0) {
-            $users=$totalUser;
-        } else {
-            // No users found
-            $users=0;
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            $totalPosts = $row["totalPost"];
+
+            if ($totalPosts > 0) {
+                $posts = $totalPosts;
+            } else {
+                $posts = 0;
+            }
+        } catch (PDOException $e) {
+            // Handle database connection errors
+            // Log the error or display a user-friendly message
+            echo "Database Error: " . $e->getMessage();
         }
-
-        $sql="SELECT COUNT(title) as totalPost FROM POSTS";
-        $statement = $pdo->prepare($sql);
-        $statement->execute();
-
-        $row = $statement->fetch(PDO::FETCH_ASSOC);
-        $totalPosts = $row["totalPost"];
-
-        if ($totalPosts > 0) {
-            $posts=$totalPosts;
-        } else {
-            $posts= 0;
-        }
-    } catch (PDOException $e) {
-        // Handle database connection errors
-        // Log the error or display a user-friendly message
-        echo "Database Error: " . $e->getMessage();
-    } }else{
-    header("Location: login.php");
-    }
+    
     ?>
 
     <script src="script/admin.js"></script>
@@ -74,7 +76,9 @@
         <div class="overview-box">
             <div class="title-box">
                 <h3> Total Users</h3>
-                <h3 id="results"><?php echo $users?></h3>
+                <h3 id="results">
+                    <?php echo $users ?>
+                </h3>
             </div>
 
         </div>
@@ -84,7 +88,9 @@
                 <h3>
                     Total Posts
                 </h3>
-                <h3 id="results"><?php echo $posts?></h3>
+                <h3 id="results">
+                    <?php echo $posts ?>
+                </h3>
             </div>
 
 
