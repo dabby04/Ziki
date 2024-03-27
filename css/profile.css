@@ -153,9 +153,9 @@ margin: 0 2em 0 2em;
 #postPopup {
   display: none;
   position: fixed;
-  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  top:auto;
 }
 
 
