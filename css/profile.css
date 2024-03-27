@@ -73,7 +73,7 @@ background-color: #4F46E5;
   #tab-tool {
  
   margin-top: 2em;
-  width: 100%;
+  width: fit-content;
   background: linear-gradient(to bottom,  blue, white);
   height: 100px;
   display:flex;

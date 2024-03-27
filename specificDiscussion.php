@@ -72,8 +72,8 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
         let commentHTML = `<div id="individualComment">`;
 
         // Check if profile photo exists
-        if (e.profilePhoto) {
-          commentHTML += `<img src="${e.profilePhoto}" alt="Profile Photo" id="commentPFP">`;
+        if (e.img) {
+          commentHTML += `<img src="${e.img}" alt="Profile Photo" id="commentPFP">`;
         } 
         // Add comment content
         commentHTML += `${e.content}</div><br/>`;

@@ -39,7 +39,7 @@ button:hover {
     align-items: center;
     justify-content: center;
 }
-#centre_top2 a{
+#centre_top2 a, .discuss a, .content a{
     text-decoration: none;
     color:inherit;
 }
