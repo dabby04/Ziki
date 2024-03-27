@@ -1,12 +1,12 @@
 <?php
-    // include "php/status.php";
-    include "pageheader.php";
-    ?>
+// include "php/status.php";
+include "pageheader.php";
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
-    
+
     <style>
         <?php include "css/reset.css" ?>
     </style>
@@ -28,7 +28,7 @@
     <script src="script/home.js"></script>
     <link rel="stylesheet" href="css/status.css" />
     <!-- <script src="script/home.js"></script> -->
-    
+
 </head>
 
 <body>
@@ -39,10 +39,12 @@
     <div class="main">
         <div id="top2">
             <div id="centre_top2">
-                <figure>
-                    <img src="images/hamilton.png">
-                    <figcaption>Lewis Hamilton signs with Ferrari</figcaption>
-                </figure>
+                <a href="specfificDiscussion.php?discTopic=6">
+                    <figure>
+                        <img src="images/hamilton.png">
+                        <figcaption>Lewis Hamilton signs with Ferrari</figcaption>
+                    </figure>
+                </a>
             </div>
             <div id="centre_top2">
                 <figure>
