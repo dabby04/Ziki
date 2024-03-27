@@ -92,7 +92,7 @@ table thead {
     text-align: center;
 
 }
-#results{
+#results, #results_p{
     text-align: center;
     border: none;
     margin:auto;
