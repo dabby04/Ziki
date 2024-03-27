@@ -52,7 +52,7 @@
 }
 
 #discomments{
-    
+    margin-top:10em;
     height: 50em;
 }
 #individualComment{
@@ -68,3 +68,13 @@
     top: 0;
     z-index: 1000;
 }
+.card
+{
+    margin:1em;
+}
+.button-icon{
+    width: 1em;
+}
+/* .discomments{
+    margin-top:10em;
+} */

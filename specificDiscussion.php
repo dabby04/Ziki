@@ -1,28 +1,54 @@
-
 <?php
 $list = array();
-$jsArray = json_encode($list); // Initialize as an empty JSON array
-$topic = $_POST['discTopic'];
-echo $topic;
+$title = array();
+$jsArray = json_encode($list);
+$discussion = json_encode($title); // Initialize as an empty JSON array
 // if ($_SERVER['REQUEST_METHOD'] == "POST") {
   try {
     require_once "server/configure.php";
-    $sql = "SELECT * FROM COMMENTS WHERE postId = $topic";
-    $statement = $pdo->prepare($sql);
-    //$statement->bindValue(1, $topic);
-    $statement->execute();
+    if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
-    if ($statement->rowCount() > 0) {
-      $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
-      $jsArray = json_encode($list);
-    } else {
-      $message = "No posts found";
-      echo "<script type='text/javascript'>alert('$message');</script>";
-    }
-  } catch (PDOException $e) {
-    die ($e->getMessage());
-  }
-// }
+      try {
+        $search_query = ""; // Add wildcards here
+          $theme = $_GET["discTopic"];
+          print_r($theme);
+
+        $sql = "SELECT * FROM COMMENTS  WHERE postId = ?";  
+        
+        $statement = $pdo->prepare($sql);
+        $statement->execute([$theme]);
+  
+        if ($statement->rowCount() > 0) {
+          $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
+          $jsArray = json_encode($list);
+        } else {
+          $message = "No posts found";
+          echo "<script type='text/javascript'>alert('$message');</script>";
+        }
+      
+
+    
+        $sql1 = "SELECT title, content FROM POSTS WHERE id = ?";
+
+        $statement1 = $pdo->prepare($sql1);
+            $statement1->execute([$theme]);
+      
+            if ($statement1->rowCount() > 0) {
+              $list = $statement1->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
+              $discussion = json_encode($list);
+            } else {
+              $message = "No posts found";
+              echo "<script type='text/javascript'>alert('$message');</script>";
+            }
+          } catch (Exception $e) {
+            // Handle exception
+            die ($e->getMessage());
+          }
+          }
+        }catch (PDOException $e) {
+        die ($e->getMessage());
+      }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,18 +61,20 @@ echo $topic;
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script>
         var comments = <?php echo $jsArray; ?>;
+        var discussion = <?php echo $discussion; ?>;
         window.onload= function()
             {
-                var topic = "<?php echo $topic; ?>";
-                console.log(topic)
                 //let discTitle = e;
                 //using the name of the discussion, generate related content
                 const displayComments = document.getElementById("discomments");
                 //const comments = ["Comment 1", "Comment 2", "Comment 3", "Comment 4"];
-                displayComments.innerHTML= comments.map((e)=>{
+                displayComments.innerHTML=discussion.map((e)=>{
+                  return `<h2>${e.title}</h2>
+                    <p>${e.content}</p>`;
+                }).join("")+comments.map((e)=>{
                     return `<div id="individualComment">
                       <img src="images/blank-profile-picture.png" alt="blank pfp" id="commentPFP">
-                      ${e.}
+                      ${e.content}
                       </div><br/>`;
                 }).join("");
             }
@@ -58,7 +86,7 @@ echo $topic;
 
 <body>
     <div id="discomments">
-        <?php echo `<h2>$topic</h2>`?>
+  
          
     </div>
 

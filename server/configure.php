@@ -13,9 +13,9 @@
 // }
 // 
 
- $DBHOST = '127.0.0.1';
- $DBPORT = '3307'; // Change this to your MySQL port if it's different
- $DBNAME = 'Ziki_DB';
+ $DBHOST = 'localhost';
+ $DBPORT = '3306'; // Change this to your MySQL port if it's different
+ $DBNAME = 'ziki';
  $DBUSER = 'root';
  $DBPASS = '';
 
