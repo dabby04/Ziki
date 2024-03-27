@@ -1,7 +1,7 @@
 <?php
 require "conn_info.php";
 try {
-    $connString = "mysql:host=localhost;dbname=ziki";
+    $connString = "mysql:host=cosc360.ok.ubc.ca,;dbname=db_84518448";
     $user = DBUSER;
     $pass = DBPASS;
     $pdo = new PDO($connString, $user, $pass);
