@@ -12,9 +12,6 @@ $statement->execute();
 if ($statement->rowCount() > 0) {
   $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
   $jsArray = json_encode($list);
-} else {
-  $message = "No posts found";
-  echo "<script type='text/javascript'>alert('$message');</script>";
 }
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
