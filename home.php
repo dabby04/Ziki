@@ -39,7 +39,7 @@ include "pageheader.php";
     <div class="main">
         <div id="top2">
             <div id="centre_top2">
-                <a href="specfificDiscussion.php?discTopic=6">
+                <a href="specificDiscussion.php?discTopic=6">
                     <figure>
                         <img src="images/hamilton.png">
                         <figcaption>Lewis Hamilton signs with Ferrari</figcaption>

@@ -41,6 +41,7 @@ button:hover {
 }
 #centre_top2 a{
     text-decoration: none;
+    color:inherit;
 }
 
 #centre_top2 figcaption{
