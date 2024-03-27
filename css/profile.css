@@ -207,11 +207,11 @@ margin: 2em;
 #postTitle{
 
     display: flex;
-    position: absolute;
+    position: inherit;
     top: -825%;
-    width: 30em;
+    width: 600px;
     background-color: #d9d9d9;
-    left: -4%;
+    left: -27em;
     border-radius: 8px;
 
 }
