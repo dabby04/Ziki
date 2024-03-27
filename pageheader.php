@@ -79,7 +79,7 @@ try {
                                     <?php endif; ?>
                                 </div>
                                 <div class="view"><button>View profile</button></div>
-                                <div class="edit"><button id="logout">Logout</button></div>
+                                <div class="logout"><a href="php/logout.php"><button>Logout</button></a></div>
                             </div>
                         <?php endif; ?>
                     </section>
