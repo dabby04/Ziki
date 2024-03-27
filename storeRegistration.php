@@ -1,7 +1,7 @@
 <?php
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-  print_r("HERE");
+ 
   // Include your database connection file
   require_once "server/configure.php";
 
@@ -11,14 +11,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $dob = $_POST["dob"];
   $username = $_POST["username"];
   $password = $_POST["password"];
-  $profilePhoto = $_POST["img"];
   // Hash the password
   $hashed_password = md5($password);
   $date_joined = date("Y-m-d");
 
 
   // Insert into the database
-  if (isset ($_POST["img"])) {
+  if (isset($_FILES['img']) && $_FILES['img']['error'] === UPLOAD_ERR_OK ) {
+    $profilePhoto=file_get_contents($_FILES['img']['tmp_name']);
+    
     $query = "INSERT INTO USER (name, email, dob, username, password,dateJoined,profilePhoto) VALUES (?, ?, ?, ?, ?,?,?);";
     $stmt = $pdo->prepare($query);
     $stmt->bindValue(1, $name);
@@ -28,8 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bindValue(5, $hashed_password);
     $stmt->bindValue(6, $date_joined);
     $stmt->bindValue(7, $profilePhoto);
-
+   
     $stmt->execute();
+    print_r("HERE");
   } else {
     $query = "INSERT INTO USER (name, email, dob, username, password,dateJoined) VALUES (?, ?, ?, ?, ?,?);";
     $stmt = $pdo->prepare($query);
