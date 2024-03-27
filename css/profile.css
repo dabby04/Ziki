@@ -226,7 +226,7 @@ margin: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
+ flex-direction: column;
   margin-top: 30em;
 
 }
