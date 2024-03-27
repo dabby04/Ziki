@@ -5,44 +5,44 @@ $jsArray = json_encode($list);
 $discussion = json_encode($title); // Initialize as an empty JSON array
 // if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-  require_once "server/configure.php";
-  if ($_SERVER['REQUEST_METHOD'] == "GET") {
+require_once "server/configure.php";
+if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
-    try {
-      $search_query = ""; // Add wildcards here
-      $theme = $_GET["discTopic"];
-      print_r($theme);
+  try {
+    $search_query = ""; // Add wildcards here
+    $theme = $_GET["discTopic"];
+    print_r($theme);
 
-      $sql = "SELECT * FROM COMMENTS  WHERE postId = ?";
+    $sql = "SELECT * FROM COMMENTS  WHERE postId = ?";
 
-      $statement = $pdo->prepare($sql);
-      $statement->execute([$theme]);
+    $statement = $pdo->prepare($sql);
+    $statement->execute([$theme]);
 
-      if ($statement->rowCount() > 0) {
-        $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
-        $jsArray = json_encode($list);
-      } else {
-        $message = "No posts found";
-        echo "<script type='text/javascript'>alert('$message');</script>";
-      }
-
-      $sql1 = "SELECT title, content FROM POSTS WHERE id = ?";
-
-        $statement1 = $pdo->prepare($sql1);
-            $statement1->execute([$theme]);
-
-            if ($statement1->rowCount() > 0) {
-              $list = $statement1->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
-              $discussion = json_encode($list);
-            } else {
-              $message = "No posts found";
-              echo "<script type='text/javascript'>alert('$message');</script>";
-            }
-          
-    } catch (PDOException $e) {
-      die($e->getMessage());
+    if ($statement->rowCount() > 0) {
+      $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
+      $jsArray = json_encode($list);
+    } else {
+      $message = "No posts found";
+      echo "<script type='text/javascript'>alert('$message');</script>";
     }
+
+    $sql1 = "SELECT title, content FROM POSTS WHERE id = ?";
+
+    $statement1 = $pdo->prepare($sql1);
+    $statement1->execute([$theme]);
+
+    if ($statement1->rowCount() > 0) {
+      $list = $statement1->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
+      $discussion = json_encode($list);
+    } else {
+      $message = "No posts found";
+      echo "<script type='text/javascript'>alert('$message');</script>";
+    }
+
+  } catch (PDOException $e) {
+    die($e->getMessage());
   }
+}
 
 // }
 ?>
@@ -65,14 +65,20 @@ $discussion = json_encode($title); // Initialize as an empty JSON array
       //using the name of the discussion, generate related content
       const displayComments = document.getElementById("discomments");
       //const comments = ["Comment 1", "Comment 2", "Comment 3", "Comment 4"];
-      displayComments.innerHTML=discussion.map((e)=>{
-                  return `<h2>${e.title}</h2>
-                    <p>${e.content}</p>`;
-                }).join("")+comments.map((e)=>{
-        return `<div id="individualComment">
-                      <img src="images/blank-profile-picture.png" alt="blank pfp" id="commentPFP">
-                      ${e.content}
-                      </div><br/>`;
+      displayComments.innerHTML = discussion.map((e) => {
+        return `<h2>${e.title}</h2>
+            <p>${e.content}</p>`;
+      }).join("") + comments.map((e) => {
+        let commentHTML = `<div id="individualComment">`;
+
+        // Check if profile photo exists
+        if (e.profilePhoto) {
+          commentHTML += `<img src="${e.profilePhoto}" alt="Profile Photo" id="commentPFP">`;
+        } 
+        // Add comment content
+        commentHTML += `${e.content}</div><br/>`;
+
+        return commentHTML;
       }).join("");
     }
   </script>
