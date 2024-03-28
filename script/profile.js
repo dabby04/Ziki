@@ -17,10 +17,6 @@ function makeAPost (){
      location.reload();
  
  }
- 
- function toggle(){
-   
- }
 
  $(document).ready(function(){ 
 
