@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     // populate(type, value);
   </script> -->
   <script>
-    var topics = <?php echo $jsArray; ?>;
+    var topics = <?php echo $jsArray; ?>
     window.onload = function () {
       console.log(topics);
       //using the name of the discussion, generate related content
