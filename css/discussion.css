@@ -76,11 +76,13 @@
     width: 1em;
 }
 #like{
+
     
     width: 2em;
 }
 #dislike{
     
+
     width: 2em;
     transform: rotate(180deg);
 }
@@ -89,10 +91,12 @@ footer{
   left: 0;
   bottom: 0;
   width: 100%;
+
 }
 .footIcons{
     float: inline-end;
     display: flexbox;
     flex-direction: row;
     width: 2em;
+
 }

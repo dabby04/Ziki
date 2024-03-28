@@ -61,7 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
   </div>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <script src="script/discussion.js"></script>
+
+  <!-- <script src="script/discussion.js"></script> -->
+
   <!-- <script>
     // var type = '<?php //echo $type; ?>';
     // console.log(type);
@@ -70,7 +72,9 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     // populate(type, value);
   </script> -->
   <script>
+
     var topics = <?php echo $jsArray; ?>;
+
     window.onload = function () {
       console.log(topics);
       //using the name of the discussion, generate related content
@@ -100,12 +104,13 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                             </div>
                             <div class="card-footer text-body-secondary">
                                 ${e.created_at}
+
                                 <div class= "footIcons">
                                   ${e.likes}
                                   <img src="images/like-icon-on-transparent-background-free-png.png" alt= "like" id="dislike">
                                   </div>
                                   <div class= "footicons">
-                                  ${e.dislikes}
+                                   ${e.dislikes}
                                   <img src="images/like-icon-on-transparent-background-free-png.png" alt= "like" id="like">
                                 </div>
                             </div>
@@ -130,6 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
       }
 
     });
+
 
     var like = 0;
     $(document).on('click', '#like', function() {
@@ -165,6 +171,7 @@ $(document).on('click', '#dislike', function() {
     dislike =0;
   }
 });
+
 
     
 </script>
