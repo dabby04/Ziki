@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
       echo "<script type='text/javascript'>alert('$message');</script>";
     }
 
-    $sql1 = "SELECT title, content FROM POSTS WHERE id = ?";
+    $sql1 = "SELECT title, content, img FROM POSTS WHERE id = ?";
 
         $statement1 = $pdo->prepare($sql1);
             $statement1->execute([$topic]);
@@ -69,28 +69,27 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     var comments = <?php echo $jsArray; ?>;
     var discussion = <?php echo $discussion; ?>;
     window.onload = function () {
-      var topic = "<?php echo $topic; ?>";
-      console.log(topic)
-      //let discTitle = e;
-      //using the name of the discussion, generate related content
-      const displayComments = document.getElementById("discomments");
-      //const comments = ["Comment 1", "Comment 2", "Comment 3", "Comment 4"];
-      displayComments.innerHTML = discussion.map((e) => {
-        return `<h2>${e.title}</h2>
-            <p>${e.content}</p>`;
-      }).join("") + comments.map((e) => {
-        let commentHTML = `<div id="individualComment">`;
+  var topic = "<?php echo $topic; ?>";
+  console.log(topic);
+  
+  const displayComments = document.getElementById("discomments");
 
-        // Check if profile photo exists
-        if (e.profilePhoto) {
-          commentHTML += `<img src="${e.profilePhoto}" alt="Profile Photo" id="commentPFP">`;
-        } 
-        // Add comment content
-        commentHTML += `${e.content}</div><br/>`;
+  displayComments.innerHTML = discussion.map((e) => {
+    let commentHTML = `<h2>${e.title}</h2>
+                        <p>${e.content}</p>`;
 
-        return commentHTML;
-      }).join("");
+    if (e.img) {
+      // Assuming e.img is the Base64 encoded string of the image
+      const base64Image = e.img;
+      commentHTML += `<img src="data:image/jpeg;base64,${base64Image}" alt="Profile Photo" id="commentPFP">`;
     }
+
+    return commentHTML;
+  }).join("") + comments.map((e) => {
+    let commentHTML = `<div id="individualComment">${e.content}</div><br/>`;
+    return commentHTML;
+  }).join("");
+}
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

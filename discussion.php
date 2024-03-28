@@ -3,6 +3,7 @@ $list = array();
 $jsArray = json_encode($list); // Initialize as an empty JSON array
 
 require_once "server/configure.php";
+try{
 $sql = "SELECT * FROM POSTS";
 $statement = $pdo->prepare($sql);
 $statement->execute();
@@ -10,7 +11,10 @@ $statement->execute();
 if ($statement->rowCount() > 0) {
   $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
   $jsArray = json_encode($list);
-}
+}} catch (Exception $e) {
+    // Handle exception
+    die($e->getMessage());
+  }
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
