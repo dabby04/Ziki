@@ -61,7 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
   </div>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
   <!-- <script src="script/discussion.js"></script> -->
+
   <!-- <script>
     // var type = '<?php //echo $type; ?>';
     // console.log(type);
@@ -70,7 +72,9 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     // populate(type, value);
   </script> -->
   <script>
-    var topics = <?php echo $jsArray; ?>
+
+    var topics = <?php echo $jsArray; ?>;
+
     window.onload = function () {
       console.log(topics);
       //using the name of the discussion, generate related content
@@ -100,10 +104,13 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                             </div>
                             <div class="card-footer text-body-secondary">
                                 ${e.created_at}
-                                <div class= footIcons>
+
+                                <div class= "footIcons">
                                   ${e.likes}
                                   <img src="images/like-icon-on-transparent-background-free-png.png" alt= "like" id="dislike">
-                                  ${e.dislikes}
+                                  </div>
+                                  <div class= "footicons">
+                                   ${e.dislikes}
                                   <img src="images/like-icon-on-transparent-background-free-png.png" alt= "like" id="like">
                                 </div>
                             </div>
@@ -130,6 +137,42 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     });
 
 
+    var like = 0;
+    $(document).on('click', '#like', function() {
+  if(like==0)
+  {
+    $(this).css({
+      'background-color': 'red'
+    });
+    like =1;
+  }
+  else{
+    $(this).css({
+      'background': 'none'
+    });
+    like =0;
+  }
+});
+
+var dislike = 0;
+$(document).on('click', '#dislike', function() {
+  // Add your code here for the #dislike click event
+  if(dislike==0)
+  {
+    $(this).css({
+      'background-color': 'red'
+    });
+    dislike =1;
+  }
+  else{
+    $(this).css({
+      'background': 'none'
+    });
+    dislike =0;
+  }
+});
+
+
     
 </script>
 
@@ -143,7 +186,26 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
   </div> -->
   <div id="cards">
   </div>
-
+  <footer>
+  <nav style="--bs-breadcrumb-divider: '-';" aria-label="breadcrumb">
+            <ul class="breadcrumb">
+            <?php 
+            $current ='discussion';
+            //print_r($_SESSION['prevPage']);
+                    if(isset($_SESSION['prevPage']))
+                    {
+                        $previous = $_SESSION['prevPage'];
+                        echo "<li class='breadcrumb-item'><a href='#'>$previous </a></li>";
+                        echo "<li class='breadcrumb-item'><a href='#'>$current </a></li>";
+                    }
+                   else
+                   {
+                    echo "<li class='breadcrumb-item'><a href='#'>$current </a></li>";
+                    }
+                    $_SESSION['prevPage']=$current;?>
+            </ul>
+          </nav>
+    </footer>
 </body>
 
 </html>

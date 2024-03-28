@@ -8,6 +8,10 @@ $discussion = json_encode($title); // Initialize as an empty JSON array
 require_once "server/configure.php";
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
+    try {
+      $search_query = ""; // Add wildcards here
+      $topic = $_GET["discTopic"];
+      print_r($topic);
   try {
     $search_query = ""; // Add wildcards here
     $theme = $_GET["discTopic"];
@@ -15,6 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
     $sql = "SELECT * FROM COMMENTS  WHERE postId = ?";
 
+      $statement = $pdo->prepare($sql);
+      $statement->execute([$topic]);
     $statement = $pdo->prepare($sql);
     $statement->execute([$theme]);
 
@@ -28,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
     $sql1 = "SELECT title, content FROM POSTS WHERE id = ?";
 
+        $statement1 = $pdo->prepare($sql1);
+            $statement1->execute([$topic]);
     $statement1 = $pdo->prepare($sql1);
     $statement1->execute([$theme]);
 
@@ -42,9 +50,11 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
   } catch (PDOException $e) {
     die($e->getMessage());
   }
+} catch (Exception $e){
+  die($e->getMessage());
 }
 
-// }
+ }
 ?>
 <!DOCTYPE html>
 <html>
@@ -91,7 +101,26 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
   <div id="discomments">
 
   </div>
-
+  <footer>
+  <nav style="--bs-breadcrumb-divider: '-';" aria-label="breadcrumb">
+            <ul class="breadcrumb">
+            <?php 
+            $current ='SpecificDiscussion';
+            //print_r($_SESSION['prevPage']);
+                    if(isset($_SESSION['prevPage']))
+                    {
+                        $previous = $_SESSION['prevPage'];
+                        echo "<li class='breadcrumb-item'><a href='#'>$previous </a></li>";
+                        echo "<li class='breadcrumb-item'><a href='#'>$current </a></li>";
+                    }
+                   else
+                   {
+                    echo "<li class='breadcrumb-item'><a href='#'>$current </a></li>";
+                    }
+                    $_SESSION['prevPage']=$current;?>
+            </ul>
+          </nav>
+    </footer>
 </body>
 
 </html>
