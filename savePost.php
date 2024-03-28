@@ -17,12 +17,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Sanitize the input data to prevent SQL injection
         $content = $_POST['content'];
         $title = $_POST['title'];
-     
-        // $user_id = $[Session]; // Set user ID here
-        $img = null;
-        if(isset($_POST['postImage'])){
-            $img = file_get_contents($_FILES['postImage']['tmp_name']);
-        }
+ // Check if a file was uploaded and there were no errors
+ if(isset($_FILES['postImage']) && $_FILES['postImage']['error'] === UPLOAD_ERR_OK){
+    // Get the temporary path to the uploaded file
+    $img_tmp_path = $_FILES['postImage']['tmp_name'];
+    
+    // Open the file and read its contents
+    $img_data = fopen($img_tmp_path, 'rb');
+} else {
+    echo "No file uploaded or an error occurred during upload.";
+}
         // Get the username of the logged-in user
         $stmt = $pdo->prepare("SELECT username FROM USER WHERE id = :user_id");
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
@@ -32,13 +36,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $created_at = date('Y-m-d H:i:s');
 
         // Prepare and execute the SQL statement to insert the post into the database
-        $stmt = $pdo->prepare("INSERT INTO POSTS (content, creator, creatorId, created_at, title, img) VALUES (:content, :creator,:user_id, :created_at, :title, :img)");
+        $stmt = $pdo->prepare("INSERT INTO posts (content, creator, creatorId, created_at, title, img) VALUES (:content, :creator,:user_id, :created_at, :title, :img)");
         $stmt->bindParam(':content', $content, PDO::PARAM_STR);
         $stmt->bindParam(':creator', $creator, PDO::PARAM_STR);
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $stmt->bindParam(':created_at', $created_at, PDO::PARAM_STR);
         $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-        $stmt->bindParam(':img', $img, PDO::PARAM_LOB);
+        $stmt->bindParam(':img', $img_data, PDO::PARAM_LOB);
         $result = $stmt->execute();
 
         if ($result) {
@@ -58,29 +62,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Saved</title>
-    <link rel="stylesheet" href="css/success.css">
-</head>
-<body>
-    <?php if (isset($post_saved) && $post_saved) : ?>
-    <div class="success-message">
-        <h2>Your post has been saved successfully!</h2>
-        <p>Thank you for sharing your thoughts.</p>
-        
-        <a href="profile.php">Back to Profile</a>
-    </div>
-    <?php elseif (isset($error_message)) : ?>
-    <div class="error-message">
-        <h2>Error</h2>
-        <p><?php echo $error_message; ?></p>
-        <a href="profile.php">Back to Profile</a>
-    </div>
-    <?php endif; ?>
-</body>
-</html>

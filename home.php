@@ -1,7 +1,10 @@
 <?php
-// include "php/status.php";
-include "pageheader.php";
-?>
+    // include "php/status.php";  
+    include "pageheader.php";
+    $_SESSION['currentPage']="home";
+  
+    ?>
+    
 <!DOCTYPE html>
 <html>
 
@@ -32,6 +35,7 @@ include "pageheader.php";
 </head>
 
 <body>
+    
 
     <!-- <div class="wrapper"> -->
 
@@ -127,6 +131,18 @@ include "pageheader.php";
             </div>
         </div>
     </div>
+    <footer>
+    <nav style="--bs-breadcrumb-divider: '-';" aria-label="breadcrumb">
+            <ul class="breadcrumb">
+            <?php 
+            print_r($_SESSION['prevPage']);
+                    if(isset($_SESSION['prevPage']))
+                        echo "<li class='breadcrumb-item'><a href='#'> {$previous}</a></li>";
+                   else
+                       echo "<li class='breadcrumb-item'><a href='#'>{$_GET['currentPage']}</a></li>";?>
+            </ul>
+          </nav>
+    </footer>
 
 </body>
 
