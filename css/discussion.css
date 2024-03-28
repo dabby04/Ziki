@@ -75,3 +75,18 @@
 .button-icon{
     width: 1em;
 }
+#like{
+    float: inline-end;
+    width: 2em;
+}
+#dislike{
+    float:inline-end;
+    width: 2em;
+    transform: rotate(180deg);
+}
+footer{
+    position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}

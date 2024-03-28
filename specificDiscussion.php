@@ -10,13 +10,13 @@ $discussion = json_encode($title); // Initialize as an empty JSON array
 
     try {
       $search_query = ""; // Add wildcards here
-      $theme = $_GET["discTopic"];
-      print_r($theme);
+      $topic = $_GET["discTopic"];
+      print_r($topic);
 
       $sql = "SELECT * FROM COMMENTS  WHERE postId = ?";
 
       $statement = $pdo->prepare($sql);
-      $statement->execute([$theme]);
+      $statement->execute([$topic]);
 
       if ($statement->rowCount() > 0) {
         $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
@@ -29,7 +29,7 @@ $discussion = json_encode($title); // Initialize as an empty JSON array
       $sql1 = "SELECT title, content FROM POSTS WHERE id = ?";
 
         $statement1 = $pdo->prepare($sql1);
-            $statement1->execute([$theme]);
+            $statement1->execute([$topic]);
 
             if ($statement1->rowCount() > 0) {
               $list = $statement1->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
