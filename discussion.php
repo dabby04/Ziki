@@ -75,8 +75,6 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
       console.log(topics);
       //using the name of the discussion, generate related content
       const displayComments = document.getElementById("cards");
-      //const comments = ["Discussion 1", "Discussion 2", "Discussion 3", "Discussion 4"];
-      //displayComments.innerHTML= comments.map((e)=>{
       displayComments.innerHTML = topics.map((e) => {
         return `<div class="card text-center">
                           <div class="card-header">
@@ -102,10 +100,12 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
                             </div>
                             <div class="card-footer text-body-secondary">
                                 ${e.created_at}
-                                ${e.likes}
-                                <img src="images/like-icon-on-transparent-background-free-png.png" alt= "like" id="dislike">
-                                ${e.dislikes}
-                                <img src="images/like-icon-on-transparent-background-free-png.png" alt= "like" id="like">
+                                <div class= footIcons>
+                                  ${e.likes}
+                                  <img src="images/like-icon-on-transparent-background-free-png.png" alt= "like" id="dislike">
+                                  ${e.dislikes}
+                                  <img src="images/like-icon-on-transparent-background-free-png.png" alt= "like" id="like">
+                                </div>
                             </div>
                         </div>`;
       }).join("");
