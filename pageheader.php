@@ -16,9 +16,7 @@ try {
         $statement = $pdo->prepare($sql);
         $statement->execute([$username]);
         $row = $statement->fetch(PDO::FETCH_ASSOC);
-        if ($row && !empty ($row['profilePhoto'])) {
-            $profile_photo = base64_encode($row['profilePhoto']); // Convert BLOB to base64
-        }
+            $profile_photo = $row['profilePhoto'];
 
     } else
         $status = "inactive";
@@ -71,8 +69,8 @@ try {
                         <?php elseif ($status === "active"): ?>
                             <div class="active">
                                 <div class="profile_info">
-                                    <?php if ($profile_photo): ?>
-                                        <img src="data:image/png;base64,<?php echo $profile_photo; ?>">
+                                    <?php if ($profile_photo): 
+                                        echo '<img src="data:image/jpeg;base64,' . base64_encode($profile_photo) . '" />';?>
                                     <?php else: ?>
                                         <img src="images/user.png">
                                     <?php endif; ?>
@@ -81,7 +79,7 @@ try {
                                     <?php endif; ?>
                                 </div>
                                 <div class="view"><button>View profile</button></div>
-                                <div class="edit"><button id="logout">Logout</button></div>
+                                <div class="logout"><a href="php/logout.php"><button>Logout</button></a></div>
                             </div>
                         <?php endif; ?>
                     </section>

@@ -17,12 +17,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Sanitize the input data to prevent SQL injection
         $content = $_POST['content'];
         $title = $_POST['title'];
-     
-        // $user_id = $[Session]; // Set user ID here
-        $img = null;
-        if(isset($_POST['postImage'])){
-            $img = file_get_contents($_FILES['postImage']['tmp_name']);
-        }
+ // Check if a file was uploaded and there were no errors
+ if(isset($_FILES['postImage']) && $_FILES['postImage']['error'] === UPLOAD_ERR_OK){
+    // Get the temporary path to the uploaded file
+    $img_tmp_path = $_FILES['postImage']['tmp_name'];
+    
+    // Open the file and read its contents
+    $img_data = fopen($img_tmp_path, 'rb');
+} else {
+    echo "No file uploaded or an error occurred during upload.";
+}
         // Get the username of the logged-in user
         $stmt = $pdo->prepare("SELECT username FROM USER WHERE id = :user_id");
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
@@ -38,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
         $stmt->bindParam(':created_at', $created_at, PDO::PARAM_STR);
         $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-        $stmt->bindParam(':img', $img, PDO::PARAM_LOB);
+        $stmt->bindParam(':img', $img_data, PDO::PARAM_LOB);
         $result = $stmt->execute();
 
         if ($result) {

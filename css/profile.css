@@ -1,4 +1,3 @@
-
 body , html {
   margin: 0;
   padding: 0;
@@ -19,8 +18,10 @@ background-color: #4F46E5;
 
 }
 
-header {
+.profile_header {
   margin: 0;
+  position:sticky;
+  width: 100%;
 }
 
 
@@ -36,6 +37,7 @@ header {
 .pfp { /*profile picture goes here*/
   border-radius: 50%;
   width: 200px;
+  height:190px;
   position: absolute;
   top: 65%;
   left: 50%;
@@ -280,83 +282,3 @@ margin: 2em;
   margin-top: 20px;
   color: #888;
 }
-
-/* 
-
-
-.pfp{
-  float: left;
-  width:2%;
-}
-.fav{
-  float:right;
-  width:2%;
-  padding-right: 2px;
-}
-.dropdown{
-  float:right;
-  width:2%;
-}
-.comments{
-  float:left;
-  width:2.5%;
-}
-.like{
-  float:right;
-  width:2.5%;
-
-}
-.dislike{
-  float:right;
-  width:2.5%;
-  transform: rotate(180deg);
-}
-#cards{
-  margin-top: 10em;
-}
-#commentPFP{
-  height:3em;
-  float:inline-start;
-  border-radius: 3em;
-  margin-right: 1em;
-}
-#discussionPFP{
-  height:2em;
-  float:inline-start;
-  border-radius: 2em;
-
-}
-#discFav{
-  height:2em;
-  float:inline-end;
-  margin-right: 0.5em;
-}
-#discDropdown{
-  height:2em;
-  float:inline-end;
-}
-
-#discomments{
-  
-  height: 50em;
-}
-#individualComment{
-  height: 4em;
-  text-align: left;
-  border-bottom: groove;
-}
-#offcanvasBottom{
-  height: 100%;
-}
-.wrapper {
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-
-}
-
-.comment-section-container {
-   position: absolute;
-   width: 100vw;
-} */
-

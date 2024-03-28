@@ -3,43 +3,54 @@ $list = array();
 $jsArray = json_encode($list); // Initialize as an empty JSON array
 
 // if ($_SERVER['REQUEST_METHOD'] == "POST") {
-try {
-  require_once "server/configure.php";
-  $sql = "SELECT * FROM POSTS";
-  $statement = $pdo->prepare($sql);
-  $statement->execute();
 
-  if ($statement->rowCount() > 0) {
-    $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
-    $jsArray = json_encode($list);
-  } else {
-    $message = "No posts found";
-    echo "<script type='text/javascript'>alert('$message');</script>";
-  }
+require_once "server/configure.php";
+$sql = "SELECT * FROM POSTS";
+$statement = $pdo->prepare($sql);
+$statement->execute();
 
-  if ($_SERVER['REQUEST_METHOD'] == "GET") {
+if ($statement->rowCount() > 0) {
+  $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
+  $jsArray = json_encode($list);
+} else {
+  $message = "No posts found";
+  echo "<script type='text/javascript'>alert('$message');</script>";
+}
 
-    try {
+if ($_SERVER['REQUEST_METHOD'] == "GET") {
+
+  try {
+    $search_query = ""; // Add wildcards here
+    if (isset($_GET["query"])) {
       $search_query = "%" . $_GET["query"] . "%"; // Add wildcards here
       $sql = "SELECT * FROM POSTS WHERE title LIKE ?";
-      $statement = $pdo->prepare($sql);
-      $statement->execute([$search_query]);
-
-      if ($statement->rowCount() > 0) {
-        $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
-        $jsArray = json_encode($list);
-      } else {
-        $message = "No posts found";
-        echo "<script type='text/javascript'>alert('$message');</script>";
-      }
-    } catch (Exception $e) {
-      // Handle exception
-      die ($e->getMessage());
+    } else {
+      $theme = $_GET["theme"];
+      $formattedtheme = strtolower($theme);
+      print_r($formattedtheme);
+      $search_query = $formattedtheme; // Add wildcards here
+      $sql = "SELECT * FROM POSTS WHERE theme = ?";
     }
+
+    $statement = $pdo->prepare($sql);
+    $statement->bindValue(1, $search_query, PDO::PARAM_STR);
+    $statement->execute();
+
+
+    if ($statement->rowCount() > 0) {
+      $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
+      $jsArray = json_encode($list);
+    } else {
+      $message = "No posts found";
+      echo "<script type='text/javascript'>alert('$message');</script>";
+    }
+
+  } catch (Exception $e) {
+    // Handle exception
+    die($e->getMessage());
   }
-} catch (PDOException $e) {
-  die ($e->getMessage());
 }
+
 // }
 ?>
 <!DOCTYPE html>
@@ -65,7 +76,7 @@ try {
         return `<div class="card text-center">
                           <div class="card-header">
                             <img id="discussionPFP" class="icons" src="images/blank-profile-picture.png" alt ="disussion pfp">
-                            ${e.userId} 
+                            ${e.creatorId} 
                             <div class="dropdown">
                             <img id="discDropdown" class="icons" src="images/dropdown.png" alt="dropdown discussion" data-bs-toggle="dropdown" aria-expanded="false">
                             <ul class="dropdown-menu">
@@ -80,9 +91,9 @@ try {
                             <div class="card-body">
                                 <h5 class="card-title">${e.title}</h5>
                                 <p class="card-text">${e.content}</p>
-                                <form action="specificDiscussion.php" method="POST">
-                                          <button type="submit" class="btn btn-primary" name="discTopic" value=${e.postId}>View Discussion</button>
-                                </form>
+                                <form action="specificDiscussion.php" method="GET">
+                                          <button type="submit" class="btn btn-primary" name="discTopic" value=${e.id}>View Discussion</button>
+                                           </form>
                             </div>
                             <div class="card-footer text-body-secondary">
                                 ${e.created_at}
@@ -97,6 +108,8 @@ try {
 </head>
 
 <body>
+  <div id="filter">
+  </div>
   <div id="cards">
   </div>
 

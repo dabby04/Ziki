@@ -23,7 +23,7 @@
     </div>
   </header>
 
-  <form id="registration" action="storeRegistration.php" method="post">
+  <form id="registration" action="storeRegistration.php" method="post"  enctype="multipart/form-data">
     <div class="input-container">
       <input type="text" id="name" class="input-field" aria-label="Full Name" name="name" placeholder="Full Name" />
     </div>

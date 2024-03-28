@@ -11,23 +11,27 @@ header {
     background-size: cover;
     background: linear-gradient(to bottom, white, #D27FE0);
     width : 100%;
+    height: 5em;
   
+}
+#main-logo a{
+    text-decoration: none;
 }
 
 #main{
-position: absolute;
-width: 806px;
-height: 907px;
-left: 353px;
-top: 75px;
-background: linear-gradient(to bottom, #D27FE0, white);
-margin-top: 0.55em
+    width: 100vw;
+    height: fit-content;
+    top: 75px;
+    background: linear-gradient(to bottom, white, #D27FE0);
+    margin-top: 0;
+    overflow: visible;
 }
 
 #main-logo {
     margin: 0.5em 0.5em 0.5em 0.5em;
     display: inline-flex;
-    font-family: 'Inspiration', cursive;
+    font-family: 'Spirax', sans-serif;
+    font-size:2.5em ;
 }
 
 #profile-container {
@@ -42,12 +46,12 @@ margin-top: 0.55em
     border-radius: 50%;
     }
 
- #change-info {
-    display: block;
-    align-items:center;
-    text-align: center;
-    padding: 0em 6.75em 0em 0em;
- }
+    #change-info {
+        display: block;
+        align-items: center;
+        text-align: center;
+        padding: 0em 6.75em 3.75em 0em;
+    }
 
  input {
     border-radius: 12pt;
@@ -87,8 +91,12 @@ margin-top: 0.55em
 
 
 #username{
-    background-color: transparent;
-    border: none;
-    display: inline;
+
+        background-color: transparent;
+        border: none;
+        position: relative;
+        left: 6%;
+        margin-top: 5em;
+
 }
  
