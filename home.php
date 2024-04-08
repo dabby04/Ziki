@@ -1,34 +1,25 @@
 <?php
+    // include "php/status.php";  
+    include "pageheader.php";
 
-    //include_once 'php/status.php';
-    session_start();
+    $_SESSION['currentPage']="home";
+
+  
+    ?>
     
-    $status="";
-    $username=null;
-    if(isset($_SESSION['status']))
-    {
-        $status=$_SESSION['status'];
-        $username=$_SESSION['username'];
-        //$username="something";
-
-    }
-    else
-        $status="inactive";
-    
-
-?>
 <!DOCTYPE html>
 <html>
 
 <head>
+
     <style>
-        <?php include "css/reset.css"?>
+        <?php include "css/reset.css" ?>
     </style>
     <style>
         <?php include "css/home.css";
         include "css/highlight.css";
-        include "css/search.css"?>
-        </style>
+        include "css/search.css" ?>
+    </style>
     <!-- <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/home.css"> -->
     <!-- <link rel="stylesheet" href="css/login.css"> -->
@@ -42,60 +33,71 @@
     <script src="script/home.js"></script>
     <link rel="stylesheet" href="css/status.css" />
     <!-- <script src="script/home.js"></script> -->
+
 </head>
 
 <body>
+    
 
-    <div class="wrapper">
-        <?php
-        // include "php/status.php";
-        include "pageheader.php";
-        ?>
-    </div>
+    <!-- <div class="wrapper"> -->
+
+    <!-- </div> -->
     <div class="main">
         <div id="top2">
             <div id="centre_top2">
-                <figure>
-                    <img src="images/hamilton.png">
-                    <figcaption>Lewis Hamilton signs with Ferrari</figcaption>
-                </figure>
+                <a href="specificDiscussion.php?discTopic=6">
+                    <figure>
+                        <img src="images/hamilton.png">
+                        <figcaption>Lewis Hamilton signs with Ferrari</figcaption>
+                    </figure>
+                </a>
             </div>
             <div id="centre_top2">
-                <figure>
-                    <img src="images/smith.png">
-                    <figcaption>What do you think?</figcaption>
-                </figure>
+                <a href="specificDiscussion.php?discTopic=7">
+                    <figure>
+                        <img src="images/smith.png">
+                        <figcaption>What do you think?</figcaption>
+                    </figure>
+                </a>
             </div>
         </div>
         <div id="trending">
             <div class="box">
                 <h3>Trending Discussions</h3>
                 <div class="discuss">
-                    <figure>
-                        <img src="images/question.png">
-                        <figcaption>It's so easy to find a job, don't you think?</figcaption>
-                    </figure>
+                    <a href="specificDiscussion.php?discTopic=8">
+                        <figure>
+                            <img src="images/question.png">
+                            <figcaption>It's so easy to find a job, don't you think?</figcaption>
+                        </figure>
+                    </a>
                 </div>
                 <div class="discuss">
-                    <figure>
-                        <img src="images/bellingham.png">
-                        <figcaption>Jude Bellingham might be the next best player...</figcaption>
-                    </figure>
+                    <a href="specificDiscussion.php?discTopic=9">
+                        <figure>
+                            <img src="images/bellingham.png">
+                            <figcaption>Jude Bellingham might be the next best player...</figcaption>
+                        </figure>
+                    </a>
                 </div>
                 <div class="discuss">
-                    <figure>
-                        <img src="images/laptop.png">
-                        <figcaption>What are your favourite reboots?</figcaption>
-                    </figure>
+                    <a href="specificDiscussion.php?discTopic=10">
+                        <figure>
+                            <img src="images/laptop.png">
+                            <figcaption>What are your favourite reboots?</figcaption>
+                        </figure>
+                    </a>
                 </div>
                 <div class="discuss">
-                    <figure>
-                        <img src="images/tech.png">
-                        <figcaption>How do I break into tech?</figcaption>
-                    </figure>
+                    <a href="specificDiscussion.php?discTopic=11">
+                        <figure>
+                            <img src="images/tech.png">
+                            <figcaption>How do I break into tech?</figcaption>
+                        </figure>
+                    </a>
                 </div>
                 <div class="discuss">
-                    <a href="#">
+                    <a href="discussion.php">
                         <h3>Show more discussions</h3>
                     </a>
                 </div>
@@ -131,6 +133,28 @@
             </div>
         </div>
     </div>
+    <footer>
+    <nav style="--bs-breadcrumb-divider: '-';" aria-label="breadcrumb">
+            <ul class="breadcrumb">
+            <?php 
+
+            $current ='home';
+            //print_r($_SESSION['prevPage']);
+                    if(isset($_SESSION['prevPage']))
+                    {
+                        $previous = $_SESSION['prevPage'];
+                        echo "<li class='breadcrumb-item'><a href='#'>$previous </a></li>";
+                        echo "<li class='breadcrumb-item'><a href='#'>$current </a></li>";
+                    }
+                   else
+                   {
+                    echo "<li class='breadcrumb-item'><a href='#'>$current </a></li>";
+                    }
+                    $_SESSION['prevPage']=$current;?>
+
+            </ul>
+          </nav>
+    </footer>
 
 </body>
 

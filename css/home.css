@@ -1,11 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
 
-.wrapper {
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-}
+
 button:hover {
     background-color: #4F46E5;
 
@@ -42,6 +38,10 @@ button:hover {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+#centre_top2 a, .discuss a, .content a{
+    text-decoration: none;
+    color:inherit;
 }
 
 #centre_top2 figcaption{

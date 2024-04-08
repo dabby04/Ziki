@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Gothic&display=swap');
 body,
 html {
     margin: 0;
@@ -13,11 +14,11 @@ html {
 
 .main {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    height: max-content;
     padding: 0.1em 0 0.1em 0;
     margin-left: 100px;
     top: 150px;
     position: relative;
+    height: -webkit-fill-available;
 }
 
 /* .main h2 {
@@ -91,9 +92,65 @@ table thead {
     text-align: center;
 
 }
-#results{
+#results, #results_p{
     text-align: center;
     border: none;
     margin:auto;
     font-size: 5em;
+}
+
+.box{
+    border: rgba(201, 201, 201, 0.1) 1px solid;
+    border-radius: 10px;
+    box-shadow: 2px 4px rgba(201, 201, 201, 0.1);
+    margin:2em;
+    height: -webkit-fill-available;
+}
+
+.box h3{
+    font-size:2em;
+    margin-left:1em;
+    border-bottom: #D9D9D9 1.5px solid;
+}
+
+.reported{
+    margin-left:1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.reported fieldset{
+    background-color: #D9D9D9;
+    border-radius: 19px;
+    width: 20em;
+    height: 15em;
+    display: flex;
+    position: relative;
+    margin:1em;
+}
+
+.reported legend{
+    position: absolute;
+    top: 1em;
+    left: 1em;
+}
+
+.reported p{
+    justify-content: center;
+    margin:auto;
+    display:flex;
+    font-size:2em;
+}
+.remove{
+    background-color:#C42121;
+    color:white;
+    font-family: 'League Gothic', sans-serif;
+    border-radius: 7px;
+    width: 4em;
+    height: 2em;
+    position:absolute;
+    bottom: 1em;
+    right:1em;
+    font-size: 1em;
 }

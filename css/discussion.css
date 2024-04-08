@@ -1,6 +1,4 @@
-.card{
-    margin: 2em 2em 2em 2em;
-}
+
 .pfp{
     float: left;
     width:2%;
@@ -29,7 +27,7 @@
     transform: rotate(180deg);
 }
 #cards{
-    margin-top: 6em;
+    margin-top: 10em;
 }
 #commentPFP{
     height:3em;
@@ -43,7 +41,7 @@
     border-radius: 2em;
 
 }
-#discFav{
+.discFav{
     height:2em;
     float:inline-end;
     margin-right: 0.5em;
@@ -54,7 +52,7 @@
 }
 
 #discomments{
-    
+    margin-top:10em;
     height: 50em;
 }
 #individualComment{
@@ -64,4 +62,41 @@
 }
 #offcanvasBottom{
     height: 100%;
+}
+.wrapper {
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+.card
+{
+    margin:1em;
+}
+.button-icon{
+    width: 1em;
+}
+#like{
+
+    
+    width: 2em;
+}
+#dislike{
+    
+
+    width: 2em;
+    transform: rotate(180deg);
+}
+footer{
+    position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+}
+.footIcons{
+    float: inline-end;
+    display: flexbox;
+    flex-direction: row;
+    width: 2em;
+
 }
