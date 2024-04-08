@@ -103,7 +103,7 @@ INSERT INTO ADMIN (password, username) VALUES (MD5('test'), 'whitney');
    (2, 1, 3, 1, 'Great content!', NOW()),
    (3, 2, 7, 0, 'I enjoyed reading this!', NOW()),
    (4, 3, 2, 0, 'Interesting topic!', NOW()),
-   (5, 4, 4, 1, 'Well written!', NOW());
+   (5, 4, 4, 1, 'Well written!', NOW()),
    ( 0, 1, 110, 10, 'This is comment 11', '2024-03-27 04:41:18'),
  ( 0, 2, 120, 11, 'This is comment 12', '2024-03-27 04:41:18'),
  ( 2, 3, 130, 12, 'This is comment 13', '2024-03-27 04:41:18'),
