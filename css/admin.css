@@ -166,3 +166,7 @@ border-bottom: #D9D9D9 1.5px solid !important;
 #searchUser th{
     font-size: 2em;
 }
+.search-container{
+    margin-bottom: 2em;
+    vertical-align: middle;
+}

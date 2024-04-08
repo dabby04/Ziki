@@ -19,6 +19,14 @@
     </div>
     <div class="main">
         <div class="box">
+        <div class="search-container" tabindex="1" style="display:inherit">
+                <form action="discussion.php" method="get">
+                    <input type="text" placeholder="Search" name="query">
+                    <a class="button">
+                        <img src="images/search.png" alt="Search">
+                    </a>
+                </form>
+            </div>
             <table id="searchUser">
                 <tr>
                     <th>Users</th>
