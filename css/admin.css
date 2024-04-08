@@ -154,3 +154,15 @@ table thead {
     right:1em;
     font-size: 1em;
 }
+
+#searchUser{
+    width: 80vw;
+    border: none;
+    border-collapse: collapse; 
+}
+#searchUser tr{
+border-bottom: #D9D9D9 1.5px solid !important;
+}
+#searchUser th{
+    font-size: 2em;
+}
