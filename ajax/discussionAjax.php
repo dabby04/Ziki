@@ -36,7 +36,7 @@ $jsArray = json_encode($list); // Initialize as an empty JSON array
 
 
   try{
-  require_once "./server/configure.php";
+  require_once "../server/configure.php";
 
   if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
