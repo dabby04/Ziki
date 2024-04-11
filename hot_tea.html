@@ -9,17 +9,18 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function plusButtonClick(event) {
+        function plusButtonClick(event,discussion_id) {
             // Send AJAX request to increase likes
             $.ajax({
                 type: "POST",
                 url: "ajax/increaseLikes.php",
-                data: { discussion_id: 12, type:"like" },
+                data: { discussion_id, type:"like" },
                 success: function(response) {
+                    var jsonResponse = JSON.parse(response);
                     console.log("Likes increased:", response);
-                    if (response.status == "error" && response.message === "Unauthorized access") {
+                    if (jsonResponse.status === "error" && jsonResponse.message === "Unauthorized access") {
                         console.log("Redirecting to login page...");
-                        window.location.href = "login.php"; // Verify the path to login.php
+                        window.parent.location.href = "login.php";
                     }
                 },
                 error: function(xhr, status, error) {
@@ -28,15 +29,19 @@
             });
         }
 
-        function minusButtonClick(event) {
+        function minusButtonClick(even,discussion_id) {
             // Send AJAX request to decrease likes
             $.ajax({
                 type: "POST",
                 url: "ajax/decreaseLikes.php",
-                data: { discussion_id: 12,type:"dislike"},
+                data: { discussion_id: discussion_id,type:"dislike"},
                 success: function(response) {
-                    console.log("Likes decreased:", response);
-                    // Update UI as needed
+                    var jsonResponse = JSON.parse(response);
+                    console.log("Likes increased:", response);
+                    if (jsonResponse.status === "error" && jsonResponse.message === "Unauthorized access") {
+                        console.log("Redirecting to login page...");
+                        window.parent.location.href = "login.php";
+                    }
                 },
                 error: function(xhr, status, error) {
                     console.error("Error decreasing likes:", error);
@@ -49,9 +54,9 @@
 <body>
     <div class="container">
         <section class="feedback-item">
-            <img loading="lazy" src="images/+.png" alt="" class="icon" onclick="plusButtonClick(event)">
+            <img loading="lazy" src="images/+.png" alt="" class="icon" onclick="plusButtonClick(event,discussion_id=12)">
             <div class="count">12</div>
-            <img loading="lazy" src="images/-.png" alt="" class="icon" onclick="minusButtonClick(event)">
+            <img loading="lazy" src="images/-.png" alt="" class="icon" onclick="minusButtonClick(event,discussion_id=12)">
         </section>
         <section class="content">
             <a href="specificDiscussion.php?discTopic=12" target="_parent">
@@ -76,9 +81,9 @@
     </div>
     <div class="container">
         <section class="feedback-item">
-            <img loading="lazy" src="images/+.png" alt="" class="icon" onclick="plusButtonClick(event)">
+            <img loading="lazy" src="images/+.png" alt="" class="icon" onclick="plusButtonClick(event,discussion_id=13)">
             <div class="count">20</div>
-            <img loading="lazy" src="images/-.png" alt="" class="icon" onclick="minusButtonClick(event)">
+            <img loading="lazy" src="images/-.png" alt="" class="icon" onclick="minusButtonClick(event,discussion_id=13)">
         </section>
         <section class="content">
             <a href="specificDiscussion.php?discTopic=13" target="_parent">
