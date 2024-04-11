@@ -7,30 +7,30 @@ try {
     if ( isset($_POST['postId']) && !empty($_POST['postId']) &&isset($_POST['userId']) && !empty($_POST['userId'])) {
         $postId= $_POST['postId'];
         $userId= $_POST['userId'];
-        $sql = "DELETE FROM REPORTED WHERE postId = ? AND userId=?";
+        // $sql = "DELETE FROM REPORTED WHERE postId = ? AND userId=?";
        
-        $statement = $pdo->prepare($sql);
+        // $statement = $pdo->prepare($sql);
        
-        $statement->bindValue(1, $postId, PDO::PARAM_STR);
-        $statement->bindValue(2, $userId, PDO::PARAM_STR);
+        // $statement->bindValue(1, $postId, PDO::PARAM_STR);
+        // $statement->bindValue(2, $userId, PDO::PARAM_STR);
         
-        $statement->execute();
+        // $statement->execute();
         
-        $sql = "DELETE FROM COMMENTS WHERE postId = ?";
+        // $sql = "DELETE FROM COMMENTS WHERE postId = ?";
        
-        $statement = $pdo->prepare($sql);
+        // $statement = $pdo->prepare($sql);
        
-        $statement->bindValue(1, $postId, PDO::PARAM_STR);
+        // $statement->bindValue(1, $postId, PDO::PARAM_STR);
         
-        $statement->execute();
+        // $statement->execute();
 
-        $sql = "DELETE FROM FAVOURITES WHERE postId = ?";
+        // $sql = "DELETE FROM FAVOURITES WHERE postId = ?";
        
-        $statement = $pdo->prepare($sql);
+        // $statement = $pdo->prepare($sql);
        
-        $statement->bindValue(1, $postId, PDO::PARAM_STR);
+        // $statement->bindValue(1, $postId, PDO::PARAM_STR);
         
-        $statement->execute();
+        // $statement->execute();
 
         $sql2=" DELETE FROM POSTS WHERE id = ?";
         $statement2 = $pdo->prepare($sql2);

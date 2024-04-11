@@ -18,7 +18,7 @@ html {
     margin-left: 100px;
     top: 150px;
     position: relative;
-    height: -webkit-fill-available;
+    height: max-content;
 }
 
 /* .main h2 {
@@ -166,7 +166,26 @@ border-bottom: #D9D9D9 1.5px solid !important;
 #searchUser th{
     font-size: 2em;
 }
+#searchUser td{
+    border:none;
+    height: 3em;
+    font-size: 1.25em;
+}
+
+#searchUser td button{
+    position: inherit;
+}
 .search-container{
-    margin-bottom: 2em;
+    top: 2em !important;
     vertical-align: middle;
+    float:none !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin:2em auto 2.5em auto!important;
+    width: 25em !important; 
+}
+
+.search-container input {
+    width: 19em !important;
+    display: block !important;
 }
