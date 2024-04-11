@@ -27,7 +27,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== "admin") {
         <div class="overview-box">
             <div class="title-box">
                 <h3>User Registration Stats</h3>
-                <iframe src="plot.html" title="description"></iframe>
+                <iframe id="plotFrame" src="plot.html" title="description"></iframe>
             </div>
         </div>
         <div class="overview-box">
@@ -77,6 +77,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== "admin") {
             function updateUI(data) {
                 $('#results').html(data.totalUser);
                 $('#results_p').html(data.totalPost);
+                $('#plotFrame').attr('src', $('#plotFrame').attr('src'));
             }
 
             // Fetch data initially and set interval to update periodically
