@@ -17,12 +17,12 @@
     width:2.5%;
 }
 .like{
-    float:right;
+    /* float:inline-end; */
     width:2.5%;
 
 }
 .dislike{
-    float:right;
+    /* float:inline-end; */
     width:2.5%;
     transform: rotate(180deg);
 }
@@ -41,7 +41,7 @@
     border-radius: 2em;
 
 }
-.discFav{
+#discFav{
     height:2em;
     float:inline-end;
     margin-right: 0.5em;
@@ -76,13 +76,9 @@
     width: 1em;
 }
 #like{
-
-    
     width: 2em;
 }
 #dislike{
-    
-
     width: 2em;
     transform: rotate(180deg);
 }
@@ -91,12 +87,11 @@ footer{
   left: 0;
   bottom: 0;
   width: 100%;
-
 }
 .footIcons{
     float: inline-end;
-    display: flexbox;
+    display: flex;
     flex-direction: row;
     width: 2em;
-
+    margin-right: 3em;
 }
