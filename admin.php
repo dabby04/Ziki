@@ -27,6 +27,7 @@ if (!isset($_SESSION['status']) || $_SESSION['status'] !== "admin") {
         <div class="overview-box">
             <div class="title-box">
                 <h3>User Registration Stats</h3>
+                <iframe src="plot.html" title="description"></iframe>
             </div>
         </div>
         <div class="overview-box">

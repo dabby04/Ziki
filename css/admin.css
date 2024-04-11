@@ -49,6 +49,7 @@ html {
     width: inherit;
     display: flex;
     flex-direction: column;
+    height: inherit;
 
 }
 
@@ -188,4 +189,8 @@ border-bottom: #D9D9D9 1.5px solid !important;
 .search-container input {
     width: 19em !important;
     display: block !important;
+}
+
+iframe{
+    height:inherit;
 }
