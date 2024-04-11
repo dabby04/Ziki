@@ -1,6 +1,7 @@
 import mysql.connector
 import plotly.express as px
 import re
+import sys
 
 try:
     # Read the PHP file containing the database connection details
@@ -66,6 +67,7 @@ try:
     fig.write_html('plot.html')
 
     print("HTML graph saved to plot.html")
-
+    sys.exit(0)
 except Exception as e:
     print("An error occurred:", e)
+    sys.exit(1)

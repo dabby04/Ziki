@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['status']) || $_SESSION['status'] !== "admin") {
+    header("Location: login.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +22,7 @@
     </div>
     <div class="main">
         <div class="box">
-            <div class="search-container" tabindex="1" style="display:flex">
+            <div class="search-container2" tabindex="1" style="display:flex">
                 <form id="searchForm" action="searchUser.php" method="get">
                     <input type="text" id="searchInput" placeholder="Search" name="query">
                     <a class="button" onclick="searchUsers()">

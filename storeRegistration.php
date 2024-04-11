@@ -43,12 +43,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
       $stmt->execute();
       print_r("HERE");
-      exec("python graph.py", $output, $return_var);
-
+      exec("/Users/oluwadabiraomotoso/miniconda3/bin/python graph.py", $output, $return_var);
+      print_r($return_var);
+     
       // Check the output and return status if needed
       if ($return_var !== 0) {
-        $error_message = "Error executing Python script: " . implode("\n", $output);
-        echo "<script>alert('$error_message');</script>";
+        $error_message =implode("\n", $output);
+        echo "Error: $error_message";
       } else {
         echo "<script>alert('Python script executed successfully!');</script>";
         // Redirect to the login page
@@ -65,14 +66,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $stmt->bindValue(6, $date_joined);
 
       $stmt->execute();
-      exec("python graph.py", $output, $return_var);
+      exec("/Users/oluwadabiraomotoso/miniconda3/bin/python graph.py", $output, $return_var);
+      print_r($return_var);
+     
+      // Check the output and return status if needed
+      if ($return_var !== 0) {
+        $error_message =implode("\n", $output);
+        echo "Error: $error_message";
+      } else {
+        echo "<script>alert('Python script executed successfully!');</script>";
+        // Redirect to the login page
+        echo "<script>window.location.href = 'login.php';</script>";
+      }
 
       // Check the output and return status if needed
       if ($return_var !== 0) {
-        $error_message = "Error executing Python script: " . print_r($output, true);
+        $error_message = "Error executing Python script: " . implode("\n", $output);
         echo "<script>alert('$error_message');</script>";
-    }
-     else {
+      } else {
         echo "<script>alert('Python script executed successfully!');</script>";
         // Redirect to the login page
         echo "<script>window.location.href = 'login.php';</script>";
@@ -83,5 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     exit;
   }
+
+
 }
 ?>
