@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
   if ($stmt->rowCount() > 0) {
     $message = "Username and/or email already exists";
-    echo "<script type='text/javascript'>alert('$message');
+    echo "<script>alert('$message');
     window.location.href = 'registration.php';</script>";
     exit;
   } else {
@@ -43,6 +43,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
       $stmt->execute();
       print_r("HERE");
+      exec("python graph.py", $output, $return_var);
+
+      // Check the output and return status if needed
+      if ($return_var !== 0) {
+        $error_message = "Error executing Python script: " . implode("\n", $output);
+        echo "<script>alert('$error_message');</script>";
+      } else {
+        echo "<script>alert('Python script executed successfully!');</script>";
+        // Redirect to the login page
+        echo "<script>window.location.href = 'login.php';</script>";
+      }
     } else {
       $query = "INSERT INTO USER (name, email, dob, username, password,dateJoined) VALUES (?, ?, ?, ?, ?,?);";
       $stmt = $pdo->prepare($query);
@@ -54,11 +65,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $stmt->bindValue(6, $date_joined);
 
       $stmt->execute();
+      exec("python graph.py", $output, $return_var);
+
+      // Check the output and return status if needed
+      if ($return_var !== 0) {
+        $error_message = "Error executing Python script: " . print_r($output, true);
+        echo "<script>alert('$error_message');</script>";
+    }
+     else {
+        echo "<script>alert('Python script executed successfully!');</script>";
+        // Redirect to the login page
+        echo "<script>window.location.href = 'login.php';</script>";
+      }
     }
 
 
-    // Redirect to the login page
-    header("Location: login.php");
+
     exit;
   }
 }
