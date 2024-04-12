@@ -41,7 +41,7 @@ if (isset($_SESSION['id'])) {
             $created_at = date('Y-m-d H:i:s');
 
             // Prepare and execute the SQL statement to insert the post into the database
-            $stmt = $pdo->prepare("INSERT INTO posts (content, creator, creatorId, created_at, title, img, theme) VALUES (:content, :creator,:user_id, :created_at, :title, :img, :theme)");
+            $stmt = $pdo->prepare("INSERT INTO POSTS (content, creator, creatorId, created_at, title, img, theme) VALUES (:content, :creator,:user_id, :created_at, :title, :img, :theme)");
             $stmt->bindParam(':content', $content, PDO::PARAM_STR);
             $stmt->bindParam(':creator', $creator, PDO::PARAM_STR);
             $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
