@@ -1,68 +1,125 @@
-
-        
         var fav = 0;
-        //$(document).on('click', '#discFav', function() {
         function addFav(user, post){
           if(fav==0)
           {
-            $(this).css({
+            $('#discFav').css({
               'background-color': 'Yellow'
             });
             fav =1;
-            // var xmlhttp = new XMLHttpRequest();
-            //   xmlhttp.onreadystatechange = function() {
-            //     if (this.readyState == 4 && this.status == 200) {
-            //       alert("Post successfully added to favorites")
-            //     }
-            //   };
-            //   xmlhttp.open("POST", "./php/addFavorite.php?user="+user+"&fav="+post, true);
-            //   xmlhttp.send();
+            var xmlhttp = new XMLHttpRequest();
+              xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  alert("Post successfully added to favorites")
+                }
+              };
+              xmlhttp.open("POST", "./ajax/addFavorite.php", true);
+              xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+              xmlhttp.send("user=" + user + "&fav=" + post);
           }
           else{
-            $(this).css({
+            $('#discFav').css({
               'background': 'none'
             });
             fav =0;
           }
     
-        }//);
+        }
     
-    
-        var like = 0;
-        $(document).on('click', '#like', function() {
+      var like = 0;
+      var uplikes;
+      function likePost(post,likes){
+       console.log(likes);
       if(like==0)
       {
-        $(this).css({
+        uplikes=likes+1;
+        $('#like').css({
           'background-color': 'red'
         });
         like =1;
+        var xmlhttp = new XMLHttpRequest();
+              xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  alert("Post successfully added to liked")
+                  $('#countLike').innerHTML(uplikes);
+                }
+              };
+              xmlhttp.open("POST", "./ajax/likePost.php", true);
+              xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+              xmlhttp.send("likes=" + uplikes + "&post=" + post);
+              
       }
       else{
-        $(this).css({
+        uplikes-=1;
+        $('#like').css({
           'background': 'none'
         });
         like =0;
+
+        var xmlhttp = new XMLHttpRequest();
+              xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  alert("Post successfully added to liked")
+                }
+              };
+              xmlhttp.open("POST", "./ajax/likePost.php", true);
+              xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+              xmlhttp.send("likes=" + uplikes + "&post=" + post);
       }
-    });
+    }
     
     var dislike = 0;
-    $(document).on('click', '#dislike', function() {
+      var downlikes;
+      function dislikePost(post,dislikes){
+       console.log(dislikes);
       if(dislike==0)
       {
-        $(this).css({
+        downlikes=dislikes+1;
+        $('#dislike').css({
           'background-color': 'red'
         });
         dislike =1;
+        var xmlhttp = new XMLHttpRequest();
+              xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  alert("Post successfully disliked")
+                }
+              };
+              xmlhttp.open("POST", "./ajax/dislikePost.php", true);
+              xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+              xmlhttp.send("dislikes=" + downlikes + "&post=" + post);
+              
       }
       else{
-        $(this).css({
+        downlikes-=1;
+        $('#dislike').css({
           'background': 'none'
         });
         dislike =0;
-      }
-    });
-    
 
+        var xmlhttp = new XMLHttpRequest();
+              xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  alert("Post successfully disliked")
+                }
+              };
+              xmlhttp.open("POST", "./ajax/dislikePost.php", true);
+              xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+              xmlhttp.send("dislikes=" + downlikes + "&post=" + post);
+      }
+    }
+    
+    
+function flagPost(post,creator){
+  var xmlhttp = new XMLHttpRequest();
+              xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  alert("Post flagged")
+                }
+              };
+              xmlhttp.open("POST", "./ajax/flagPost.php", true);
+              xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+              xmlhttp.send("creator=" + creator + "&post=" + post);
+}
 
 function discussion(type,value)
 {
@@ -86,33 +143,6 @@ function generate(content)
   console.log(topics);
   var cards = document.getElementById("cards");
   cards.innerHTML = topics;
-  // .map((e) => {
-  //             return `<div class="card text-center">
-  //                               <div class="card-header">
-  //                                 <img id="discussionPFP" class="icons" src="images/blank-profile-picture.png" alt ="disussion pfp">
-  //                                 ${e.creator} 
-  //                                 <div class="dropdown">
-  //                                 <img id="discDropdown" class="icons" src="images/dropdown.png" alt="dropdown discussion" data-bs-toggle="dropdown" aria-expanded="false">
-  //                                 <ul class="dropdown-menu">
-  //                                   <li><a class="dropdown-item" href="#">Flag</a></li>
-  //                                   <li><a class="dropdown-item" href="#">Save</a></li>
-  //                                   <li><a class="dropdown-item" href="#">Share</a></li>
-  //                                 </ul>
-  //                                 </div>
-  //                                 <img id="discFav" src="images/star.png" alt="favorite discussion">
-                                 
-  //                               </div>
-  //                                 <div class="card-body">
-  //                                     <h5 class="card-title">${e.title}</h5>
-  //                                     <p class="card-text">${e.content}</p>
-  //                                     <form action="specificDiscussion.php" method="GET">
-  //                                               <button type="submit" class="btn btn-primary" name="discTopic" value=${e.id}>View Discussion</button>
-  //                                                </form>
-  //                                 </div>
-  //                                 <div class="card-footer text-body-secondary">
-  //                                     ${e.created_at}
-  //                                 </div>
-  //                             </div>`;
-  //           }).join("");
-
 }
+
+

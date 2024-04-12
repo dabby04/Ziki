@@ -33,7 +33,7 @@ if (isset($_GET["query"])) {
   <link href="css/discussion.css" rel="stylesheet">
 </head>
 
-<body onload="setInterval(discussion(type,value),60000)">
+<body onload="discussion(type,value)">
   <!-- <div id="filter">
   </div> -->
   <div id="cards">
@@ -58,6 +58,7 @@ if (isset($_GET["query"])) {
             </ul>
           </nav>
     </footer>
+    <script>setInterval(discussion(type,value),30000)</script>
 </body>
 
 </html>

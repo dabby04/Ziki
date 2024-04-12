@@ -1,38 +1,7 @@
  <?php
 
-
-// require_once "server/configure.php";
-
-// if(isset($_GET['query'])) {
-//   $search_query = "%" . $_GET["query"] . "%";
-//   $sql = "SELECT * FROM POSTS WHERE title LIKE ?";
-//   $statement = $pdo->prepare($sql);
-//   $statement->bindValue(1, $search_query, PDO::PARAM_STR);
-//   $statement->execute();
-
-//   if ($statement->rowCount() > 0) {
-//     $list = $statement->fetchAll(PDO::FETCH_ASSOC);
-//     foreach ($list as $item) {
-//       // Output HTML for each post
-//       echo "<div class='card text-center'>";
-//       // Output other details of the post
-//       echo "</div>";
-//     }
-//   } else {
-//     echo "<p>No posts found</p>";
-//   }
-// }
-
-// if(isset($_GET['getThemes'])) {
-//   $sql = "SELECT DISTINCT theme FROM POSTS";
-//   $statement = $pdo->prepare($sql);
-//   $statement->execute();
-//   $themes = $statement->fetchAll(PDO::FETCH_COLUMN);
-//   echo json_encode(['themes' => $themes]);
-// }
-
 $list = array();
-$jsArray = json_encode($list); // Initialize as an empty JSON array
+$jsArray = json_encode($list);
 
 
   try{
@@ -41,15 +10,15 @@ $jsArray = json_encode($list); // Initialize as an empty JSON array
   if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
     try {
-      $search_query = ""; // Add wildcards here
+      $search_query = ""; 
       if (isset($_GET["query"])) {
-        $search_query = "%" . $_GET["query"] . "%"; // Add wildcards here
+        $search_query = "%" . $_GET["query"] . "%";
         $sql = "SELECT * FROM POSTS WHERE title LIKE ?";
       } else {
         $theme = $_GET["theme"];
         $formattedtheme = strtolower($theme);
         //print_r($formattedtheme);
-        $search_query = $formattedtheme; // Add wildcards here
+        $search_query = $formattedtheme;
         $sql = "SELECT * FROM POSTS WHERE theme = ?";
       }
 
@@ -59,8 +28,6 @@ $jsArray = json_encode($list); // Initialize as an empty JSON array
 
       header('Content-Type: application/json');
       if ($statement->rowCount() > 0) {
-        // $list = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all rows
-        // echo json_encode($list);
         while($row= $statement->fetch(PDO::FETCH_ASSOC)) {
           echo "<div class='card text-center'>
                                         <div class='card-header'>
@@ -68,7 +35,7 @@ $jsArray = json_encode($list); // Initialize as an empty JSON array
                                           "<div class='dropdown'>
                                           <img id='discDropdown' class='icons' src='images/dropdown.png' alt='dropdown discussion' data-bs-toggle='dropdown' aria-expanded='false'>
                                           <ul class='dropdown-menu'>
-                                            <li><a class='dropdown-item' href='#'>Flag</a></li>
+                                            <li><a class='dropdown-item' onClick={flagPost(".$row['id'].",".$row['creatorId'].")}>Flag</a></li>
                                             <li><a class='dropdown-item' href='#'>Save</a></li>
                                             <li><a class='dropdown-item' href='#'>Share</a></li>
                                           </ul>
@@ -85,13 +52,13 @@ $jsArray = json_encode($list); // Initialize as an empty JSON array
                                           </div>
                                           <div class='card-footer text-body-secondary'>"
                                               .$row["created_at"]."
-
-                                              <div class= 'footIcons'>".
-                                                $row["likes"]."
-                                                <img src='images/like-icon-on-transparent-background-free-png.png' alt= 'like' id='like'>
-                                                ".
-                                                $row["dislikes"]."
-                                                <img src='images/like-icon-on-transparent-background-free-png.png' alt= 'dislike' id='dislike'>
+                                              
+                                              <div class= 'footIcons'><span id='countLike'>".
+                                                $row["likes"]."</span>
+                                                <img src='images/like-icon-on-transparent-background-free-png.png' alt= 'like' id='like' onClick={likePost(".$row["id"].",".$row["likes"].")}>
+                                                <span id='countDislike'>".
+                                                $row["dislikes"]."</span>
+                                                <img src='images/like-icon-on-transparent-background-free-png.png' alt= 'dislike' id='dislike' onClick={dislikePost(".$row["id"].",".$row["dislikes"].")}>
                                               </div>
                                           </div>
                                       </div>";
