@@ -22,6 +22,9 @@
                         console.log("Redirecting to login page...");
                         window.parent.location.href = "login.php";
                     }
+                    else{  
+                        document.getElementById('count_' + discussion_id).innerHTML = jsonResponse[0].likes;
+                    }
                 },
                 error: function(xhr, status, error) {
                     console.error("Error increasing likes:", error);
@@ -42,6 +45,9 @@
                         console.log("Redirecting to login page...");
                         window.parent.location.href = "login.php";
                     }
+                    else{
+                        document.getElementById('count_' + discussion_id).innerHTML = jsonResponse[0].dislikes;
+                    }
                 },
                 error: function(xhr, status, error) {
                     console.error("Error decreasing likes:", error);
@@ -55,7 +61,7 @@
     <div class="container">
         <section class="feedback-item">
             <img loading="lazy" src="images/+.png" alt="" class="icon" onclick="plusButtonClick(event,discussion_id=12)">
-            <div class="count">12</div>
+            <div id="count_12" class="count">12</div>
             <img loading="lazy" src="images/-.png" alt="" class="icon" onclick="minusButtonClick(event,discussion_id=12)">
         </section>
         <section class="content">
