@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $stmt->bindValue(6, $date_joined);
 
       $stmt->execute();
-      exec("/Users/oluwadabiraomotoso/miniconda3/bin/python graph.py", $output, $return_var);
+      exec("python graph.py", $output, $return_var);
       print_r($return_var);
      
       // Check the output and return status if needed
