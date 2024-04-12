@@ -86,6 +86,7 @@ INSERT INTO ADMIN (password, username) VALUES (MD5('test'), 'whitney');
 INSERT INTO `USER` (`name`, `username`, `email`, `password`, `DOB`, `dateJoined`, `bio`, `profilePhoto`) 
 VALUES
    ('John Doe', 'johndoe', 'johndoe@example.com', MD5('password123'), '1990-01-01', NOW(), 'Hello, I am John Doe.', NULL),
+   ('Jason Derula', 'jasond', 'johndoe@example.com', MD5('pass'), '1990-01-01', NOW(), 'Hello, I am jason D.', NULL),
    ('Alice Smith', 'alicesmith', 'alice@example.com', MD5('alicepassword'), '1995-05-15', NOW(), 'Nice to meet you!', NULL),
    ('Bob Johnson', 'bobjohnson', 'bob@example.com', MD5('bobpassword'), '1988-07-20', NOW(), 'I love coding!', NULL),
    ('Emma Watson', 'emmawatson', 'emma@example.com', MD5('emmapassword'), '1989-11-10', NOW(), 'Actress and activist.', NULL),
@@ -138,7 +139,9 @@ VALUES
    ('Sports'),
    ('Food'),
    ('Travel'),
-   ('Music');
+   ('Art'),
+   ('Music'),
+    ('Other')
 
 INSERT INTO REPORTEDUSERS (`userId`,`username`, `reportCount`)
 VALUES (6,'cashjohnny', 24),
