@@ -67,18 +67,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $stmt->bindValue(6, $date_joined);
 
       $stmt->execute();
-      exec("python graph.py", $output, $return_var);
-      print_r($return_var);
+      // exec("python graph.py", $output, $return_var);
+      // print_r($return_var);
      
-      // Check the output and return status if needed
-      if ($return_var !== 0) {
-        $error_message =implode("\n", $output);
-        echo "Error: $error_message";
-      } else {
-        echo "<script>alert('Python script executed successfully!');</script>";
-        // Redirect to the login page
-        echo "<script>window.location.href = 'login.php';</script>";
-      }
+      // // Check the output and return status if needed
+      // if ($return_var !== 0) {
+      //   $error_message =implode("\n", $output);
+      //   echo "Error: $error_message";
+      // } else {
+      //   echo "<script>alert('Python script executed successfully!');</script>";
+      //   // Redirect to the login page
+      //   echo "<script>window.location.href = 'login.php';</script>";
+      // }
 
       // Check the output and return status if needed
       if ($return_var !== 0) {
