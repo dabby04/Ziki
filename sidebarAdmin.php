@@ -26,7 +26,7 @@
                   <span class="nav-item">Dashboard</span>
                 </a>
                 </li>
-                <li><a href="#" class="navlinks">
+                <li><a href="searchUser.php" class="navlinks">
                     <i class="fas fa-search"></i>
                   <span class="nav-item">Search User</span>
                 </a>
