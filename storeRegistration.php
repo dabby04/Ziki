@@ -48,14 +48,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       // print_r($return_var);
      
       // Check the output and return status if needed
-      if ($return_var !== 0) {
-        $error_message =implode("\n", $output);
-        echo "Error: $error_message";
-      } else {
-        echo "<script>alert('Python script executed successfully!');</script>";
-        // Redirect to the login page
+      // if ($return_var !== 0) {
+      //   $error_message =implode("\n", $output);
+      //   echo "Error: $error_message";
+      // } else {
+      //   echo "<script>alert('Python script executed successfully!');</script>";
+      //   // Redirect to the login page
         echo "<script>window.location.href = 'login.php';</script>";
-      }
+      // }
     } else {
       $query = "INSERT INTO USER (name, email, dob, username, password,dateJoined) VALUES (?, ?, ?, ?, ?,?);";
       $stmt = $pdo->prepare($query);
@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       // } else {
       //   echo "<script>alert('Python script executed successfully!');</script>";
       //   // Redirect to the login page
-      //   echo "<script>window.location.href = 'login.php';</script>";
+        echo "<script>window.location.href = 'login.php';</script>";
       // }
 
       // Check the output and return status if needed
@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       // } else {
       //   echo "<script>alert('Python script executed successfully!');</script>";
       //   // Redirect to the login page
-      //   echo "<script>window.location.href = 'login.php';</script>";
+        echo "<script>window.location.href = 'login.php';</script>";
       // }
     }
 
