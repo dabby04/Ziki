@@ -71,12 +71,12 @@ try{
               <div class='card-footer text-body-secondary'>"
                   .$row["created_at"]."
 
-                  <div class= 'footIcons'>".
-                    $row["likes"]."
-                    <img src='images/like-icon-on-transparent-background-free-png.png' alt= 'like' id='like' onClick={likePost(".$row["commentId"].",".$row["likes"].")}>
-                    <span id='countDislike'>".
+                  <div class= 'footIcons'><span id='commcountLike'>".
+                    $row["likes"]."</span>
+                    <img src='images/like-icon-on-transparent-background-free-png.png' alt= 'like' class='like' id='commlike' onClick={likeComment(".$row["commentId"].",".$row["likes"].")}>
+                    <span id='commcountDislike'>".
                     $row["dislikes"]."</span>
-                    <img src='images/like-icon-on-transparent-background-free-png.png' alt= 'dislike' id='dislike' onClick={dislikePost(".$row["commentId"].",".$row["dislikes"].")}>
+                    <img src='images/like-icon-on-transparent-background-free-png.png' alt= 'dislike' class= 'dislike'id='commdislike' onClick={dislikeComment(".$row["commentId"].",".$row["dislikes"].")}>
                   </div>
               </div>
           </div>";

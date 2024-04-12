@@ -82,6 +82,13 @@
     width: 2em;
     transform: rotate(180deg);
 }
+.like{
+    width: 2em;
+}
+.dislike{
+    width: 2em;
+    transform: rotate(180deg);
+}
 footer{
     position: fixed;
   left: 0;
