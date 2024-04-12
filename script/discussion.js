@@ -10,6 +10,7 @@
               xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                   alert("Post successfully added to favorites")
+                  $('#countLike').html = "you";
                 }
               };
               xmlhttp.open("POST", "./ajax/addFavorite.php", true);
@@ -40,7 +41,7 @@
               xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                   alert("Post successfully added to liked")
-                  $('#countLike').innerHTML(uplikes);
+                  document.getElementById("countLike").innerHTML=uplikes;
                 }
               };
               xmlhttp.open("POST", "./ajax/likePost.php", true);
@@ -59,6 +60,7 @@
               xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                   alert("Post successfully added to liked")
+                  document.getElementById("countLike").innerHTML=uplikes;
                 }
               };
               xmlhttp.open("POST", "./ajax/likePost.php", true);
@@ -82,6 +84,8 @@
               xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                   alert("Post successfully disliked")
+                  console.log(downlikes);
+                  document.getElementById("countDislike").innerHTML=downlikes;
                 }
               };
               xmlhttp.open("POST", "./ajax/dislikePost.php", true);
@@ -100,6 +104,7 @@
               xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                   alert("Post successfully disliked")
+                  document.getElementById("countDislike").innerHTML=downlikes;
                 }
               };
               xmlhttp.open("POST", "./ajax/dislikePost.php", true);
