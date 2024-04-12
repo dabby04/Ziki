@@ -45,6 +45,7 @@ $topic = $topic??$_GET["discTopic"];
             </ul>
           </nav>
     </footer>
+    <script>setInterval(discussion(topic),30000)</script>
 </body>
 
 </html>
