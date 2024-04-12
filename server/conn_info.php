@@ -1,6 +1,7 @@
 <?php
 
 
+
 define('DBUSER', 'webuser');
 define('DBPASS', 'Password$$');
 
