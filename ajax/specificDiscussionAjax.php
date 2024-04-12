@@ -52,7 +52,7 @@ try{
 
         if ($statement->rowCount() > 0) {
             while($row= $statement->fetch(PDO::FETCH_ASSOC)){ // Fetch all rows
-            echo"<div class='card text-center'>
+            echo"<div class='card text-center comments'>
             <div class='card-header'>
               <img id='discussionPFP' class='icons' src='images/blank-profile-picture.png' alt ='disussion pfp'> 
               <div class='dropdown'>

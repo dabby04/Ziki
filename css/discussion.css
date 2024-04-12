@@ -102,3 +102,8 @@ footer{
     width: 2em;
     margin-right: 3em;
 }
+
+.comments{
+    width: 90%;
+    float: right;
+}
