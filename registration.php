@@ -9,6 +9,7 @@
     <?php include_once "css/login.css"; ?>
     <?php include_once "css/registration.css"; ?>
     <?php include_once "css/highlight.css"; ?>
+    <?php include "script/registration.js"; ?>
   </style>
   <script type="text/javascript" src="script/registration.js"></script>
 </head>
