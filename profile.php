@@ -1,4 +1,27 @@
-<?php include "pageheader.php"?>
+
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
+require_once 'server/configure.php';
+
+session_start();
+
+if (!(isset($_SESSION['id']))) {
+    header("Location: login.php");
+    exit;
+}else if ($_SESSION['status'] === "admin") {
+    header("Location: admin.php");
+    exit;
+}else { 
+    
+    $user_id = $_SESSION['id'];
+error_log("User ID: " . $user_id);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,34 +32,18 @@
     <style><?php 
     include "css/reset.css";
     include "css/profile.css";
-    ?></style>
+    include "pageheader.php";
+    ?>
+    </style>
     <!-- <link rel="stylesheet" href="css/pageheader.css" />
     <link rel="stylesheet" href="css/profile.css?v=<?php echo time(); ?>"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="script/profile.js"></script>
-
 </head>
 
+
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-
-require_once 'server/configure.php';
-
-if (!isset($_SESSION['id'])) {
-    header("Location: login.php");
-    exit;
-}
-
-if ($_SESSION['status'] === "admin") {
-    header("Location: admin.php");
-    exit;
-}
-
-$user_id = $_SESSION['id'];
-
 try {
     
     $sql = "SELECT * FROM USER WHERE id = :user_id";
@@ -44,38 +51,55 @@ try {
     $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->execute();
     $userData = $stmt->fetch(PDO::FETCH_ASSOC);
+    $username = $userData['username'];
 
 } catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
-?>
 
+?>
 
 <body>
 <header class="profile_header">
     <?php if (!empty($userData['profilePhoto'])): ?>
         <img id="header-img" src="images/headerimg.png" />
-        <img class="pfp" src="data:image/jpeg;base64,<?php echo base64_encode($userData['profilePhoto']); ?>"  />
+        <img class="pfpp" src="data:image/jpeg;base64,<?php echo base64_encode($userData['profilePhoto']); ?>"  />
     <?php else: ?>
         <img id="header-img" src="images/headerimg.png" />
-        <img class="pfp" src="images/blank-profile-picture.png"  />
+        <img class="pfpp" src="images/blank-profile-picture.png"  />
     <?php endif; ?>
     
     <!-- Post Popup Form -->
-    <div id="postPopup" class="popup">
-        <form id="postForm" action="savePost.php" method="post" enctype="multipart/form-data">
-            <textarea name="content" placeholder="Speak your mind..."></textarea>
-            <div class="inputControls">
-                <input type="text" name="title" placeholder="Enter title" id="postTitle">
-                <button type="button" class="postButtons" id="XButton" onclick="closePostPopup()">X</button>
-                <label for="postImage">
-                    <img id="photo_icon" src="images/photo_icon.png" alt="Photo Icon"/>
-                </label>
-                <input type="file" id="postImage" name="postImage" accept="image/*">
-                <button type="submit" class="postButtons">Submit</button>
-            </div>
-        </form>
-    </div>
+<!-- Post Popup Form -->
+<div id="postPopup" class="popup">
+    <form id="postForm" action="savePost.php" method="post" enctype="multipart/form-data">
+        <textarea name="content" placeholder="Speak your mind..."></textarea>
+        <input type="text" name="title" placeholder="Enter title" id="postTitle">
+        <div class="inputControls">
+            <label for="postImage">
+                <img id="photo_icon" src="images/photo_icon.png" alt="Photo Icon"/>
+            </label>
+            <input type="file" id="postImage" name="postImage" accept="image/*">
+
+              <!-- Themes Option -->
+              <label for="postTheme">Select a theme:</label>
+            <select name="postTheme" id="postTheme">
+                <option value="Technology">Technology</option>
+                <option value="Travel">Travel</option>
+                <option value="Food">Food</option>
+                <option value="Art">Art</option>
+                <option value="Sports">Sports</option>
+                <option value="Other">Other</option>
+       
+            </select>
+            
+            
+            <button type="button" class="postButtons" id="XButton" onclick="closePostPopup()">X</button>
+            <button type="submit" class="postButtons">Submit</button>
+        </div>
+    </form>
+</div>
+
 </header>
 
 
@@ -104,9 +128,10 @@ try {
 
 
     <nav id="tab-tool">
-    <div class="text-option" ><a href="#">Posts</a></div> 
-    <div class="text-option" id="last" onclick="toggle('commentedPosts.php')" ><a href=""></a></div>
-    <div class="text-option" onclick="toggle('likedPosts.php')"><a href="likedPosts.php">Favorites</a></div>
+    <div class="text-option" id="viewMain">Posts</a></div> 
+    <div class="text-option" id="viewComments">Commented</a></div>
+    <div class="text-option" id="viewLiked" > Favourites </div>
+    </nav>
 
 
 <?php  
@@ -115,10 +140,10 @@ try {
     // Connect to the database
 
     // Query to select posts
-    $sql = "SELECT p.title, p.content, p.created_at, u.profilePhoto
+    $sql = "SELECT p.title, p.content, p.created_at, p.img, u.profilePhoto
             FROM POSTS p
             INNER JOIN USER u ON p.creatorId = u.id
-            ORDER BY p.created_at DESC"; // Change the ORDER BY clause as needed`
+            ORDER BY p.created_at DESC"; 
 
     // Prepare and execute the query
     $stmt = $pdo->query($sql);
@@ -133,8 +158,9 @@ try {
 ?>
 
 
-
+<section id ="main-posts">
 <?php foreach ($posts as $post): ?>
+
     <div class="post-section">
         <div class="post-container">
             <!-- User profile photo in top right -->
@@ -143,18 +169,164 @@ try {
             <?php endif; ?>
             <!-- Post title in center -->
             <h2 class="post-title"><?php echo $post['title']; ?></h2>
+
+            <p id="post username"> @  <?php echo $username ?> Says </p>
+
             <!-- Post content in middle -->
             <p class="post-content"><?php echo $post['content']; ?></p>
+             <!-- Display post image -->
+             <?php if (!empty($post['img'])): ?>
+                <?php
+                // Decode the base64 encoded image
+                $imageData = base64_encode($post['img']);
+                // Format the image source
+                $imageSrc = 'data:image/jpeg;base64,' . $imageData;
+                ?>
+                <img class="post-image" src="<?php echo $imageSrc; ?>" alt="Post Image">
+            <?php endif; ?>
             <!-- View comment button -->
-            <button class="view-comment-button">View Comments</button>
+            <button class="view-comment-button">View Discussion</button>
             <!-- Post footer displaying the time the post was made -->
             <div class="post-footer"><?php echo date("F j, Y, g:i a", strtotime($post['created_at'])); ?></div>
         </div>
     </div>
+           
 <?php endforeach; ?>
 
+</section>
 
-  
+
+
+<section id="liked-posts">
+<?php
+try {
+    // Query to select liked posts
+    $sql2 = "SELECT p.id, p.title, p.content,p.creator, p.creatorId, p.created_at, p.img, u.profilePhoto
+    FROM POSTS p
+    INNER JOIN COMMENTS c ON p.id = c.postId
+    INNER JOIN USER u ON p.creatorId = u.id
+    WHERE c.userId = ?
+    ORDER BY p.created_at DESC;
+    ";
+
+    // Prepare and execute the query
+    $stmt = $pdo->prepare($sql2);
+    $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    // Fetch all rows as an associative array
+    $likedPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+    // Display liked posts
+    foreach ($likedPosts as $post) {
+        // Output the HTML for each post
+        ?>
+        <div class="post-section">
+        <div class="post-container">
+            <!-- User profile photo in top right -->
+            <?php if (!empty($post['profilePhoto'])): ?>
+                <img class="profile-photo" src="data:image/jpeg;base64,<?php echo base64_encode($post['profilePhoto']); ?>" alt="User Profile Photo">
+            <?php endif; ?>
+            <!-- Post title in center -->
+            <h2 class="post-title"><?php echo $post['title']; ?></h2>
+
+            <p id="post username"> @  <?php echo $post['creator']?> Says </p>
+
+            <!-- Post content in middle -->
+            <p class="post-content"><?php echo $post['content']; ?></p>
+             <!-- Display post image -->
+             <?php if (!empty($post['img'])): ?>
+                <?php
+                // Decode the base64 encoded image
+                $imageData = base64_encode($post['img']);
+                // Format the image source
+                $imageSrc = 'data:image/jpeg;base64,' . $imageData;
+                ?>
+                <img class="post-image" src="<?php echo $imageSrc; ?>" alt="Post Image">
+            <?php endif; ?>
+
+            <!-- View comment button -->
+            <button class="view-comment-button">View Discussion</button>
+            <!-- Post footer displaying the time the post was made -->
+            <div class="post-footer"><?php echo date("F j, Y, g:i a", strtotime($post['created_at'])); ?></div>
+        </div>
+        </div>
+        <?php
+    }
+
+} catch (PDOException $e) {
+    // Handle database connection error
+    echo "Error: " . $e->getMessage();
+}
+?>
+
+</section>
+
+
+<section id="commented-posts">
+<?php
+try {
+    // Query to select liked posts
+    $sql2 = "SELECT p.title, p.content, p.creatorId, p.creator, p.created_at, p.img, u.profilePhoto
+            FROM POSTS p
+            JOIN FAVOURITES f ON p.id = f.postId
+            JOIN USER u ON p.creatorId = u.id
+            WHERE f.userId = ? 
+            ORDER BY p.created_at DESC";
+
+    // Prepare and execute the query
+    $stmt = $pdo->prepare($sql2);
+    $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    // Fetch all rows as an associative array
+    $commentPosts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+    // Display liked posts
+    foreach ($commentPosts as $post) {
+        // Output the HTML for each post
+        ?>
+        <div class="post-section">
+        <div class="post-container">
+            <!-- User profile photo in top right -->
+            <?php if (!empty($post['profilePhoto'])): ?>
+                <img class="profile-photo" src="data:image/jpeg;base64,<?php echo base64_encode($post['profilePhoto']); ?>" alt="User Profile Photo">
+            <?php endif; ?>
+            <!-- Post title in center -->
+            <h2 class="post-title"><?php echo $post['title']; ?></h2>
+
+            <p id="post username"> @  <?php echo $post['creator']?> Says </p>
+
+            <!-- Post content in middle -->
+            <p class="post-content"><?php echo $post['content']; ?></p>
+             <!-- Display post image -->
+             <?php if (!empty($post['img'])): ?>
+                <?php
+                // Decode the base64 encoded image
+                $imageData = base64_encode($post['img']);
+                // Format the image source
+                $imageSrc = 'data:image/jpeg;base64,' . $imageData;
+                ?>
+                <img class="post-image" src="<?php echo $imageSrc; ?>" alt="Post Image">
+            <?php endif; ?>
+            <!-- View comment button -->
+            <button class="view-comment-button">View Discussion</button>
+            <!-- Post footer displaying the time the post was made -->
+            <div class="post-footer"><?php echo date("F j, Y, g:i a", strtotime($post['created_at'])); ?></div>
+        </div>
+        </div>
+        <?php
+    }
+
+} catch (PDOException $e) {
+    // Handle database connection error
+    echo "Error: " . $e->getMessage();
+}
+?>
+
+</section>
 
             </body>
         </html>
