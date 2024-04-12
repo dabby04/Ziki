@@ -31,7 +31,7 @@ $jsArray = json_encode($list);
         while($row= $statement->fetch(PDO::FETCH_ASSOC)) {
           echo "<div class='card text-center'>
                                         <div class='card-header'>
-                                          <img id='discussionPFP' class='icons' src='images/blank-profile-picture.png' alt ='disussion pfp'>".$row["creator"]. 
+                                          <img id='discussionPFP' class='icons' src='data:image/jpeg;base64,'" . base64_encode($row["profilePhoto"]) . "' alt='profile photo'>".$row["creator"]. 
                                           "<div class='dropdown'>
                                           <img id='discDropdown' class='icons' src='images/dropdown.png' alt='dropdown discussion' data-bs-toggle='dropdown' aria-expanded='false'>
                                           <ul class='dropdown-menu'>
@@ -41,15 +41,16 @@ $jsArray = json_encode($list);
                                           </ul>
                                           </div>
                                           <img id='discFav' src='images/star.png' alt='favorite discussion'onClick={addFav(".$row["creatorId"].",".$row["id"].")}>
-                                         
                                         </div>
-                                          <div class='card-body'>
-                                              <h5 class='card-title'>".$row["title"]."</h5>
-                                              <p class='card-text'>".$row["content"]."</p>
-                                              <form action='specificDiscussion.php' method='GET'>
-                                                        <button type='submit' class='btn btn-primary' name='discTopic' value=".$row["id"].">View Discussion</button>
-                                                         </form>
-                                          </div>
+                                        <div class='card-body'>
+    <h5 class='card-title'>".$row["title"]."</h5>
+    <p class='card-text'>".$row["content"]."</p>
+    <img id ='postPic' src='data:image/jpeg;base64,". base64_encode($row["img"])."' alt='profile photo'>
+    <form action='specificDiscussion.php' method='GET'>
+        <button type='submit' class='btn btn-primary' name='discTopic' value='".$row["id"]."'>View Discussion</button>
+    </form>
+</div>
+
                                           <div class='card-footer text-body-secondary'>"
                                               .$row["created_at"]."
                                               

@@ -95,3 +95,8 @@ footer{
     width: 2em;
     margin-right: 3em;
 }
+
+#postPic{
+    max-width: 30vw;
+    margin: 1em;
+}
