@@ -1,5 +1,6 @@
 <?php
 session_start();
+$user_id = "";
 $user_id = $user_id??$_SESSION['id'];
 try{
     require_once "../server/configure.php";
@@ -32,7 +33,7 @@ try{
                                               <p class='card-text'>".$row["content"]."</p>
                                           </div>
                                           <div class='card-footer text-body-secondary'>
-                                          <img src='images/comment-icon-15.png' alt='comment' id='comment' onClick={addComment($user_id)}"
+                                          <img src='images/comment-icon-15.png' alt='comment' id='comment' onClick={addComment(1,".$row['id'].")}"
                                               .$row["created_at"]."
 
                                               <div class= 'footIcons'>".
@@ -51,7 +52,7 @@ try{
 
         if ($statement->rowCount() > 0) {
             while($row= $statement->fetch(PDO::FETCH_ASSOC)){ // Fetch all rows
-            echo"<div class='card text-center'>
+            echo"<div class='card text-center comments'>
             <div class='card-header'>
               <img id='discussionPFP' class='icons' src='images/blank-profile-picture.png' alt ='disussion pfp'> 
               <div class='dropdown'>
@@ -62,7 +63,6 @@ try{
                 <li><a class='dropdown-item' href='#'>Share</a></li>
               </ul>
               </div>
-              <img id='discFav' src='images/star.png' alt='favorite discussion'onClick={addFav(".$row["userId"].",".$row["commentId"].")}>
              
             </div>
               <div class='card-body'>
@@ -71,12 +71,12 @@ try{
               <div class='card-footer text-body-secondary'>"
                   .$row["created_at"]."
 
-                  <div class= 'footIcons'>".
-                    $row["likes"]."
-                    <img src='images/like-icon-on-transparent-background-free-png.png' alt= 'like' id='like' onClick={likePost(".$row["commentId"].",".$row["likes"].")}>
-                    <span id='countDislike'>".
+                  <div class= 'footIcons'><span id='commcountLike'>".
+                    $row["likes"]."</span>
+                    <img src='images/like-icon-on-transparent-background-free-png.png' alt= 'like' class='like' id='commlike' onClick={likeComment(".$row["commentId"].",".$row["likes"].")}>
+                    <span id='commcountDislike'>".
                     $row["dislikes"]."</span>
-                    <img src='images/like-icon-on-transparent-background-free-png.png' alt= 'dislike' id='dislike' onClick={dislikePost(".$row["commentId"].",".$row["dislikes"].")}>
+                    <img src='images/like-icon-on-transparent-background-free-png.png' alt= 'dislike' class= 'dislike'id='commdislike' onClick={dislikeComment(".$row["commentId"].",".$row["dislikes"].")}>
                   </div>
               </div>
           </div>";
