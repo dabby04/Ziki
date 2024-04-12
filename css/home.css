@@ -183,7 +183,6 @@ nav{
 }
 
 .container {
-    display: inline-block;
     justify-content: space-between;
     padding: 28px;
     font-size: 16px;
@@ -205,6 +204,9 @@ nav{
     flex-grow: 0;
     flex-shrink: 0;
     float: left;
+  }
+  .feedback-item a{
+    text-decoration: none;
   }
   
   .icon {

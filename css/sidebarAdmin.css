@@ -107,13 +107,6 @@ nav i{
   width:300px;
 }
 
-#user_button{
-    display: none;
-}
-
-.search-container{
-    display: none;
-}
 
 .navlinks.active {
   background-color: #D27FE0;
