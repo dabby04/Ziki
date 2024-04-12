@@ -10,7 +10,6 @@ try {
     if (isset ($_SESSION['status'])) {
         $status = $_SESSION['status'];
         $username = $_SESSION['username'];
-        //$username="something";
 
         $sql = "SELECT profilePhoto FROM USER WHERE username = ?";
         $statement = $pdo->prepare($sql);
@@ -93,6 +92,7 @@ try {
                     </a>
                 </form>
             </div>
+            
         </header>
     </div>
 
