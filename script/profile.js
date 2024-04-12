@@ -1,18 +1,6 @@
 
 $(document).ready(function() { 
-    function makeAPost () {
-        postPopup = document.getElementById('postPopup');
-        postPopup.style.display = "flex";
-    }
-    
-    function closePostPopup () {
-        postPopup = document.getElementById('postPopup');
-        postPopup.style.display = "none";
-    }
-    
-    function submitPost () {
-        location.reload();
-    }
+   
 
 
 document.getElementById('viewLiked').addEventListener('click', function() {
@@ -40,10 +28,13 @@ document.getElementById('viewMain').addEventListener('click', function() {
     // Get the element with id 'liked-posts'
     var likedPostsSection = document.getElementById('liked-posts');
     var postSection = document.getElementById('main-posts');
+    var commentedSection = document.getElementById('commented-posts');
+
     console.log(likedPostsSection.style.display);
     // Toggle the display style between 'none' and 'block'
     if (postSection.style.display = 'none') {
         postSection.style.display = 'block';
+        commentedSection.style.display = 'none';
         likedPostsSection.style.display= 'none';
     } else {
         postSection.style.display = 'none';
@@ -91,6 +82,20 @@ document.getElementById('viewComments').addEventListener('click', function() {
 
 
 });
+
+function makeAPost () {
+    postPopup = document.getElementById('postPopup');
+    postPopup.style.display = "flex";
+}
+
+function closePostPopup () {
+    postPopup = document.getElementById('postPopup');
+    postPopup.style.display = "none";
+}
+
+function submitPost () {
+    location.reload();
+}
 
 
      

@@ -14,7 +14,7 @@
 }
 #comment{
     float:left;
-    width:2.5%;
+    width:2em;
 }
 .like{
     /* float:inline-end; */
@@ -103,7 +103,12 @@ footer{
     margin-right: 3em;
 }
 
+
 .comments{
     width: 90%;
     float: right;
+
+#postPic{
+    max-width: 30vw;
+    margin: 1em;
 }

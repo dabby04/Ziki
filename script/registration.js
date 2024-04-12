@@ -50,7 +50,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 triggerHighlight("repeat_pass");
                 displayErrorMessage("Repeat your password", "repeat_pass");
             }
-            validatePassword()
+            if (repeat_pass !== pass) {
+                e.preventDefault();
+                triggerHighlight("repeat_pass");
+                triggerHighlight("password")
+                displayErrorMessage("Passwords don't match", "repeat_pass");
+            }
+            else{
+            validatePassword();
+            }
+            
+
         });
         var name = document.getElementsByName("name")[0];
         var email = document.getElementsByName("email")[0];
@@ -113,14 +123,14 @@ document.addEventListener("DOMContentLoaded", () => {
     function validatePassword() {
         let pass = document.getElementsByName("password")[0].value;
         let confirm_pass = document.getElementsByName("repeat_pass")[0].value;
-
-        if (pass !== confirm_pass && pass !== "" && confirm_pass !== "") {
-            document.getElementById('wrong_pass_alert').style.color = 'red';
-            document.getElementById('wrong_pass_alert').innerHTML = 'Passwords do not match';
-        } else {
+    
+        // if (pass !== confirm_pass && pass !== "" && confirm_pass !== "") {
+        //     document.getElementById('wrong_pass_alert').style.color = 'red';
+        //     document.getElementById('wrong_pass_alert').innerHTML = 'Passwords do not match';
+        // } else {
             // Clear the message when passwords match
             document.getElementById('wrong_pass_alert').innerHTML = '';
-        }
+        // }
     }
 });
 

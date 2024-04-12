@@ -24,7 +24,7 @@ $creator = $creator??$_POST["creator"];
             echo "<script type='text/javascript'>alert('$message');</script>";
         }
     }else{
-                $sql = "INSERT INTO reported VALUES ($post,$creator,1)";
+                $sql = "INSERT INTO reported VALUES ($post,$creatorId,1)";
                 $statement = $pdo ->prepare($sql);
                 $statement -> execute();
             
