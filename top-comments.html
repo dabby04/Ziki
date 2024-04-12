@@ -9,47 +9,155 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        function plusButtonClick(event,discussion_id) {
+        $(document).ready(function () {
+            // Function to load likes count for each discussion
+            function loadLikesCount() {
+                console.log("here");
+                $.ajax({
+                    type: "GET",
+                    url: "ajax/commentsAjax.php",
+                    success: function (response) {
+                        var jsonResponse = JSON.parse(response);
+                        jsonResponse.forEach(function (post) {
+                            var postId = post.postId;
+                            var likes = post.likes;
+                            var creator = post.creator;
+                            var title = post.title;
+                            var content = post.content;
+                            var container = $('<div>').addClass('container');
+                            // Create the feedback-item section
+                            var feedbackItem = $('<section>').addClass('feedback-item');
+
+                            // Create the + icon
+                            var plusIcon = $('<img>').attr({
+                                src: 'images/+.png',
+                                alt: '',
+                                class: 'icon',
+                                onclick: 'plusButtonClick(event, discussion_id=' + postId + ')'
+                            });
+
+                            var countElement = $('<div>').addClass('count').attr('id', 'count_' + postId).text(likes);
+
+                            // Create the - icon
+                            var minusIcon = $('<img>').attr({
+                                src: 'images/-.png',
+                                alt: '',
+                                class: 'icon',
+                                onclick: 'minusButtonClick(event, discussion_id=' + postId + ')'
+                            });
+
+                            feedbackItem.append(plusIcon, countElement, minusIcon);
+
+                            // Create the content section
+                            var contentSection = $('<section>').addClass('content');
+
+                            // Create the header
+                            var header = $('<header>');
+
+                            // Create the user-info div
+                            var userInfo = $('<div>').addClass('user-info');
+
+                            // Create the user-avatar image
+                            var userAvatar = $('<img>').attr({
+                                src: 'images/img_avatar.png',
+                                alt: '',
+                                class: 'user-avatar'
+                            });
+
+                            // Create the username
+                            var userName = $('<h2>').text(creator);
+
+                            // Append user-avatar and username to user-info
+                            userInfo.append(userAvatar, userName);
+
+                            // Create the reply button
+                            var replyButton = $('<button>').addClass('reply-button');
+                            var replyIcon = $('<img>').attr({
+                                src: 'images/img_reply_icon.png',
+                                alt: 'Reply icon',
+                                class: 'reply-icon'
+                            });
+                            replyButton.append(replyIcon);
+
+                            // Append user-info and reply button to header
+                            header.append(userInfo, replyButton);
+
+                            // Create the article
+                            var article = $('<article>');
+                            var articleTitle = $('<h3>').text(title);
+                            var articleContent = $('<p>').text(content);
+
+                            // Append article title and content to article
+                            article.append(articleTitle, articleContent);
+
+                            // Create the link
+                            var link = $('<a>').attr({
+                                href: 'specificDiscussion.php?discTopic=' + postId,
+                                target: '_parent'
+                            });
+
+                            // Append header and article to content section
+                            contentSection.append(header, article);
+
+                            // Append content section to link
+                            link.append(contentSection);
+
+                            container.append(feedbackItem, link);
+                            // Append feedback-item and link to the body
+                            $('body').append(container);
+                        });
+
+                        console.log(jsonResponse);
+
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("Error loading likes count:", error);
+                    }
+                });
+            }
+            loadLikesCount();
+        });
+        function plusButtonClick(event, discussion_id) {
             // Send AJAX request to increase likes
             $.ajax({
                 type: "POST",
                 url: "ajax/increaseLikes.php",
-                data: { discussion_id, type:"like" },
-                success: function(response) {
+                data: { discussion_id, type: "like" },
+                success: function (response) {
                     var jsonResponse = JSON.parse(response);
                     console.log("Likes increased:", response);
                     if (jsonResponse.status === "error" && jsonResponse.message === "Unauthorized access") {
                         console.log("Redirecting to login page...");
                         window.parent.location.href = "login.php";
                     }
-                    else{  
+                    else {
                         document.getElementById('count_' + discussion_id).innerHTML = jsonResponse[0].likes;
                     }
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     console.error("Error increasing likes:", error);
                 }
             });
         }
 
-        function minusButtonClick(even,discussion_id) {
+        function minusButtonClick(even, discussion_id) {
             // Send AJAX request to decrease likes
             $.ajax({
                 type: "POST",
                 url: "ajax/decreaseLikes.php",
-                data: { discussion_id: discussion_id,type:"dislike"},
-                success: function(response) {
+                data: { discussion_id: discussion_id, type: "dislike" },
+                success: function (response) {
                     var jsonResponse = JSON.parse(response);
                     console.log("Likes increased:", response);
                     if (jsonResponse.status === "error" && jsonResponse.message === "Unauthorized access") {
                         console.log("Redirecting to login page...");
                         window.parent.location.href = "login.php";
                     }
-                    else{
+                    else {
                         document.getElementById('count_' + discussion_id).innerHTML = jsonResponse[0].dislikes;
                     }
                 },
-                error: function(xhr, status, error) {
+                error: function (xhr, status, error) {
                     console.error("Error decreasing likes:", error);
                 }
             });
@@ -58,59 +166,63 @@
 </head>
 
 <body>
-    <div class="container">
+    <!-- <div class="container">
         <section class="feedback-item">
-            <img loading="lazy" src="images/+.png" alt="" class="icon" onclick="plusButtonClick(event,discussion_id=12)">
+            <img loading="lazy" src="images/+.png" alt="" class="icon"
+                onclick="plusButtonClick(event,discussion_id=12)">
             <div id="count_12" class="count">12</div>
-            <img loading="lazy" src="images/-.png" alt="" class="icon" onclick="minusButtonClick(event,discussion_id=12)">
+            <img loading="lazy" src="images/-.png" alt="" class="icon"
+                onclick="minusButtonClick(event,discussion_id=12)">
         </section>
         <section class="content">
             <a href="specificDiscussion.php?discTopic=12" target="_parent">
-            <header>
-                <div class="user-info">
-                    <img loading="lazy" src="images/img_avatar.png" alt="" class="user-avatar">
-                    <h2>amyrobson</h2>
-                </div>
-                <button class="reply-button">
-                    <img loading="lazy" src="images/img_reply_icon.png" alt="Reply icon" class="reply-icon">
+                <header>
+                    <div class="user-info">
+                        <img loading="lazy" src="images/img_avatar.png" alt="" class="user-avatar">
+                        <h2>amyrobson</h2>
+                    </div>
+                    <button class="reply-button">
+                        <img loading="lazy" src="images/img_reply_icon.png" alt="Reply icon" class="reply-icon">
 
-                </button>
-            </header>
-            <article>
-                <h3>Ways to give positive feedback</h3>
-                <p>Impressive! Though it seems the drag feature could be improved. But overall it looks
-                    incredible. You’ve nailed the design and the responsiveness at various breakpoints works
-                    really well.</p>
-            </article>
+                    </button>
+                </header>
+                <article>
+                    <h3>Ways to give positive feedback</h3>
+                    <p>Impressive! Though it seems the drag feature could be improved. But overall it looks
+                        incredible. You’ve nailed the design and the responsiveness at various breakpoints works
+                        really well.</p>
+                </article>
             </a>
         </section>
     </div>
     <div class="container">
         <section class="feedback-item">
-            <img loading="lazy" src="images/+.png" alt="" class="icon" onclick="plusButtonClick(event,discussion_id=13)">
+            <img loading="lazy" src="images/+.png" alt="" class="icon"
+                onclick="plusButtonClick(event,discussion_id=13)">
             <div class="count">20</div>
-            <img loading="lazy" src="images/-.png" alt="" class="icon" onclick="minusButtonClick(event,discussion_id=13)">
+            <img loading="lazy" src="images/-.png" alt="" class="icon"
+                onclick="minusButtonClick(event,discussion_id=13)">
         </section>
         <section class="content">
             <a href="specificDiscussion.php?discTopic=13" target="_parent">
-            <header>
-                <div class="user-info">
-                    <img loading="lazy" src="images/user.png" alt="" class="user-avatar">
-                    <h2>johndoe</h2>
-                </div>
-                <button class="reply-button">
-                    <img loading="lazy" src="images/img_reply_icon.png" alt="Reply icon" class="reply-icon">
+                <header>
+                    <div class="user-info">
+                        <img loading="lazy" src="images/user.png" alt="" class="user-avatar">
+                        <h2>johndoe</h2>
+                    </div>
+                    <button class="reply-button">
+                        <img loading="lazy" src="images/img_reply_icon.png" alt="Reply icon" class="reply-icon">
 
-                </button>
-            </header>
-            <article>
-                <h3>Best boy bands of the 90s</h3>
-                <p>I was listening to Boyz II Men and I'd have to say they were the best of their time. It got
-                    me thinking what other boy bands you considered great during that time.</p>
-            </article>
+                    </button>
+                </header>
+                <article>
+                    <h3>Best boy bands of the 90s</h3>
+                    <p>I was listening to Boyz II Men and I'd have to say they were the best of their time. It got
+                        me thinking what other boy bands you considered great during that time.</p>
+                </article>
             </a>
         </section>
-    </div>
+    </div> -->
 </body>
 
 </html>
