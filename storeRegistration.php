@@ -81,14 +81,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       // }
 
       // Check the output and return status if needed
-      if ($return_var !== 0) {
-        $error_message = "Error executing Python script: " . implode("\n", $output);
-        echo "<script>alert('$error_message');</script>";
-      } else {
-        echo "<script>alert('Python script executed successfully!');</script>";
-        // Redirect to the login page
-        echo "<script>window.location.href = 'login.php';</script>";
-      }
+      // if ($return_var !== 0) {
+      //   $error_message = "Error executing Python script: " . implode("\n", $output);
+      //   echo "<script>alert('$error_message');</script>";
+      // } else {
+      //   echo "<script>alert('Python script executed successfully!');</script>";
+      //   // Redirect to the login page
+      //   echo "<script>window.location.href = 'login.php';</script>";
+      // }
     }
 
 
