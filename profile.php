@@ -189,8 +189,9 @@ try {
                 ?>
                 <img class="post-image" src="<?php echo $imageSrc; ?>" alt="Post Image">
             <?php endif; ?>
-            <!-- View comment button -->
-            <button class="view-comment-button">View Discussion</button>
+            <form id="submitDiscussion" action="viewDiscussion.php" method="post"  enctype="multipart/form-data">
+            <input type="hidden" name="discussion_title" value="<?php echo $post['title']; ?>">
+            <button class="view-comment-button" type="submit">View Discussion</button>
             <!-- Post footer displaying the time the post was made -->
             <div class="post-footer"><?php echo date("F j, Y, g:i a", strtotime($post['created_at'])); ?></div>
         </div>
