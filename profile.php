@@ -79,7 +79,7 @@ try {
             <label for="postImage">
                 <img id="photo_icon" src="images/photo_icon.png" alt="Photo Icon"/>
             </label>
-            <input type="file" id="postImage" name="postImage" accept="image/*">
+            <input type="file" id="postImage" name="postImage" accept="image/*"required>
 
               <!-- Themes Option -->
               <label for="postTheme">Select a theme:</label>

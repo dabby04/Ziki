@@ -1,18 +1,6 @@
 
 $(document).ready(function() { 
-    function makeAPost () {
-        postPopup = document.getElementById('postPopup');
-        postPopup.style.display = "flex";
-    }
-    
-    function closePostPopup () {
-        postPopup = document.getElementById('postPopup');
-        postPopup.style.display = "none";
-    }
-    
-    function submitPost () {
-        location.reload();
-    }
+   
 
 
 document.getElementById('viewLiked').addEventListener('click', function() {
@@ -91,6 +79,20 @@ document.getElementById('viewComments').addEventListener('click', function() {
 
 
 });
+
+function makeAPost () {
+    postPopup = document.getElementById('postPopup');
+    postPopup.style.display = "flex";
+}
+
+function closePostPopup () {
+    postPopup = document.getElementById('postPopup');
+    postPopup.style.display = "none";
+}
+
+function submitPost () {
+    location.reload();
+}
 
 
      
