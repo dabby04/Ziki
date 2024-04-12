@@ -52,7 +52,7 @@
     <div class="input-container">
       <div id=profile_image style="margin-top: 2em; margin-left: 2em;">
         <label for="img">Upload Profile Photo</label>
-        <input type="file" id="img" name="img" accept="image/*">
+        <input type="file" required id="img" name="img" accept="image/*">
       </div>
     </div>
     <span id="wrong_pass_alert"></span>

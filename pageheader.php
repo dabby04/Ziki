@@ -7,20 +7,29 @@ $username = null;
 $profile_photo = null;
 try {
     require_once "server/configure.php";
-    if (isset ($_SESSION['status'])) {
+    if (isset($_SESSION['status'])) {
         $status = $_SESSION['status'];
         $username = $_SESSION['username'];
 
-        $sql = "SELECT profilePhoto FROM USER WHERE username = ?";
+        $sql = "SELECT * FROM USER WHERE username = ?";
         $statement = $pdo->prepare($sql);
         $statement->execute([$username]);
-        $row = $statement->fetch(PDO::FETCH_ASSOC);
-            $profile_photo = $row['profilePhoto'];
 
+        if ($statement->rowCount() === 0) {
+            
+            $status="active";
+
+        } else {
+            $sql = "SELECT profilePhoto FROM USER WHERE username = ?";
+            $statement = $pdo->prepare($sql);
+            $statement->execute([$username]);
+            $row = $statement->fetch(PDO::FETCH_ASSOC);
+            $profile_photo = $row['profilePhoto'];
+        }
     } else
         $status = "inactive";
 } catch (PDOException $e) {
-    die ($e->getMessage());
+    die($e->getMessage());
 }
 ?>
 <!DOCTYPE html>
@@ -68,12 +77,12 @@ try {
                         <?php elseif ($status === "active"): ?>
                             <div class="active">
                                 <div class="profile_info">
-                                    <?php if ($profile_photo): 
-                                        echo '<img src="data:image/jpeg;base64,' . base64_encode($profile_photo) . '" />';?>
+                                    <?php if ($profile_photo):
+                                        echo '<img src="data:image/jpeg;base64,' . base64_encode($profile_photo) . '" />'; ?>
                                     <?php else: ?>
                                         <img src="images/user.png">
                                     <?php endif; ?>
-                                    <?php if (isset ($username)):
+                                    <?php if (isset($username)):
                                         echo "<p>" . $username . "</p>" ?>
                                     <?php endif; ?>
                                 </div>
@@ -92,7 +101,6 @@ try {
                     </a>
                 </form>
             </div>
-            
         </header>
     </div>
 

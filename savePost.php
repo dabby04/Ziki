@@ -62,29 +62,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post Saved</title>
-    <link rel="stylesheet" href="css/success.css">
-</head>
-<body>
-    <?php if (isset($post_saved) && $post_saved) : ?>
-    <div class="success-message">
-        <h2>Your post has been saved successfully!</h2>
-        <p>Thank you for sharing your thoughts.</p>
-        
-        <a href="profile.php">Back to Profile</a>
-    </div>
-    <?php elseif (isset($error_message)) : ?>
-    <div class="error-message">
-        <h2>Error</h2>
-        <p><?php echo $error_message; ?></p>
-        <a href="profile.php">Back to Profile</a>
-    </div>
-    <?php endif; ?>
-</body>
-</html>
