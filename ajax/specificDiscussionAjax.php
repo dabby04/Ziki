@@ -1,5 +1,6 @@
 <?php
 session_start();
+$user_id = "";
 $user_id = $user_id??$_SESSION['id'];
 try{
     require_once "../server/configure.php";
@@ -32,7 +33,7 @@ try{
                                               <p class='card-text'>".$row["content"]."</p>
                                           </div>
                                           <div class='card-footer text-body-secondary'>
-                                          <img src='images/comment-icon-15.png' alt='comment' id='comment' onClick={addComment($user_id)}"
+                                          <img src='images/comment-icon-15.png' alt='comment' id='comment' onClick={addComment(1,".$row['id'].")}"
                                               .$row["created_at"]."
 
                                               <div class= 'footIcons'>".
@@ -62,7 +63,6 @@ try{
                 <li><a class='dropdown-item' href='#'>Share</a></li>
               </ul>
               </div>
-              <img id='discFav' src='images/star.png' alt='favorite discussion'onClick={addFav(".$row["userId"].",".$row["commentId"].")}>
              
             </div>
               <div class='card-body'>

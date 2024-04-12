@@ -137,7 +137,23 @@ xmlhttp.send();
 function generate(content)
 {
 var topics = content;
-console.log(topics);
+//console.log(topics);
 var cards = document.getElementById("discomments");
 cards.innerHTML = topics;
+}
+
+function addComment(creator, post)
+{
+    let comment = prompt("What do you have to say?")
+
+    var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            discussion(topic);
+        }
+      };
+      xmlhttp.open("POST", "./ajax/addComment.php", true);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send("creator=" + creator + "&post=" + post+"&comment="+comment);
+
 }
