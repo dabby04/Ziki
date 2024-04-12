@@ -14,10 +14,11 @@ try {
         }
 
         $postIdString = implode(',', $postIdArray);
-        $sqlPosts = "SELECT * FROM POSTS WHERE id IN ($postIdString) ORDER BY likes DESC LIMIT 2";
+        $sqlPosts = "SELECT COMMENTS.postId,COMMENTS.likes,creator,POSTS.title,COMMENTS.content FROM COMMENTS JOIN USER ON COMMENTS.userId=USER.id JOIN POSTS ON COMMENTS.postId=POSTS.id ORDER BY COMMENTS.likes DESC LIMIT 2";
         $statementPosts = $pdo->prepare($sqlPosts);
         $statementPosts->execute();
         $posts = $statementPosts->fetchAll(PDO::FETCH_ASSOC);
+        
         echo json_encode($posts);
     }
 } 

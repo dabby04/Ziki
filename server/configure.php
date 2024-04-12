@@ -8,10 +8,10 @@ try {
     $pdo = new PDO($connString, $user, $pass);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // print_r("connected");
-
 } catch (PDOException $e) {
     die ($e->getMessage());
 }
+// $connString = "mysql:host=localhost;dbname=ziki";
 // try {
 //     $connString = "mysql:host=localhost;dbname=ziki";
 //     $user = DBUSER;
@@ -19,6 +19,7 @@ try {
 //     $pdo = new PDO($connString, $user, $pass);
 //     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 //     // print_r("connected");
+
 
 // } catch (PDOException $e) {
 //     die ($e->getMessage());
