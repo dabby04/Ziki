@@ -3,12 +3,13 @@ $list = array();
 $title = array();
 $jsArray = json_encode($list);
 $discussion = json_encode($title); // Initialize as an empty JSON array
-// if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 require_once "server/configure.php";
-if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
+
+if ($_SERVER['REQUEST_METHOD'] == "GET") {
     try {
+
       $search_query = ""; // Add wildcards here
       $topic = $_GET["discTopic"];
       print_r($topic);
@@ -34,6 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
 
     $sql1 = "SELECT title, content, img FROM POSTS WHERE id = ?";
 
+        // Fetch posts' title and content
+        $sql1 = "SELECT title, content FROM POSTS WHERE id = ?";
         $statement1 = $pdo->prepare($sql1);
             $statement1->execute([$topic]);
     $statement1 = $pdo->prepare($sql1);
@@ -69,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == "GET") {
     var comments = <?php echo $jsArray; ?>;
     var discussion = <?php echo $discussion; ?>;
     window.onload = function () {
+
   var topic = "<?php echo $topic; ?>";
   console.log(topic);
   
