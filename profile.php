@@ -79,7 +79,7 @@ try {
             <label for="postImage">
                 <img id="photo_icon" src="images/photo_icon.png" alt="Photo Icon"/>
             </label>
-            <input type="file" id="postImage" name="postImage" accept="image/*">
+            <input type="file" id="postImage" name="postImage" accept="image/*"required>
 
               <!-- Themes Option -->
               <label for="postTheme">Select a theme:</label>
@@ -136,25 +136,30 @@ try {
 
 <?php  
     
-try {
-    // Connect to the database
+// Connect to the database
 
     // Query to select posts
-    $sql = "SELECT p.title, p.content, p.created_at, p.img, u.profilePhoto
-            FROM POSTS p
-            INNER JOIN USER u ON p.creatorId = u.id
-            ORDER BY p.created_at DESC"; 
-
-    // Prepare and execute the query
-    $stmt = $pdo->query($sql);
-
-    // Fetch all rows as an associative array
-    $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-} catch (PDOException $e) {
-    // Handle database connection error
-    echo "Error: " . $e->getMessage();
-}
+    try {
+        // Query to select posts
+        $sql = "SELECT *
+                FROM POSTS p
+                JOIN USER u ON p.creatorId = u.id
+                WHERE p.creatorId = ?
+                ORDER BY p.created_at DESC"; 
+    
+        // Prepare and execute the query
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(1, $user_id, PDO::PARAM_INT);
+        $stmt->execute();
+    
+        // Fetch all rows as an associative array
+        $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+    } catch (PDOException $e) {
+        // Handle database connection error
+        echo "Error: " . $e->getMessage();
+    }
+    
 ?>
 
 
